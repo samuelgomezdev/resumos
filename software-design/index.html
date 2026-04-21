@@ -1220,17 +1220,35 @@
     <!-- ═══════════════════════════════════════════════════ UA11 -->
     <section id="ua11">
       <h2>UA11 — Diagrama de Classes</h2>
-      <p class="subtitle">O diagrama de classes é o mais usado em UML. Representa a estrutura estática do sistema: quais classes existem, seus atributos, métodos e como se relacionam entre si.</p>
+      <p class="subtitle">O diagrama de classes é o bloco de construção principal da modelagem OO. Representa a estrutura estática do sistema: classes, atributos, métodos e relacionamentos. É a base para os diagramas de comunicação, sequência e estados.</p>
 
-      <h3>Anatomia de uma classe UML</h3>
+      <h3>As três perspectivas do diagrama de classes</h3>
+      <p>Segundo Ambler (2016), um diagrama de classes oferece três perspectivas diferentes:</p>
+      <div class="cards">
+        <div class="card"><h4>Conceitual</h4><p>Representação dos conceitos do domínio. Direcionada ao cliente. Não inclui detalhes de implementação.</p></div>
+        <div class="card"><h4>Especificação</h4><p>Foca nas principais interfaces e métodos da arquitetura. Para quem precisa entender o sistema sem ver o código.</p></div>
+        <div class="card"><h4>Implementação</h4><p>A mais usada. Inclui detalhes de navegabilidade, atributos completos, tipos. Voltada para o time de desenvolvimento.</p></div>
+      </div>
+
+      <h3>O que é uma Classe?</h3>
+      <p>Classes são descrições de um grupo de objetos com papéis semelhantes no sistema. Objetos derivam de:</p>
+      <ul>
+        <li><strong>Coisas:</strong> objetos tangíveis do mundo real (produto, livro, veículo).</li>
+        <li><strong>Papéis/funções:</strong> atores em sistemas (estudante, gerente, enfermeiro).</li>
+        <li><strong>Eventos:</strong> ocorrências registráveis (admissão, matrícula, venda).</li>
+        <li><strong>Interações:</strong> resultados de relações entre entidades (reunião, contrato).</li>
+      </ul>
+
+      <h3>Anatomia de uma Classe UML</h3>
+      <p>Uma classe é representada por um retângulo com 3 compartimentos verticais:</p>
       <table>
-        <tr><th>Seção</th><th>Exemplo (classe Produto)</th><th>Convenção</th></tr>
-        <tr><td>Nome</td><td><code>Produto</code></td><td>Sempre com letra maiúscula; identifica o tipo</td></tr>
-        <tr><td>Atributos</td><td><code>- id: int</code><br><code>- nome: String</code><br><code>- preco: double</code></td><td>visibilidade nome: tipo<br>(-) private, (+) public, (#) protected</td></tr>
-        <tr><td>Métodos</td><td><code>+ getPreco(): double</code><br><code>+ setPreco(p: double)</code><br><code>+ disponivel(): boolean</code></td><td>visibilidade nome(param): retorno</td></tr>
+        <tr><th>Compartimento</th><th>Conteúdo</th><th>Convenção</th></tr>
+        <tr><td><strong>Superior</strong></td><td>Nome da classe</td><td>Negrito, centralizado, primeira letra maiúscula</td></tr>
+        <tr><td><strong>Meio</strong></td><td>Atributos: <code>visibilidade nome: tipo</code></td><td>Alinhado à esquerda, primeira letra minúscula</td></tr>
+        <tr><td><strong>Inferior</strong></td><td>Métodos: <code>visibilidade nome(params): retorno</code></td><td>Alinhado à esquerda, primeira letra minúscula</td></tr>
       </table>
 
-      <h3>Visibilidade dos membros</h3>
+      <h3>Visibilidade</h3>
       <table>
         <tr><th>Símbolo</th><th>Visibilidade</th><th>Acessível de</th></tr>
         <tr><td><code>+</code></td><td>public</td><td>Qualquer lugar</td></tr>
@@ -1241,27 +1259,62 @@
 
       <h3>Multiplicidades</h3>
       <table>
-        <tr><th>Notação</th><th>Leitura</th><th>Exemplo</th></tr>
-        <tr><td><code>1</code></td><td>Exatamente um</td><td>Um pedido tem exatamente um cliente</td></tr>
-        <tr><td><code>0..1</code></td><td>Zero ou um</td><td>Uma pessoa pode ou não ter um cônjuge</td></tr>
-        <tr><td><code>*</code></td><td>Zero ou muitos</td><td>Um cliente pode ter nenhum ou vários pedidos</td></tr>
-        <tr><td><code>1..*</code></td><td>Um ou muitos</td><td>Um pedido tem pelo menos um item</td></tr>
-        <tr><td><code>2..5</code></td><td>Entre dois e cinco</td><td>Um time tem de 2 a 5 jogadores</td></tr>
+        <tr><th>Notação</th><th>Leitura</th></tr>
+        <tr><td><code>0..1</code></td><td>No máximo um (pode ser zero)</td></tr>
+        <tr><td><code>1</code> ou <code>1..1</code></td><td>Exatamente um</td></tr>
+        <tr><td><code>0..*</code> ou <code>*</code></td><td>Zero ou muitos</td></tr>
+        <tr><td><code>1..*</code></td><td>Um ou muitos (pelo menos um)</td></tr>
+        <tr><td><code>3..5</code></td><td>Entre três e cinco</td></tr>
+      </table>
+      <p>Leitura: "Um Funcionário trabalha em 0..1 Empresa" E "Em uma Empresa trabalham 0..* Funcionários".</p>
+
+      <h3>Relacionamentos</h3>
+      <table>
+        <tr><th>Relação</th><th>Notação</th><th>Definição</th></tr>
+        <tr><td><strong>Associação</strong></td><td>Linha sólida</td><td>Relacionamento estrutural — instâncias de uma classe ligadas a outra. Pode ser bidirecional ou unidirecional.</td></tr>
+        <tr><td><strong>Dependência</strong></td><td>Linha tracejada com seta</td><td>Uma mudança em um elemento afeta o outro. Objeto de uma classe usa serviços de outra.</td></tr>
+        <tr><td><strong>Generalização (herança)</strong></td><td>Linha sólida com seta fechada</td><td>Elemento específico herda de um mais geral. Subclasses herdam todos os atributos e métodos da superclasse.</td></tr>
+        <tr><td><strong>Agregação</strong></td><td>Linha com losango vazio</td><td>Objeto-parte é atributo do todo, mas pode existir independentemente.</td></tr>
+        <tr><td><strong>Composição</strong></td><td>Linha com losango cheio</td><td>As partes só existem com o todo — são criadas e destruídas com ele. Vínculo forte (FILHA depende da PAI).</td></tr>
       </table>
 
-      <h3>Exemplo completo — Sistema de e-commerce</h3>
-      <table>
-        <tr><th>Classe</th><th>Atributos principais</th><th>Relacionamento</th></tr>
-        <tr><td><code>Cliente</code></td><td>nome, email, cpf</td><td>1 Cliente possui * Pedidos</td></tr>
-        <tr><td><code>Pedido</code></td><td>data, status, total</td><td>1 Pedido contém 1..* ItemPedidos</td></tr>
-        <tr><td><code>ItemPedido</code></td><td>quantidade, precoUnit</td><td>* ItemPedidos referenciam 1 Produto (classe associativa do N:N)</td></tr>
-        <tr><td><code>Produto</code></td><td>nome, preco, estoque</td><td>Aparece em * ItemPedidos</td></tr>
-      </table>
+      <h3>Pacotes</h3>
+      <p>Pacotes agrupam elementos semanticamente relacionados em namespaces. Ao remover um pacote, todos os seus elementos são removidos junto. Use convenção de <strong>domínio invertido</strong>: <code>br.com.empresa.app.modulo</code>.</p>
+      <p>Pacotes servem para dividir sistemas grandes em subsistemas, facilitando manutenção e compreensão. O nome do pacote deve expressar o propósito de suas classes.</p>
+
+      <h3>Passos para criar um diagrama de classes</h3>
+      <ol>
+        <li><strong>Identificar frases nominais</strong> dos casos de uso — candidatos a classes.</li>
+        <li><strong>Eliminar candidatos inapropriados</strong>: redundantes, vagos, fora do escopo, simples atributos.</li>
+        <li><strong>Identificar os verbos</strong> — candidatos a métodos e relacionamentos.</li>
+        <li><strong>Validar o modelo</strong> — verificar se não há classes que prejudiquem o modelo.</li>
+      </ol>
+
+      <h3>Erros comuns de modelagem</h3>
+      <ul>
+        <li>Análise excessiva de frases nominais — coletar mais classes do que o necessário.</li>
+        <li>Nomes de classes e associações ambíguos ou incompreensíveis.</li>
+        <li>Inserir multiplicidades antes de estabilizar a estrutura do diagrama.</li>
+        <li>Pensar em questões de implementação durante a fase de modelagem.</li>
+      </ul>
 
       <div class="callout green">
-        <strong>Relacionamento N:N sempre gera uma classe associativa</strong>
-        <p>Um Pedido contém vários Produtos e um Produto aparece em vários Pedidos. Essa relação N:N não pode ser mapeada diretamente — gera a classe <code>ItemPedido</code>, que armazena os atributos da relação (quantidade, preço no momento da compra).</p>
+        <strong>N:N sempre gera uma classe associativa</strong>
+        <p>Um Pedido contém vários Produtos e um Produto aparece em vários Pedidos — relação N:N. Não pode ser mapeada diretamente: gera a classe <code>ItemPedido</code>, que armazena os atributos da relação (quantidade, preço na data da compra).</p>
       </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a Prova</strong>
+        <ul>
+          <li>Diagrama de classes = representação da <strong>estrutura e relações das classes</strong> que servem de modelo para objetos.</li>
+          <li>Classes são representadas por <strong>retângulos</strong> (não círculos, quadrados ou setas).</li>
+          <li>Associação = relacionamentos estruturais entre instâncias; Dependência = relacionamentos de utilização; Generalização = herança.</li>
+          <li>Multiplicidades = informam a quantidade de instâncias de objetos que uma classe pode ter em relação a outra.</li>
+          <li>Visibilidades UML: <strong>público (+), protegido (#), privado (-) e pacote (~)</strong>.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Referências: LEDUR, C.L. <em>Análise e Projeto de Sistemas</em>, 2017. AMBLER, S.W. <em>UML 2 Class Diagram Guidelines</em>, 2016. BELL, D. <em>Fundamentos básicos de UML: o diagrama de classes</em>, IBM developerWorks, 2016.</p>
 
       <div class="section-nav">
         <a href="#" data-sec="ua10" class="prev">Protótipos no Design</a>
@@ -1272,37 +1325,57 @@
     <!-- ═══════════════════════════════════════════════════ UA12 -->
     <section id="ua12">
       <h2>UA12 — Diagrama de Componentes</h2>
-      <p class="subtitle">O diagrama de componentes mostra a arquitetura física do sistema — como ele é dividido em módulos deployáveis, bibliotecas e executáveis, e como eles dependem uns dos outros.</p>
+      <p class="subtitle">O diagrama de componentes descreve a arquitetura física do software: como ele é dividido em partes independentes, reutilizáveis e substituíveis, e como essas partes dependem umas das outras por meio de interfaces.</p>
 
-      <h3>Elementos do Diagrama de Componentes</h3>
-      <ul>
-        <li><strong>Componente:</strong> unidade modular com interface bem definida. Pode ser um módulo, biblioteca, executável, microserviço ou pacote. Representado por um retângulo com o estereótipo <code>«component»</code>.</li>
-        <li><strong>Interface fornecida (lollipop):</strong> o que o componente oferece — representada por um círculo sólido (<code>○—</code>).</li>
-        <li><strong>Interface requerida (socket):</strong> o que o componente precisa de outros — representada por um semicírculo (<code>—(</code>).</li>
-        <li><strong>Dependência:</strong> seta tracejada indicando que um componente usa outro.</li>
-      </ul>
+      <h3>O que é um componente?</h3>
+      <p>Na UML, componentes são elementos de modelo que representam <strong>partes independentes e intercambiáveis</strong> de um sistema. Um componente fornece e consome comportamento por meio de interfaces. Pode ser um módulo, biblioteca, executável, banco de dados ou qualquer unidade física do sistema.</p>
+      <p>Um sistema de software completo pode ser considerado um componente. Ao conectar interfaces fornecidas e requeridas de vários componentes, constrói-se um componente maior.</p>
 
-      <h3>Exemplo — Aplicação web em 3 camadas</h3>
+      <h3>Elementos do Diagrama</h3>
       <table>
-        <tr><th>Componente</th><th>Tecnologia</th><th>Depende de</th><th>Protocolo</th></tr>
-        <tr><td>Frontend</td><td>React</td><td>Backend API</td><td>REST / HTTP</td></tr>
-        <tr><td>Backend API</td><td>Node.js</td><td>Banco de Dados, Auth Service</td><td>SQL / HTTP</td></tr>
-        <tr><td>Auth Service</td><td>JWT / OAuth</td><td>— (independente)</td><td>HTTP</td></tr>
-        <tr><td>Banco de Dados</td><td>PostgreSQL / MySQL</td><td>— (independente)</td><td>SQL</td></tr>
+        <tr><th>Elemento</th><th>Definição</th></tr>
+        <tr><td><strong>Componente</strong></td><td>Pedaço reutilizável de funcionalidade. Representado por retângulo com estereótipo <code>«component»</code>. Fornece e consome comportamento via interfaces.</td></tr>
+        <tr><td><strong>Interface fornecida</strong></td><td>Grupo de operações que o componente implementa (oferece). Representada por símbolo "pirulito" (bola na ponta da linha).</td></tr>
+        <tr><td><strong>Interface requerida</strong></td><td>Grupo de operações que o componente exige de outros. Representada por semicírculo ("soquete").</td></tr>
+        <tr><td><strong>Dependência</strong></td><td>Seta tracejada indicando que uma interface requerida de um componente é satisfeita por uma interface fornecida de outro.</td></tr>
+        <tr><td><strong>Instâncias de componentes</strong></td><td>Entidades reais em execução no sistema.</td></tr>
+        <tr><td><strong>Pacotes</strong></td><td>Agrupam elementos de modelo relacionados.</td></tr>
+        <tr><td><strong>Artefatos</strong></td><td>Entidades físicas: arquivos executáveis, bibliotecas, código-fonte, bancos de dados, documentos.</td></tr>
+        <tr><td><strong>Parte</strong></td><td>Atributo de um componente cujo tipo é outro componente. Usado no design interno.</td></tr>
+        <tr><td><strong>Assembly</strong></td><td>Conexão entre porta de interface requerida de uma parte e porta de interface fornecida de outra.</td></tr>
+        <tr><td><strong>Delegação</strong></td><td>Vincula uma porta para uma interface de uma das partes do componente.</td></tr>
       </table>
 
-      <h3>Quando usar?</h3>
+      <h3>Usos e aplicações</h3>
       <ul>
-        <li>Planejar e comunicar a <strong>arquitetura de implantação</strong> para DevOps e infraestrutura.</li>
-        <li>Identificar <strong>dependências críticas</strong> entre módulos — o que quebra se tal componente falhar.</li>
-        <li>Avaliar o <strong>impacto de trocar uma tecnologia</strong> por outra (ex.: migrar de MySQL para PostgreSQL).</li>
-        <li>Documentar a arquitetura de sistemas já existentes para facilitar onboarding.</li>
+        <li>Definir aspectos executáveis e reutilizáveis do sistema.</li>
+        <li>Apresentar problemas de configuração por meio de relacionamentos de dependência.</li>
+        <li>Representar uma visão precisa do sistema antes de fazer alterações ou melhorias.</li>
+        <li>Descrever as peças físicas do sistema: arquivos de código-fonte, executáveis, bancos de dados, sistemas adaptáveis com balanceamento de carga.</li>
+        <li>Modelar sistemas em qualquer linguagem ou estilo identificando partes que interagem por meio de entradas e saídas.</li>
       </ul>
+      <p>Segundo Ambler (2004), o principal objetivo é <strong>possibilitar a construção de artefatos para o perfil de arquitetura da solução</strong>, seja para a arquitetura técnica ou de negócios.</p>
+
+      <h3>Notação UML 1 vs UML 2</h3>
+      <p>Na UML 1, havia um ícone característico de componente (retângulo com dois pequenos retângulos laterais). Na UML 2, esse ícone foi retirado — usa-se a caixa de classe anotada com <code>«component»</code>. Tanto a notação antiga quanto a nova são encontradas na literatura.</p>
 
       <div class="callout">
         <strong>Componente ≠ Classe</strong>
-        <p>Classes representam estrutura lógica no nível do código. Componentes representam unidades físicas e deployáveis. Um componente geralmente agrupa dezenas ou centenas de classes que trabalham juntas para uma responsabilidade maior.</p>
+        <p>Classes representam estrutura lógica no nível do código. Componentes representam unidades físicas e deployáveis. Um componente geralmente agrupa dezenas ou centenas de classes com responsabilidade comum. Use componentes quando precisar dividir o sistema em partes independentes e mostrar relacionamentos por meio de interfaces.</p>
       </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a Prova</strong>
+        <ul>
+          <li>Diagrama de componentes: descreve componentes, <strong>interfaces e suas dependências</strong>; reutilizáveis e substituíveis.</li>
+          <li>Elementos: componentes, instâncias, <strong>pacotes, artefatos, interfaces</strong> e relacionamentos.</li>
+          <li>Objetivo principal (Ambler): possibilitar a construção de artefatos para o <strong>perfil de arquitetura da solução</strong>.</li>
+          <li>Interface: elemento que define conjuntos de operações que outros elementos (classes ou componentes) <strong>devem implementar</strong>.</li>
+          <li>Peças físicas descritas pelo diagrama: arquivos executáveis, código-fonte, bancos físicos e <strong>sistemas adaptáveis com balanceamento de carga</strong>.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Referências: LEDUR, C.L. <em>Análise e Projeto de Sistemas</em>, 2017. AMBLER, S.W. <em>The Object Primer</em>, 3ª ed., 2004. PRESSMAN, R.S.; MAXIM, B.R. <em>Engenharia de Software</em>, 8ª ed., 2016.</p>
 
       <div class="section-nav">
         <a href="#" data-sec="ua11" class="prev">Diagrama de Classes</a>
@@ -1313,44 +1386,79 @@
     <!-- ═══════════════════════════════════════════════════ UA13 -->
     <section id="ua13">
       <h2>UA13 — Diagrama de Sequência</h2>
-      <p class="subtitle">O diagrama de sequência mostra como os objetos interagem ao longo do tempo em um cenário específico. Responde: quem chama quem, em que ordem, com quais parâmetros — e o que retorna.</p>
+      <p class="subtitle">O diagrama de sequência descreve as interações entre objetos em termos de troca de mensagens ao longo do tempo. Também chamado de diagrama de eventos — mostra quem chama quem, em que ordem, e permite prever como o sistema se comportará em um cenário específico.</p>
 
-      <h3>Elementos fundamentais</h3>
-      <ul>
-        <li><strong>Participante (lifeline):</strong> objeto ou ator representado por uma caixa no topo e uma linha vertical tracejada abaixo.</li>
-        <li><strong>Mensagem síncrona (→):</strong> chamada de método que aguarda retorno. Linha sólida com seta sólida.</li>
-        <li><strong>Mensagem assíncrona (⇢):</strong> chamada que não aguarda retorno (fire-and-forget). Linha sólida com seta aberta.</li>
-        <li><strong>Retorno (- - →):</strong> valor retornado ao chamador. Linha tracejada.</li>
-        <li><strong>Barra de ativação:</strong> retângulo estreito sobre a lifeline indicando que o objeto está em execução.</li>
-        <li><strong>Fragmentos combinados:</strong> caixas que agrupam mensagens com condições.</li>
-      </ul>
+      <h3>Linhas de Vida (Lifelines)</h3>
+      <p>A linha de vida (lifeline) é um elemento nomeado que representa um <strong>participante individual</strong> na interação. É exibida como uma caixa no topo (com o nome do objeto/ator) seguida de uma linha vertical tracejada. Representa apenas uma entidade por vez — se o elemento tiver multiplicidade, a lifeline representa um representante arbitrário.</p>
+      <p>Tipos de cabeça de lifeline: objeto (retângulo), ator (boneco), Boundary (fronteira — View), Control (controle — Controller), Entity (entidade — Model).</p>
 
-      <h3>Fragmentos combinados — os mais importantes</h3>
+      <h3>Tipos de Mensagem</h3>
+      <table>
+        <tr><th>Tipo</th><th>Seta</th><th>Característica</th></tr>
+        <tr><td><strong>Síncrona</strong></td><td>Linha sólida, ponta sólida</td><td>Requer resposta antes de continuar. Aguarda retorno.</td></tr>
+        <tr><td><strong>Assíncrona</strong></td><td>Linha sólida, ponta aberta</td><td>Não aguarda resposta. Continua processando. Usada em multithreading e middleware.</td></tr>
+        <tr><td><strong>Retorno/Resposta</strong></td><td>Linha tracejada, ponta aberta</td><td>Valor retornado ao chamador após a execução.</td></tr>
+        <tr><td><strong>Self (auto-delegação)</strong></td><td>Flecha em U voltada para si</td><td>Objeto envia mensagem para si mesmo.</td></tr>
+        <tr><td><strong>Criação</strong></td><td>Linha tracejada, ponta aberta → retângulo</td><td>Cria um novo objeto. Estereótipo <code>«create»</code>.</td></tr>
+        <tr><td><strong>Destruição</strong></td><td>Seta com X no final</td><td>Destrói o objeto. O X marca o fim da lifeline.</td></tr>
+        <tr><td><strong>Encontrada</strong></td><td>Seta de ponto preenchido para lifeline</td><td>Enviada de um remetente desconhecido.</td></tr>
+        <tr><td><strong>Perdida</strong></td><td>Seta de lifeline para ponto preenchido</td><td>Enviada para um destinatário desconhecido.</td></tr>
+      </table>
+
+      <h3>Focos de Controle</h3>
+      <p>O foco de controle (caixa de ativação) é um retângulo estreito desenhado sobre a lifeline, indicando o período em que o objeto está participando ativamente do processo. Chamadas aninhadas geram focos de controle sobrepostos.</p>
+
+      <h3>Fragmentos Combinados</h3>
+      <p>Permitem adicionar lógica processual ao diagrama: uma ou mais sequências incluídas em uma moldura com execução em circunstâncias específicas.</p>
       <table>
         <tr><th>Fragmento</th><th>Significado</th><th>Equivalente no código</th></tr>
-        <tr><td><code>alt</code></td><td>Alternativa (com condições)</td><td><code>if / else if / else</code></td></tr>
-        <tr><td><code>opt</code></td><td>Opcional (só ocorre se condição verdadeira)</td><td><code>if</code> sem else</td></tr>
-        <tr><td><code>loop</code></td><td>Repetição</td><td><code>for / while</code></td></tr>
-        <tr><td><code>par</code></td><td>Paralelo (ocorre simultaneamente)</td><td>Thread / async</td></tr>
-        <tr><td><code>ref</code></td><td>Referência a outro diagrama</td><td>Chamada de função</td></tr>
+        <tr><td><code>[alt]</code></td><td>Alternativa — executa um entre vários ramos condicionais</td><td><code>if / else if / else</code></td></tr>
+        <tr><td><code>[opt]</code></td><td>Opcional — executa apenas se condição verdadeira</td><td><code>if</code> sem else</td></tr>
+        <tr><td><code>[loop]</code></td><td>Repetição</td><td><code>for / while</code></td></tr>
+        <tr><td><code>[par]</code></td><td>Paralelo — processamento simultâneo</td><td>Thread / async</td></tr>
+        <tr><td><code>[break]</code></td><td>Sequência alternativa em vez de todo o resto do diagrama</td><td>break / return antecipado</td></tr>
+        <tr><td><code>[neg]</code></td><td>Sequência inválida / proibida</td><td>—</td></tr>
+        <tr><td><code>[critical]</code></td><td>Seção crítica — não pode ser interrompida</td><td>synchronized / mutex</td></tr>
+        <tr><td><code>[assert]</code></td><td>Sequências não mostradas são inválidas</td><td>assertion</td></tr>
       </table>
 
-      <h3>Exemplo — Fluxo de autenticação</h3>
+      <h3>Arquitetura em Camadas no Diagrama de Sequência</h3>
+      <p>Sistemas modernos são organizados em camadas. O diagrama de sequência expressa essas camadas por meio dos tipos de lifeline:</p>
       <table>
-        <tr><th>#</th><th>De</th><th>Para</th><th>Mensagem</th><th>Condição</th></tr>
-        <tr><td>1</td><td>Usuário</td><td>Frontend</td><td>login(email, senha)</td><td>—</td></tr>
-        <tr><td>2</td><td>Frontend</td><td>AuthService</td><td>autenticar(email, senha)</td><td>—</td></tr>
-        <tr><td>3</td><td>AuthService</td><td>Database</td><td>findUser(email)</td><td>—</td></tr>
-        <tr><td>4</td><td>Database</td><td>AuthService</td><td>userData (retorno)</td><td>—</td></tr>
-        <tr><td>5a</td><td>AuthService</td><td>Frontend</td><td>token JWT (OK)</td><td>alt [credenciais válidas]</td></tr>
-        <tr><td>5b</td><td>AuthService</td><td>Frontend</td><td>erro 401 Unauthorized</td><td>alt [credenciais inválidas]</td></tr>
-        <tr><td>6</td><td>Frontend</td><td>Usuário</td><td>resposta (sucesso ou erro)</td><td>—</td></tr>
+        <tr><th>Tipo de Lifeline</th><th>Camada MVC</th><th>Responsabilidade</th></tr>
+        <tr><td><strong>Boundary</strong> (fronteira)</td><td>View</td><td>Interface com o usuário</td></tr>
+        <tr><td><strong>Control</strong> (controle)</td><td>Controller</td><td>Recebe requisições; coordena Model e View</td></tr>
+        <tr><td><strong>Entity</strong> (entidade)</td><td>Model</td><td>Acesso a dados, lógica de negócio</td></tr>
       </table>
+      <p>Importante: no MVC, as requisições chegam ao <strong>Controller</strong> (não à View). O Controller solicita dados ao Model, que retorna os dados, e então o Controller envia para a View formatar o output.</p>
+
+      <h3>Passos para criar um diagrama de sequência</h3>
+      <ol>
+        <li>Escolher um <strong>caso de uso</strong>.</li>
+        <li>Identificar os <strong>objetos</strong> que fazem parte da interação.</li>
+        <li>Identificar o <strong>objeto que começa</strong> a interação.</li>
+        <li>Identificar as <strong>mensagens trocadas</strong> entre os objetos.</li>
+        <li>Identificar a <strong>sequência</strong> dessas mensagens.</li>
+      </ol>
+      <p>Pré-requisitos: casos de uso e diagrama de classes previamente elaborados — os métodos, atributos e classes já definidos facilitam muito a criação.</p>
 
       <div class="callout green">
         <strong>Como ler um diagrama de sequência</strong>
-        <p>Leia de <strong>cima para baixo</strong> (ordem temporal) e da <strong>esquerda para a direita</strong> (quem inicia a chamada). Cada seta é uma chamada de método ou retorno. As barras de ativação mostram quem está "no controle" em cada momento.</p>
+        <p>Leia de <strong>cima para baixo</strong> (ordem temporal). Setas sólidas = chamadas. Setas tracejadas = retornos. Retângulos sobre as lifelines = período de execução. A largura do tempo flui para baixo — mensagens mais abaixo ocorrem mais tarde.</p>
       </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a Prova</strong>
+        <ul>
+          <li>Linha de vida (lifeline) = <strong>participante individual</strong> na interação (não mensagem, não foco de controle, não fragmento).</li>
+          <li>Mensagem assíncrona = <strong>não precisa de resposta</strong> para a interação continuar.</li>
+          <li>Fragmento que permite <strong>processamento simultâneo</strong> = <code>[par]</code>.</li>
+          <li>No modelo MVC, o objeto do tipo <strong>Boundary</strong> representa a camada <strong>View</strong>.</li>
+          <li>Passos para criar: 1-Escolher caso de uso; 2-Identificar objetos; 3-Identificar quem inicia; 4-Identificar mensagens; 5-Identificar sequência.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Referências: LEDUR, C.L. <em>Análise e Projeto de Sistemas</em>, 2017. FOWLER, M. <em>UML Distilled</em>, 3ª ed., 2003. OBJECT MANAGEMENT GROUP. <em>UML Superstructure Specification 2.4.1</em>, 2011.</p>
 
       <div class="section-nav">
         <a href="#" data-sec="ua12" class="prev">Diag. de Componentes</a>
