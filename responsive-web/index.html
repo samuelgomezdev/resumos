@@ -680,6 +680,75 @@
 }
 <span class="sel">.card</span> { <span class="prop">animation</span>: <span class="val">fadeIn 0.4s ease</span>; }</code></pre>
 
+      <h3>Propriedades de texto em CSS3</h3>
+      <table>
+        <tr><th>Propriedade</th><th>O que faz</th><th>Exemplo de valor</th></tr>
+        <tr><td><code>font-family</code></td><td>Família tipográfica</td><td><code>'Inter', Arial, sans-serif</code> (fallback em cadeia)</td></tr>
+        <tr><td><code>font-size</code></td><td>Tamanho da fonte</td><td><code>16px</code> | <code>1rem</code> | <code>medium</code></td></tr>
+        <tr><td><code>font-weight</code></td><td>Espessura (negrito)</td><td><code>normal</code> | <code>bold</code> | <code>100–900</code></td></tr>
+        <tr><td><code>color</code></td><td>Cor do texto</td><td><code>#333</code> | <code>rgb(0,0,0)</code> | <code>black</code></td></tr>
+        <tr><td><code>text-align</code></td><td>Alinhamento</td><td><code>left</code> | <code>right</code> | <code>center</code> | <code>justify</code></td></tr>
+        <tr><td><code>text-decoration</code></td><td>Decoração</td><td><code>none</code> | <code>underline</code> | <code>line-through</code></td></tr>
+        <tr><td><code>text-indent</code></td><td>Recuo da 1ª linha</td><td><code>2em</code></td></tr>
+        <tr><td><code>line-height</code></td><td>Altura da linha</td><td><code>1.5</code> (sem unidade = multiplicador)</td></tr>
+        <tr><td><code>letter-spacing</code></td><td>Espaço entre caracteres</td><td><code>0.05em</code></td></tr>
+      </table>
+
+      <h3>Propriedades de caixa (Box)</h3>
+      <p>Todo elemento HTML é uma caixa. As propriedades abaixo controlam suas dimensões e aparência:</p>
+      <table>
+        <tr><th>Propriedade</th><th>O que faz</th></tr>
+        <tr><td><code>width</code> / <code>height</code></td><td>Largura e altura do conteúdo</td></tr>
+        <tr><td><code>padding</code></td><td>Espaço interno entre conteúdo e borda</td></tr>
+        <tr><td><code>border</code></td><td>Borda — espessura, tipo e cor: <code>2px solid #ccc</code></td></tr>
+        <tr><td><code>margin</code></td><td>Espaço externo entre o elemento e os vizinhos</td></tr>
+        <tr><td><code>box-sizing: border-box</code></td><td>Padding e border incluídos na <code>width</code> — evita cálculos manuais</td></tr>
+        <tr><td><code>box-shadow</code></td><td>Sombra: <code>0 4px 12px rgba(0,0,0,.15)</code></td></tr>
+        <tr><td><code>background</code></td><td>Cor, imagem ou gradiente: <code>linear-gradient(135deg, #667eea, #764ba2)</code></td></tr>
+        <tr><td><code>transform</code></td><td>Rotação, escala, translação: <code>rotate(45deg)</code> | <code>scale(1.1)</code> | <code>translateX(20px)</code></td></tr>
+        <tr><td><code>position</code></td><td><code>static</code> | <code>relative</code> | <code>absolute</code> | <code>fixed</code> | <code>sticky</code></td></tr>
+      </table>
+
+      <h3>Media Query — operadores e características</h3>
+      <table>
+        <tr><th>Operador</th><th>Uso</th><th>Exemplo</th></tr>
+        <tr><td><code>and</code></td><td>Todas as condições devem ser verdadeiras</td><td><code>@media (min-width: 800px) and (orientation: landscape)</code></td></tr>
+        <tr><td><code>or</code> / <code>,</code></td><td>Pelo menos uma condição verdadeira</td><td><code>@media screen, (min-width: 900px)</code></td></tr>
+        <tr><td><code>not</code></td><td>Nega a condição</td><td><code>@media not (monochrome)</code></td></tr>
+        <tr><td><code>only</code></td><td>Aplica só em navegadores com suporte a media query</td><td><code>@media only screen and (color)</code></td></tr>
+      </table>
+
+      <h3>Breakpoints comuns — referência</h3>
+      <table>
+        <tr><th>Tamanho</th><th>Faixa típica</th><th>Estratégia</th></tr>
+        <tr><td>Mobile</td><td>até 767px</td><td>Estilos base (mobile-first)</td></tr>
+        <tr><td>Tablet</td><td>768px – 1023px</td><td><code>@media (min-width: 768px)</code></td></tr>
+        <tr><td>Desktop</td><td>1024px – 1279px</td><td><code>@media (min-width: 1024px)</code></td></tr>
+        <tr><td>Wide</td><td>1280px+</td><td><code>@media (min-width: 1280px)</code></td></tr>
+      </table>
+
+      <div class="callout warning">
+        <strong>Práticas Modernas — CSS3 e Responsividade</strong>
+        <p><strong>Container Queries (<code>@container</code>):</strong> enquanto media queries respondem ao tamanho da <em>viewport</em>, container queries respondem ao tamanho do <em>elemento pai</em> — revolução para componentes reutilizáveis em diferentes contextos de layout.<br>
+        <strong><code>@layer</code> (Cascade Layers):</strong> permite organizar regras CSS em camadas com precedência controlada, acabando com guerras de especificidade em projetos grandes.<br>
+        <strong><code>prefers-color-scheme</code>:</strong> media query que detecta se o usuário usa tema escuro no sistema — <code>@media (prefers-color-scheme: dark) { ... }</code><br>
+        <strong><code>prefers-reduced-motion</code>:</strong> detecta usuários que solicitaram menos animações — essencial para acessibilidade.</p>
+      </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a prova — UA5</strong>
+        <ul>
+          <li>Seletor de <strong>classe</strong> = ponto (<code>.nome</code>) — pode ser usado em múltiplos elementos. Seletor de <strong>Id</strong> = sustenido (<code>#nome</code>) — único por página.</li>
+          <li>Um elemento pode ter várias classes: <code>class="destaque texto-grande"</code>. Quando propriedades conflitam, prevalece a classe declarada <strong>primeiro no CSS</strong>.</li>
+          <li><code>box-sizing: border-box</code> garante que <code>padding</code> e <code>border</code> sejam incluídos na <code>width</code> — evita que a caixa "estoure" o layout.</li>
+          <li>Mobile-first: estilos base são para mobile; use <code>min-width</code> para ampliar. Desktop-first é o contrário: <code>max-width</code> para reduzir.</li>
+          <li>Media query pode ser declarada na tag <code>&lt;link&gt;</code> ou dentro do arquivo CSS com <code>@media</code>.</li>
+          <li><code>font-family</code> usa lista de fallback — navegador usa a primeira fonte disponível no sistema do usuário.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Saraiva, M. O. <em>Desenvolvimento de Sistemas com PHP</em>. Porto Alegre: SAGAH, 2018. | Silva, M. S. <em>CSS3</em>. São Paulo: Novatec, 2012.</p>
+
       <div class="section-nav">
         <a href="#" data-sec="ua4" class="prev">CSS Fundamentos</a>
         <a href="#" data-sec="ua6" class="next">Definição do Sistema</a>
@@ -726,6 +795,71 @@
         <p>Sem uma definição clara, você corre o risco de construir a coisa certa do jeito errado — ou a coisa errada do jeito certo. Dez minutos de planejamento economizam horas de reescrita.</p>
       </div>
 
+      <h3>Categorias de sistemas web</h3>
+      <table>
+        <tr><th>Categoria</th><th>Descrição</th><th>Exemplos</th></tr>
+        <tr><td>Site de conteúdo</td><td>Exibe informações estáticas ou dinâmicas</td><td>Portais de notícias, sites institucionais</td></tr>
+        <tr><td>Registro de dados / entrada do usuário</td><td>Permite que o usuário insira e consulte dados</td><td>Sistemas de cadastro, formulários</td></tr>
+        <tr><td>Portal</td><td>Agrega conteúdo de múltiplas fontes/serviços</td><td>UOL, Yahoo, intranets corporativas</td></tr>
+        <tr><td>Aplicação orientada à transação</td><td>Processa operações com feedback imediato</td><td>Lojas virtuais, bancos online</td></tr>
+        <tr><td>Blog</td><td>Publicação cronológica de conteúdo pelo autor</td><td>WordPress, Medium</td></tr>
+      </table>
+
+      <h3>Arquitetura em camadas de um sistema web</h3>
+      <div class="cards">
+        <div class="card"><h4>1. Apresentação</h4><p>Interface visual: HTML, CSS, JavaScript. Responsável por exibir dados e capturar interações do usuário.</p></div>
+        <div class="card"><h4>2. Processamento da Aplicação</h4><p>Lógica de negócio: PHP, Node.js, Python. Processa requisições e aplica regras do domínio.</p></div>
+        <div class="card"><h4>3. Gerenciamento de Dados</h4><p>Acesso ao banco: queries SQL, ORM. Intermediário entre a lógica e o armazenamento.</p></div>
+        <div class="card"><h4>4. Banco de Dados</h4><p>Persistência: MySQL, PostgreSQL, MongoDB. Armazena e recupera os dados.</p></div>
+      </div>
+
+      <h3>Anatomia de uma URL</h3>
+      <pre><code>http://www.exemplo.com.br/produtos/lista.php
+
+└─────────────────────────────────────────┘
+  protocolo   domínio          caminho    arquivo
+  http://  www.exemplo.com.br  /produtos/ lista.php</code></pre>
+      <table>
+        <tr><th>Parte</th><th>Função</th></tr>
+        <tr><td>Protocolo (<code>http://</code> / <code>https://</code>)</td><td>Define o tipo de transferência. HTTPS = criptografado (TLS)</td></tr>
+        <tr><td>Domínio (<code>www.exemplo.com.br</code>)</td><td>Identificação do servidor na internet</td></tr>
+        <tr><td>Caminho (<code>/produtos/</code>)</td><td>Estrutura de diretórios no servidor</td></tr>
+        <tr><td>Arquivo (<code>lista.php</code>)</td><td>Recurso solicitado (pode ser implícito como <code>index.html</code>)</td></tr>
+      </table>
+
+      <h3>Ferramentas de desenvolvimento</h3>
+      <table>
+        <tr><th>Ferramenta</th><th>Tipo</th><th>Destaque</th></tr>
+        <tr><td>VS Code</td><td>IDE gratuita (atual)</td><td>Extensões, IntelliSense, Git integrado, Live Server</td></tr>
+        <tr><td>Notepad++</td><td>Editor de texto</td><td>Leve, sem compilador; suporta HTML, PHP, JS</td></tr>
+        <tr><td>NetBeans</td><td>IDE open source</td><td>Suporte a HTML5, PHP, Java</td></tr>
+        <tr><td>Eclipse</td><td>IDE (plugins)</td><td>Várias linguagens via plugins</td></tr>
+        <tr><td>Aptana Studio</td><td>IDE gratuita</td><td>HTML, CSS, JS; extensões Ruby/Python/PHP</td></tr>
+        <tr><td>Dreamweaver</td><td>IDE proprietária (Adobe)</td><td>Editor visual WYSIWYG + código</td></tr>
+      </table>
+
+      <div class="callout warning">
+        <strong>Práticas Modernas — Sistemas Web</strong>
+        <p><strong>JAMstack (JavaScript + APIs + Markup):</strong> sites pré-gerados (SSG) servidos via CDN — ultra-rápidos, seguros e escaláveis. Ex.: Next.js, Gatsby, Astro.<br>
+        <strong>CI/CD (Integração e Entrega Contínua):</strong> pipelines automáticos que testam, constroem e publicam cada commit — padrão da indústria com GitHub Actions, GitLab CI.<br>
+        <strong>Containers (Docker):</strong> empacotam o sistema com todas as dependências, garantindo comportamento idêntico em qualquer ambiente.<br>
+        <strong>Serverless:</strong> funções que executam sob demanda sem gerenciar servidores — AWS Lambda, Vercel Functions, Cloudflare Workers.</p>
+      </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a prova — UA6</strong>
+        <ul>
+          <li>Sistema <strong>centralizado</strong>: tudo executa no computador local. Sistema <strong>distribuído</strong>: parte no cliente, parte no servidor remoto.</li>
+          <li>A internet foi criada por <strong>Tim Berners-Lee</strong>; o conceito que ele introduziu foi o de <strong>hipertexto</strong>, que usa <strong>hiperlinks</strong> para navegar entre documentos.</li>
+          <li>Uma loja virtual é uma <strong>aplicação orientada à transação</strong>.</li>
+          <li>A interface visual de um sistema web é criada com <strong>HTML e CSS</strong> (não PHP, não banco de dados).</li>
+          <li>A ordem correta das camadas: <strong>Apresentação → Processamento → Gerenciamento de Dados → Banco de Dados</strong>.</li>
+          <li>Sistema disponível <strong>24×7</strong> = 24 horas por dia, 7 dias por semana.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Miletto, E. M.; Bertagnolli, S. C. <em>Desenvolvimento de Software II</em>. Porto Alegre: Bookman, 2014.</p>
+
       <div class="section-nav">
         <a href="#" data-sec="ua5" class="prev">CSS3 Avançado</a>
         <a href="#" data-sec="ua7" class="next">Projetando o Site</a>
@@ -766,6 +900,65 @@
 
       <h3>Paleta de cores — referência rápida</h3>
       <p>Use a regra <strong>60-30-10</strong>: 60% cor dominante (fundo), 30% cor secundária (texto/elementos), 10% cor de destaque (CTAs).</p>
+
+      <h3>Site estático vs. aplicação web</h3>
+      <table>
+        <tr><th>Característica</th><th>Site Estático</th><th>Aplicação Web</th></tr>
+        <tr><td>Interatividade</td><td>Baixa</td><td>Alta</td></tr>
+        <tr><td>Personalização</td><td>Limitada</td><td>Avançada</td></tr>
+        <tr><td>Atualização de conteúdo</td><td>Manual (editar arquivo)</td><td>Dinâmica (banco de dados)</td></tr>
+        <tr><td>Uso de banco de dados</td><td>Raro</td><td>Frequente</td></tr>
+        <tr><td>Exemplos</td><td>Páginas institucionais, blogs simples</td><td>Lojas virtuais, redes sociais, e-learning</td></tr>
+      </table>
+
+      <h3>Fases do desenvolvimento de uma aplicação web</h3>
+      <table>
+        <tr><th>Fase</th><th>O que envolve</th><th>Entregável</th></tr>
+        <tr><td>1. Definição de requisitos</td><td>Identificar funcionalidades, público-alvo, tecnologias</td><td>Documento de requisitos (RF / RNF)</td></tr>
+        <tr><td>2. Projeto de sistema</td><td>Arquitetura, wireframes, banco de dados</td><td>Protótipo, modelo de dados</td></tr>
+        <tr><td>3. Implementação e teste unitário</td><td>Escrever o código; testar cada componente isolado</td><td>Código-fonte + testes</td></tr>
+        <tr><td>4. Integração e teste de sistema</td><td>Verificar se todos os componentes funcionam juntos</td><td>Aplicação integrada validada</td></tr>
+        <tr><td>5. Operação e manutenção</td><td>Publicar, monitorar, corrigir bugs e evoluir</td><td>Sistema em produção</td></tr>
+      </table>
+
+      <h3>Principais frameworks e ferramentas</h3>
+      <table>
+        <tr><th>Ferramenta</th><th>Tipo</th><th>Para quê</th></tr>
+        <tr><td>Bootstrap</td><td>Framework CSS (Twitter)</td><td>Layout responsivo rápido com classes utilitárias e componentes prontos</td></tr>
+        <tr><td>React</td><td>Biblioteca JS (Meta/Facebook)</td><td>Interfaces componentizadas com Virtual DOM — camada de visualização</td></tr>
+        <tr><td>Laravel</td><td>Framework PHP (Taylor Otwell)</td><td>Backend MVC robusto — roteamento, ORM Eloquent, autenticação integrada</td></tr>
+        <tr><td>Vue.js</td><td>Framework JS progressivo</td><td>Interfaces reativas; curva de aprendizado menor que React</td></tr>
+        <tr><td>Node.js</td><td>Runtime JS (servidor)</td><td>JavaScript no backend — APIs REST, tempo real</td></tr>
+      </table>
+
+      <h3>Requisitos — funcionais vs. não funcionais</h3>
+      <table>
+        <tr><th>Tipo</th><th>Descrição</th><th>Exemplo prático</th></tr>
+        <tr><td>Funcional (RF)</td><td>O que o sistema deve <strong>fazer</strong></td><td>"O sistema deve permitir que usuários façam login e logout"</td></tr>
+        <tr><td>Não funcional (RNF)</td><td>Como o sistema deve <strong>se comportar</strong></td><td>"As páginas devem carregar em menos de 2 segundos"; "Suportar dispositivos móveis"</td></tr>
+      </table>
+
+      <div class="callout warning">
+        <strong>Práticas Modernas — Desenvolvimento Web</strong>
+        <p><strong>Design System:</strong> biblioteca de componentes visuais reutilizáveis (botões, cores, tipografia) que garante consistência em produtos digitais — Google Material, Apple HIG, Tailwind UI.<br>
+        <strong>Acessibilidade (WCAG):</strong> diretrizes internacionais — contraste mínimo 4,5:1 para texto normal, navegação por teclado, atributos ARIA. É requisito legal em muitos países.<br>
+        <strong>Progressive Web Apps (PWA):</strong> sites que se comportam como apps nativos — instaláveis, funcionam offline (Service Worker), notificações push.<br>
+        <strong>Figma:</strong> ferramenta de design colaborativo que substituiu Adobe XD e Sketch como padrão da indústria para wireframes, mockups e protótipos interativos.</p>
+      </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a prova — UA7</strong>
+        <ul>
+          <li>Uma <strong>aplicação web</strong> difere de um site estático por ter interatividade, personalização e uso de banco de dados.</li>
+          <li><strong>Bootstrap</strong> foi desenvolvido pela equipe do <strong>Twitter</strong>; facilita criação de layouts responsivos.</li>
+          <li><strong>React</strong> usa <strong>Virtual DOM</strong> para melhorar performance — não atualiza o DOM real diretamente.</li>
+          <li><strong>Laravel</strong> adota o padrão <strong>MVC</strong> (Model-View-Controller) e possui ORM chamado <strong>Eloquent</strong>.</li>
+          <li>As fases em cascata: requisitos → projeto → implementação/teste → integração → operação.</li>
+          <li>Regra <strong>60-30-10</strong>: 60% cor dominante, 30% secundária, 10% destaque.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Serpa, M. S. <em>Ferramentas de Desenvolvimento Web</em>. Porto Alegre: SAGAH, 2024. | Sommerville, I. <em>Engenharia de Software</em>. 10. ed. São Paulo: Pearson, 2018.</p>
 
       <div class="section-nav">
         <a href="#" data-sec="ua6" class="prev">Definição do Sistema</a>
@@ -848,6 +1041,136 @@ document.<span class="fn">querySelector</span>(<span class="str">'#busca'</span>
         <strong>Boas práticas</strong>
         <p>Use <code>const</code> por padrão; use <code>let</code> só quando precisar reatribuir. Evite <code>var</code> — tem escopo de função e causa bugs difíceis de rastrear.</p>
       </div>
+
+      <h3>Tipos de dados em JavaScript</h3>
+      <table>
+        <tr><th>Tipo</th><th>Descrição</th><th>Exemplo</th></tr>
+        <tr><td><code>String</code></td><td>Sequência de caracteres</td><td><code>let nome = "Ana"</code></td></tr>
+        <tr><td><code>Number</code></td><td>Inteiro ou ponto flutuante</td><td><code>let idade = 30</code> | <code>let pi = 3.14</code></td></tr>
+        <tr><td><code>Boolean</code></td><td>Verdadeiro ou falso</td><td><code>let ativo = true</code></td></tr>
+        <tr><td><code>Array</code></td><td>Lista ordenada de valores</td><td><code>let frutas = ["maçã", "banana"]</code></td></tr>
+        <tr><td><code>Object</code></td><td>Coleção de pares chave-valor</td><td><code>let carro = { marca: "Honda", ano: 2023 }</code></td></tr>
+        <tr><td><code>Undefined</code></td><td>Variável declarada sem valor</td><td><code>let x; // undefined</code></td></tr>
+        <tr><td><code>Null</code></td><td>Ausência intencional de valor</td><td><code>let dado = null</code></td></tr>
+      </table>
+
+      <h3>Operadores em JavaScript</h3>
+      <table>
+        <tr><th>Categoria</th><th>Operadores</th><th>Exemplo</th></tr>
+        <tr><td>Aritméticos</td><td><code>+  -  *  /  %  ++  --</code></td><td><code>10 % 3 === 1</code></td></tr>
+        <tr><td>Atribuição</td><td><code>=  +=  -=  *=  /=  %=</code></td><td><code>x += 5</code> (equivale a <code>x = x + 5</code>)</td></tr>
+        <tr><td>Comparação</td><td><code>==  !=  ===  !==  &lt;  &gt;  &lt;=  &gt;=</code></td><td><code>10 === "10"</code> → <code>false</code> (tipo diferente)</td></tr>
+        <tr><td>Lógicos</td><td><code>&amp;&amp;  ||  !</code></td><td><code>true &amp;&amp; false</code> → <code>false</code></td></tr>
+      </table>
+
+      <h3>Controle de fluxo</h3>
+      <pre><code><span class="cm">// if / else</span>
+<span class="kw">if</span> (idade >= <span class="num">18</span>) {
+  console.<span class="fn">log</span>(<span class="str">"Adulto"</span>);
+} <span class="kw">else</span> {
+  console.<span class="fn">log</span>(<span class="str">"Menor"</span>);
+}
+
+<span class="cm">// switch</span>
+<span class="kw">switch</span> (dia) {
+  <span class="kw">case</span> <span class="str">"seg"</span>: console.<span class="fn">log</span>(<span class="str">"Segunda"</span>); <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="str">"ter"</span>: console.<span class="fn">log</span>(<span class="str">"Terça"</span>);   <span class="kw">break</span>;
+  <span class="kw">default</span>:  console.<span class="fn">log</span>(<span class="str">"Outro dia"</span>);
+}
+
+<span class="cm">// for — número de iterações conhecido</span>
+<span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">0</span>; i < <span class="num">5</span>; i++) { console.<span class="fn">log</span>(i); }
+
+<span class="cm">// while — condição avaliada antes</span>
+<span class="kw">let</span> i = <span class="num">0</span>;
+<span class="kw">while</span> (i < <span class="num">5</span>) { console.<span class="fn">log</span>(i); i++; }
+
+<span class="cm">// do...while — executa ao menos uma vez</span>
+<span class="kw">do</span> { console.<span class="fn">log</span>(i); i++; } <span class="kw">while</span> (i < <span class="num">5</span>);</code></pre>
+
+      <h3>Métodos nativos úteis</h3>
+      <table>
+        <tr><th>Método</th><th>O que faz</th></tr>
+        <tr><td><code>alert("msg")</code></td><td>Exibe caixa de alerta</td></tr>
+        <tr><td><code>confirm("msg")</code></td><td>Caixa OK/Cancelar — retorna <code>true</code> ou <code>false</code></td></tr>
+        <tr><td><code>prompt("msg")</code></td><td>Solicita valor ao usuário — retorna a string digitada</td></tr>
+        <tr><td><code>parseInt("10")</code></td><td>Converte string para inteiro</td></tr>
+        <tr><td><code>parseFloat("3.14")</code></td><td>Converte string para número de ponto flutuante</td></tr>
+        <tr><td><code>console.log(x)</code></td><td>Exibe valor no console do navegador (F12)</td></tr>
+      </table>
+
+      <h3>Métodos de seleção DOM</h3>
+      <table>
+        <tr><th>Método</th><th>Retorna</th><th>Exemplo</th></tr>
+        <tr><td><code>getElementById("id")</code></td><td>Um elemento (ou null)</td><td><code>document.getElementById("btn")</code></td></tr>
+        <tr><td><code>getElementsByClassName("cls")</code></td><td>HTMLCollection (vivo)</td><td><code>document.getElementsByClassName("card")</code></td></tr>
+        <tr><td><code>getElementsByTagName("tag")</code></td><td>HTMLCollection (vivo)</td><td><code>document.getElementsByTagName("p")</code></td></tr>
+        <tr><td><code>querySelector("sel")</code></td><td>Primeiro elemento correspondente</td><td><code>document.querySelector(".ativo")</code></td></tr>
+        <tr><td><code>querySelectorAll("sel")</code></td><td>NodeList (estática)</td><td><code>document.querySelectorAll("li")</code></td></tr>
+      </table>
+
+      <h3>Manipulação DOM — referência rápida</h3>
+      <pre><code><span class="kw">const</span> el = document.<span class="fn">getElementById</span>(<span class="str">"box"</span>);
+
+<span class="cm">// Conteúdo</span>
+el.innerHTML = <span class="str">"&lt;b&gt;Novo&lt;/b&gt;"</span>;   <span class="cm">// interpreta HTML</span>
+el.textContent = <span class="str">"Apenas texto"</span>;  <span class="cm">// só texto (seguro)</span>
+
+<span class="cm">// Atributos</span>
+el.<span class="fn">setAttribute</span>(<span class="str">"class"</span>, <span class="str">"ativo"</span>);
+<span class="kw">const</span> cls = el.<span class="fn">getAttribute</span>(<span class="str">"class"</span>);  <span class="cm">// "ativo"</span>
+el.<span class="fn">removeAttribute</span>(<span class="str">"disabled"</span>);
+
+<span class="cm">// Criar e remover</span>
+<span class="kw">const</span> p = document.<span class="fn">createElement</span>(<span class="str">"p"</span>);
+p.textContent = <span class="str">"Novo parágrafo"</span>;
+document.body.<span class="fn">appendChild</span>(p);
+p.parentNode.<span class="fn">removeChild</span>(p); <span class="cm">// ou p.remove()</span></code></pre>
+
+      <h3>Categorias de eventos</h3>
+      <table>
+        <tr><th>Categoria</th><th>Eventos principais</th></tr>
+        <tr><td>Mouse</td><td><code>click</code> <code>dblclick</code> <code>mouseover</code> <code>mouseout</code> <code>mousedown</code> <code>mouseup</code></td></tr>
+        <tr><td>Teclado</td><td><code>keydown</code> <code>keypress</code> <code>keyup</code></td></tr>
+        <tr><td>Formulário</td><td><code>submit</code> <code>change</code> <code>focus</code> <code>blur</code> <code>input</code> <code>reset</code></td></tr>
+        <tr><td>Documento / Janela</td><td><code>DOMContentLoaded</code> <code>load</code> <code>resize</code> <code>scroll</code> <code>unload</code></td></tr>
+      </table>
+
+      <h3>Como incluir JavaScript na página</h3>
+      <pre><code><span class="cm">&lt;!-- 1. Inline (evitar) --&gt;</span>
+<span class="tag-c">&lt;button</span> <span class="attr">onclick</span>=<span class="str">"alert('Clicou!')"</span><span class="tag-c">&gt;</span>Clique<span class="tag-c">&lt;/button&gt;</span>
+
+<span class="cm">&lt;!-- 2. Interno (bloco &lt;script&gt; no HTML) --&gt;</span>
+<span class="tag-c">&lt;script&gt;</span>
+  console.log(<span class="str">"Página carregada"</span>);
+<span class="tag-c">&lt;/script&gt;</span>
+
+<span class="cm">&lt;!-- 3. Externo (recomendado — antes de &lt;/body&gt;) --&gt;</span>
+<span class="tag-c">&lt;script</span> <span class="attr">src</span>=<span class="str">"js/main.js"</span><span class="tag-c">&gt;&lt;/script&gt;</span></code></pre>
+
+      <div class="callout warning">
+        <strong>Práticas Modernas — JavaScript</strong>
+        <p><strong>Desestruturação (ES6+):</strong> <code>const { nome, idade } = usuario;</code> — extrai propriedades de objetos diretamente.<br>
+        <strong>Spread/Rest:</strong> <code>[...arr1, ...arr2]</code> une arrays; <code>{ ...obj, extra: 1 }</code> copia e estende objetos.<br>
+        <strong>Optional Chaining (<code>?.</code>):</strong> <code>usuario?.endereco?.cep</code> — evita erro se propriedade for <code>null</code>.<br>
+        <strong>TypeScript:</strong> superset tipado de JS que adiciona tipos estáticos — detecta erros em tempo de desenvolvimento, padrão em projetos React/Angular.<br>
+        <strong>Módulos ES (<code>import/export</code>):</strong> organizam o código em arquivos separados sem poluir o escopo global — substituem <code>var</code> global e require.</p>
+      </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a prova — UA8</strong>
+        <ul>
+          <li>JavaScript foi criado em <strong>1995</strong> pela <strong>Netscape</strong>. <strong>Java e JavaScript são linguagens distintas</strong> — nomes parecidos por acordo de marketing.</li>
+          <li>JavaScript é <strong>case-sensitive</strong>: <code>var</code>, <code>Var</code> e <code>VAR</code> são tratados como identificadores diferentes.</li>
+          <li><code>var</code> = escopo de função (imprevisível). <code>let</code> = escopo de bloco (mutável). <code>const</code> = escopo de bloco (imutável). Prefira sempre <code>const</code>.</li>
+          <li><code>==</code> compara valor com coerção de tipo; <code>===</code> compara valor <strong>e tipo</strong> — sempre prefira <code>===</code>.</li>
+          <li><code>innerHTML</code> interpreta HTML; <code>textContent</code> só insere texto puro (mais seguro contra XSS).</li>
+          <li><code>addEventListener</code> é o método recomendado para eventos — evite atributos <code>onclick</code> inline no HTML.</li>
+          <li><code>do...while</code> executa o bloco pelo menos <strong>uma vez</strong>, mesmo que a condição seja falsa desde o início.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Pinto, R. A. <em>Ferramentas de Desenvolvimento Web</em>. Porto Alegre: SAGAH, 2024. | Freeman, E.; Robson, E. <em>Use a Cabeça! JavaScript</em>. O'Reilly, 2014. | Flanagan, D. <em>JavaScript: O Guia Definitivo</em>. 7. ed. O'Reilly, 2020.</p>
 
       <div class="section-nav">
         <a href="#" data-sec="ua7" class="prev">Projetando o Site</a>
