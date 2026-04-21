@@ -293,18 +293,39 @@ p code, li code {
   color: var(--text);
 }
 
-/* Syntax highlighting */
-.kw   { color: #ff7b72; }
-.tag-c{ color: #7ee787; }
-.attr { color: #79c0ff; }
-.str  { color: #a5d6ff; }
-.cm   { color: #6e7681; font-style: italic; }
-.fn   { color: #d2a8ff; }
-.num  { color: #79c0ff; }
-.sel  { color: #7ee787; }
-.prop { color: #79c0ff; }
-.val  { color: #a5d6ff; }
-.var  { color: #ffa657; }
+/* Prism.js token colors — GitHub Dimmed palette */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata             { color: #6e7681; font-style: italic; }
+.token.keyword,
+.token.important,
+.token.bold              { color: #ff7b72; font-weight: 600; }
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex             { color: #a5d6ff; }
+.token.function,
+.token.class-name        { color: #d2a8ff; }
+.token.number,
+.token.boolean,
+.token.constant,
+.token.symbol            { color: #79c0ff; }
+.token.tag,
+.token.selector,
+.token.deleted           { color: #7ee787; }
+.token.attr-name         { color: #79c0ff; }
+.token.property          { color: #79c0ff; }
+.token.variable          { color: #ffa657; }
+.token.operator,
+.token.entity,
+.token.url               { color: #e6edf3; }
+.token.punctuation       { color: #8b949e; }
+.token.inserted          { color: #7ee787; }
+.token.builtin           { color: #7ee787; }
+.token.atrule,
+.token.rule              { color: #ff7b72; }
+.token.unit              { color: #ffa657; }
 
 /* ── Tables ── */
 table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .83rem; border-radius: var(--radius-sm); overflow: hidden; }

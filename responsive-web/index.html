@@ -67,17 +67,17 @@
       <p class="subtitle">HTML (HyperText Markup Language) é a linguagem de marcação que estrutura o conteúdo das páginas web. É a base de tudo na web.</p>
 
       <h3>Estrutura mínima de um documento HTML</h3>
-      <pre><code><span class="tag-c">&lt;!DOCTYPE html&gt;</span>
-<span class="tag-c">&lt;html</span> <span class="attr">lang</span>=<span class="str">"pt-BR"</span><span class="tag-c">&gt;</span>
-  <span class="tag-c">&lt;head&gt;</span>
-    <span class="tag-c">&lt;meta</span> <span class="attr">charset</span>=<span class="str">"UTF-8"</span><span class="tag-c">&gt;</span>
-    <span class="tag-c">&lt;meta</span> <span class="attr">name</span>=<span class="str">"viewport"</span> <span class="attr">content</span>=<span class="str">"width=device-width, initial-scale=1.0"</span><span class="tag-c">&gt;</span>
-    <span class="tag-c">&lt;title&gt;</span>Minha Página<span class="tag-c">&lt;/title&gt;</span>
-  <span class="tag-c">&lt;/head&gt;</span>
-  <span class="tag-c">&lt;body&gt;</span>
-    <span class="tag-c">&lt;h1&gt;</span>Olá, mundo!<span class="tag-c">&lt;/h1&gt;</span>
-  <span class="tag-c">&lt;/body&gt;</span>
-<span class="tag-c">&lt;/html&gt;</span></code></pre>
+      <pre><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Minha Página&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Olá, mundo!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
       <h3>DOCTYPE — por que importa?</h3>
       <p>O <code>&lt;!DOCTYPE html&gt;</code> informa ao navegador a versão do HTML sendo usada, ativando o modo de renderização correto:</p>
@@ -154,13 +154,13 @@
 
       <h3>Lista de definição — <code>&lt;dl&gt;</code></h3>
       <p>Terceiro tipo de lista HTML: funciona como glossário, sem marcadores ou numeração.</p>
-      <pre><code><span class="tag-c">&lt;dl&gt;</span>
-  <span class="tag-c">&lt;dt&gt;</span>HTML<span class="tag-c">&lt;/dt&gt;</span>             <span class="cm">&lt;!-- dt = termo --&gt;</span>
-  <span class="tag-c">&lt;dd&gt;</span>Linguagem de marcação de hipertexto.<span class="tag-c">&lt;/dd&gt;</span>  <span class="cm">&lt;!-- dd = definição --&gt;</span>
+      <pre><code class="language-markup">&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;             &lt;!-- dt = termo --&gt;
+  &lt;dd&gt;Linguagem de marcação de hipertexto.&lt;/dd&gt;  &lt;!-- dd = definição --&gt;
 
-  <span class="tag-c">&lt;dt&gt;</span>CSS<span class="tag-c">&lt;/dt&gt;</span>
-  <span class="tag-c">&lt;dd&gt;</span>Folhas de estilo em cascata.<span class="tag-c">&lt;/dd&gt;</span>
-<span class="tag-c">&lt;/dl&gt;</span></code></pre>
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Folhas de estilo em cascata.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
 
       <h3>Tabela — estrutura semântica completa</h3>
       <table>
@@ -209,40 +209,40 @@
 
       <h3>Tags Semânticas</h3>
       <p>Semântica = significado. Tags semânticas descrevem o papel do conteúdo, melhorando acessibilidade e SEO:</p>
-      <pre><code><span class="tag-c">&lt;header&gt;</span>  <span class="cm">&lt;!-- cabeçalho da página/seção --&gt;</span>
-<span class="tag-c">&lt;nav&gt;</span>     <span class="cm">&lt;!-- menu de navegação --&gt;</span>
-<span class="tag-c">&lt;main&gt;</span>    <span class="cm">&lt;!-- conteúdo principal (único por página) --&gt;</span>
-<span class="tag-c">&lt;article&gt;</span> <span class="cm">&lt;!-- conteúdo independente (post, notícia) --&gt;</span>
-<span class="tag-c">&lt;section&gt;</span> <span class="cm">&lt;!-- seção temática do conteúdo --&gt;</span>
-<span class="tag-c">&lt;aside&gt;</span>   <span class="cm">&lt;!-- conteúdo lateral/complementar --&gt;</span>
-<span class="tag-c">&lt;footer&gt;</span>  <span class="cm">&lt;!-- rodapé da página/seção --&gt;</span></code></pre>
+      <pre><code class="language-markup">&lt;header&gt;  &lt;!-- cabeçalho da página/seção --&gt;
+&lt;nav&gt;     &lt;!-- menu de navegação --&gt;
+&lt;main&gt;    &lt;!-- conteúdo principal (único por página) --&gt;
+&lt;article&gt; &lt;!-- conteúdo independente (post, notícia) --&gt;
+&lt;section&gt; &lt;!-- seção temática do conteúdo --&gt;
+&lt;aside&gt;   &lt;!-- conteúdo lateral/complementar --&gt;
+&lt;footer&gt;  &lt;!-- rodapé da página/seção --&gt;</code></pre>
 
       <h3>Estrutura semântica típica</h3>
-      <pre><code><span class="tag-c">&lt;body&gt;</span>
-  <span class="tag-c">&lt;header&gt;</span>
-    <span class="tag-c">&lt;nav&gt;</span>...<span class="tag-c">&lt;/nav&gt;</span>
-  <span class="tag-c">&lt;/header&gt;</span>
+      <pre><code class="language-markup">&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+  &lt;/header&gt;
 
-  <span class="tag-c">&lt;main&gt;</span>
-    <span class="tag-c">&lt;section&gt;</span>
-      <span class="tag-c">&lt;article&gt;</span>...<span class="tag-c">&lt;/article&gt;</span>
-    <span class="tag-c">&lt;/section&gt;</span>
-    <span class="tag-c">&lt;aside&gt;</span>...<span class="tag-c">&lt;/aside&gt;</span>
-  <span class="tag-c">&lt;/main&gt;</span>
+  &lt;main&gt;
+    &lt;section&gt;
+      &lt;article&gt;...&lt;/article&gt;
+    &lt;/section&gt;
+    &lt;aside&gt;...&lt;/aside&gt;
+  &lt;/main&gt;
 
-  <span class="tag-c">&lt;footer&gt;</span>...<span class="tag-c">&lt;/footer&gt;</span>
-<span class="tag-c">&lt;/body&gt;</span></code></pre>
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
 
       <h3>Multimídia nativa</h3>
-      <pre><code><span class="cm">&lt;!-- Vídeo --&gt;</span>
-<span class="tag-c">&lt;video</span> <span class="attr">controls</span> <span class="attr">width</span>=<span class="str">"640"</span><span class="tag-c">&gt;</span>
-  <span class="tag-c">&lt;source</span> <span class="attr">src</span>=<span class="str">"video.mp4"</span> <span class="attr">type</span>=<span class="str">"video/mp4"</span><span class="tag-c">&gt;</span>
-<span class="tag-c">&lt;/video&gt;</span>
+      <pre><code class="language-markup">&lt;!-- Vídeo --&gt;
+&lt;video controls width="640"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
 
-<span class="cm">&lt;!-- Áudio --&gt;</span>
-<span class="tag-c">&lt;audio</span> <span class="attr">controls</span><span class="tag-c">&gt;</span>
-  <span class="tag-c">&lt;source</span> <span class="attr">src</span>=<span class="str">"audio.mp3"</span> <span class="attr">type</span>=<span class="str">"audio/mpeg"</span><span class="tag-c">&gt;</span>
-<span class="tag-c">&lt;/audio&gt;</span></code></pre>
+&lt;!-- Áudio --&gt;
+&lt;audio controls&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
 
       <h3>Novas APIs HTML5</h3>
       <div class="cards">
@@ -262,28 +262,28 @@
 
       <h3>Âncoras — navegação dentro da página</h3>
       <p>Âncoras direcionam o usuário para um ponto específico dentro da mesma página usando o atributo <code>id</code>:</p>
-      <pre><code><span class="cm">&lt;!-- 1. Definir o destino com id --&gt;</span>
-<span class="tag-c">&lt;h2</span> <span class="attr">id</span>=<span class="str">"contato"</span><span class="tag-c">&gt;</span>Contato<span class="tag-c">&lt;/h2&gt;</span>
+      <pre><code class="language-markup">&lt;!-- 1. Definir o destino com id --&gt;
+&lt;h2 id="contato"&gt;Contato&lt;/h2&gt;
 
-<span class="cm">&lt;!-- 2. Link para o destino --&gt;</span>
-<span class="tag-c">&lt;a</span> <span class="attr">href</span>=<span class="str">"#contato"</span><span class="tag-c">&gt;</span>Ir para Contato<span class="tag-c">&lt;/a&gt;</span>
+&lt;!-- 2. Link para o destino --&gt;
+&lt;a href="#contato"&gt;Ir para Contato&lt;/a&gt;
 
-<span class="cm">&lt;!-- Voltar ao topo --&gt;</span>
-<span class="tag-c">&lt;a</span> <span class="attr">href</span>=<span class="str">"#"</span><span class="tag-c">&gt;</span>Voltar ao topo<span class="tag-c">&lt;/a&gt;</span></code></pre>
+&lt;!-- Voltar ao topo --&gt;
+&lt;a href="#"&gt;Voltar ao topo&lt;/a&gt;</code></pre>
       <p>Útil em páginas longas: menus de índice no topo que pulam direto para a seção desejada.</p>
 
       <h3>Listas aninhadas</h3>
       <p>Listas podem ser misturadas e aninhadas — uma <code>ul</code> dentro de um <code>li</code> de outra lista, inclusive de tipo diferente:</p>
-      <pre><code><span class="tag-c">&lt;ul&gt;</span>
-  <span class="tag-c">&lt;li&gt;</span>Cores primárias
-    <span class="tag-c">&lt;ol&gt;</span>
-      <span class="tag-c">&lt;li&gt;</span>Vermelho<span class="tag-c">&lt;/li&gt;</span>
-      <span class="tag-c">&lt;li&gt;</span>Azul<span class="tag-c">&lt;/li&gt;</span>
-      <span class="tag-c">&lt;li&gt;</span>Amarelo<span class="tag-c">&lt;/li&gt;</span>
-    <span class="tag-c">&lt;/ol&gt;</span>
-  <span class="tag-c">&lt;/li&gt;</span>
-  <span class="tag-c">&lt;li&gt;</span>Cores secundárias<span class="tag-c">&lt;/li&gt;</span>
-<span class="tag-c">&lt;/ul&gt;</span></code></pre>
+      <pre><code class="language-markup">&lt;ul&gt;
+  &lt;li&gt;Cores primárias
+    &lt;ol&gt;
+      &lt;li&gt;Vermelho&lt;/li&gt;
+      &lt;li&gt;Azul&lt;/li&gt;
+      &lt;li&gt;Amarelo&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Cores secundárias&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
 
       <h3>Comparação: tags semânticas vs <code>&lt;div&gt;</code></h3>
       <table>
@@ -330,16 +330,16 @@
       <p class="subtitle">HTML5 expandiu o elemento form com novos tipos de input e validação nativa no navegador, sem precisar de JavaScript.</p>
 
       <h3>Estrutura de um formulário</h3>
-      <pre><code><span class="tag-c">&lt;form</span> <span class="attr">action</span>=<span class="str">"/enviar"</span> <span class="attr">method</span>=<span class="str">"post"</span><span class="tag-c">&gt;</span>
+      <pre><code class="language-markup">&lt;form action="/enviar" method="post"&gt;
 
-  <span class="tag-c">&lt;label</span> <span class="attr">for</span>=<span class="str">"nome"</span><span class="tag-c">&gt;</span>Nome:<span class="tag-c">&lt;/label&gt;</span>
-  <span class="tag-c">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span> <span class="attr">id</span>=<span class="str">"nome"</span> <span class="attr">name</span>=<span class="str">"nome"</span> <span class="attr">required</span><span class="tag-c">&gt;</span>
+  &lt;label for="nome"&gt;Nome:&lt;/label&gt;
+  &lt;input type="text" id="nome" name="nome" required&gt;
 
-  <span class="tag-c">&lt;label</span> <span class="attr">for</span>=<span class="str">"email"</span><span class="tag-c">&gt;</span>E-mail:<span class="tag-c">&lt;/label&gt;</span>
-  <span class="tag-c">&lt;input</span> <span class="attr">type</span>=<span class="str">"email"</span> <span class="attr">id</span>=<span class="str">"email"</span> <span class="attr">name</span>=<span class="str">"email"</span> <span class="attr">required</span><span class="tag-c">&gt;</span>
+  &lt;label for="email"&gt;E-mail:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
 
-  <span class="tag-c">&lt;button</span> <span class="attr">type</span>=<span class="str">"submit"</span><span class="tag-c">&gt;</span>Enviar<span class="tag-c">&lt;/button&gt;</span>
-<span class="tag-c">&lt;/form&gt;</span></code></pre>
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
 
       <h3>Novos tipos de input em HTML5</h3>
       <table>
@@ -356,31 +356,31 @@
       </table>
 
       <h3>Atributos de validação</h3>
-      <pre><code><span class="cm">&lt;!-- Obrigatório --&gt;</span>
-<span class="tag-c">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span> <span class="attr">required</span><span class="tag-c">&gt;</span>
+      <pre><code class="language-markup">&lt;!-- Obrigatório --&gt;
+&lt;input type="text" required&gt;
 
-<span class="cm">&lt;!-- Comprimento mínimo/máximo --&gt;</span>
-<span class="tag-c">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span> <span class="attr">minlength</span>=<span class="str">"3"</span> <span class="attr">maxlength</span>=<span class="str">"50"</span><span class="tag-c">&gt;</span>
+&lt;!-- Comprimento mínimo/máximo --&gt;
+&lt;input type="text" minlength="3" maxlength="50"&gt;
 
-<span class="cm">&lt;!-- Intervalo numérico --&gt;</span>
-<span class="tag-c">&lt;input</span> <span class="attr">type</span>=<span class="str">"number"</span> <span class="attr">min</span>=<span class="str">"1"</span> <span class="attr">max</span>=<span class="str">"100"</span> <span class="attr">step</span>=<span class="str">"5"</span><span class="tag-c">&gt;</span>
+&lt;!-- Intervalo numérico --&gt;
+&lt;input type="number" min="1" max="100" step="5"&gt;
 
-<span class="cm">&lt;!-- Padrão regex --&gt;</span>
-<span class="tag-c">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span> <span class="attr">pattern</span>=<span class="str">"[0-9]{5}-[0-9]{3}"</span> <span class="attr">placeholder</span>=<span class="str">"00000-000"</span><span class="tag-c">&gt;</span></code></pre>
+&lt;!-- Padrão regex --&gt;
+&lt;input type="text" pattern="[0-9]{5}-[0-9]{3}" placeholder="00000-000"&gt;</code></pre>
 
       <h3>Outros elementos de formulário</h3>
-      <pre><code><span class="cm">&lt;!-- Seleção --&gt;</span>
-<span class="tag-c">&lt;select</span> <span class="attr">name</span>=<span class="str">"estado"</span><span class="tag-c">&gt;</span>
-  <span class="tag-c">&lt;option</span> <span class="attr">value</span>=<span class="str">"sc"</span><span class="tag-c">&gt;</span>Santa Catarina<span class="tag-c">&lt;/option&gt;</span>
-  <span class="tag-c">&lt;option</span> <span class="attr">value</span>=<span class="str">"sp"</span><span class="tag-c">&gt;</span>São Paulo<span class="tag-c">&lt;/option&gt;</span>
-<span class="tag-c">&lt;/select&gt;</span>
+      <pre><code class="language-markup">&lt;!-- Seleção --&gt;
+&lt;select name="estado"&gt;
+  &lt;option value="sc"&gt;Santa Catarina&lt;/option&gt;
+  &lt;option value="sp"&gt;São Paulo&lt;/option&gt;
+&lt;/select&gt;
 
-<span class="cm">&lt;!-- Área de texto --&gt;</span>
-<span class="tag-c">&lt;textarea</span> <span class="attr">name</span>=<span class="str">"msg"</span> <span class="attr">rows</span>=<span class="str">"4"</span> <span class="attr">cols</span>=<span class="str">"40"</span><span class="tag-c">&gt;&lt;/textarea&gt;</span>
+&lt;!-- Área de texto --&gt;
+&lt;textarea name="msg" rows="4" cols="40"&gt;&lt;/textarea&gt;
 
-<span class="cm">&lt;!-- Checkbox --&gt;</span>
-<span class="tag-c">&lt;input</span> <span class="attr">type</span>=<span class="str">"checkbox"</span> <span class="attr">name</span>=<span class="str">"aceito"</span> <span class="attr">id</span>=<span class="str">"aceito"</span><span class="tag-c">&gt;</span>
-<span class="tag-c">&lt;label</span> <span class="attr">for</span>=<span class="str">"aceito"</span><span class="tag-c">&gt;</span>Aceito os termos<span class="tag-c">&lt;/label&gt;</span></code></pre>
+&lt;!-- Checkbox --&gt;
+&lt;input type="checkbox" name="aceito" id="aceito"&gt;
+&lt;label for="aceito"&gt;Aceito os termos&lt;/label&gt;</code></pre>
 
       <div class="callout">
         <strong>GET vs POST no formulário</strong>
@@ -486,40 +486,40 @@
       </table>
 
       <h3>Seletores</h3>
-      <pre><code><span class="cm">/* Tag */</span>
-<span class="sel">p</span> { <span class="prop">color</span>: <span class="val">red</span>; }
+      <pre><code class="language-css">/* Tag */
+p { color: red; }
 
-<span class="cm">/* Classe */</span>
-<span class="sel">.destaque</span> { <span class="prop">font-weight</span>: <span class="val">bold</span>; }
+/* Classe */
+.destaque { font-weight: bold; }
 
-<span class="cm">/* ID */</span>
-<span class="sel">#cabecalho</span> { <span class="prop">background</span>: <span class="val">#333</span>; }
+/* ID */
+#cabecalho { background: #333; }
 
-<span class="cm">/* Descendente */</span>
-<span class="sel">nav a</span> { <span class="prop">text-decoration</span>: <span class="val">none</span>; }
+/* Descendente */
+nav a { text-decoration: none; }
 
-<span class="cm">/* Pseudo-classe */</span>
-<span class="sel">a:hover</span> { <span class="prop">color</span>: <span class="val">blue</span>; }
-<span class="sel">li:first-child</span> { <span class="prop">font-weight</span>: <span class="val">bold</span>; }
+/* Pseudo-classe */
+a:hover { color: blue; }
+li:first-child { font-weight: bold; }
 
-<span class="cm">/* Pseudo-elemento */</span>
-<span class="sel">p::first-line</span> { <span class="prop">font-size</span>: <span class="val">1.2em</span>; }</code></pre>
+/* Pseudo-elemento */
+p::first-line { font-size: 1.2em; }</code></pre>
 
       <h3>Box Model</h3>
       <p>Todo elemento HTML é uma caixa com quatro áreas:</p>
-      <pre><code><span class="cm">┌─────────────────────────────┐ ← margin
+      <pre><code>┌─────────────────────────────┐ ← margin
 │  ┌───────────────────────┐  │ ← border
 │  │  ┌─────────────────┐  │  │ ← padding
 │  │  │    CONTEÚDO     │  │  │
 │  │  └─────────────────┘  │  │
 │  └───────────────────────┘  │
-└─────────────────────────────┘</span></code></pre>
-      <pre><code><span class="sel">.caixa</span> {
-  <span class="prop">width</span>: <span class="val">300px</span>;
-  <span class="prop">padding</span>: <span class="val">16px</span>;
-  <span class="prop">border</span>: <span class="val">2px solid #ccc</span>;
-  <span class="prop">margin</span>: <span class="val">24px auto</span>;  <span class="cm">/* auto centraliza horizontalmente */</span>
-  <span class="prop">box-sizing</span>: <span class="val">border-box</span>; <span class="cm">/* padding incluso na width */</span>
+└─────────────────────────────┘</code></pre>
+      <pre><code class="language-css">.caixa {
+  width: 300px;
+  padding: 16px;
+  border: 2px solid #ccc;
+  margin: 24px auto;  /* auto centraliza horizontalmente */
+  box-sizing: border-box; /* padding incluso na width */
 }</code></pre>
 
       <h3>Especificidade</h3>
@@ -562,16 +562,16 @@
 
       <h3>Propriedade <code>float</code></h3>
       <p>O <code>float</code> era o principal método de layout antes do Flexbox e Grid — ainda aparece em código legado:</p>
-      <pre><code><span class="sel">.imagem</span> {
-  <span class="prop">float</span>: <span class="val">left</span>;   <span class="cm">/* left | right | none */</span>
-  <span class="prop">margin</span>: <span class="val">0 1rem 1rem 0</span>;
+      <pre><code class="language-css">.imagem {
+  float: left;   /* left | right | none */
+  margin: 0 1rem 1rem 0;
 }
 
-<span class="cm">/* Limpa o float para o próximo elemento */</span>
-<span class="sel">.container::after</span> {
-  <span class="prop">content</span>: <span class="str">""</span>;
-  <span class="prop">display</span>: <span class="val">block</span>;
-  <span class="prop">clear</span>: <span class="val">both</span>;
+/* Limpa o float para o próximo elemento */
+.container::after {
+  content: "";
+  display: block;
+  clear: both;
 }</code></pre>
 
       <h3>Tipos de seletores CSS — resumo</h3>
@@ -623,72 +623,72 @@
 
       <h3>Flexbox</h3>
       <p>Ideal para layouts em uma dimensão (linha ou coluna):</p>
-      <pre><code><span class="sel">.container</span> {
-  <span class="prop">display</span>: <span class="val">flex</span>;
-  <span class="prop">justify-content</span>: <span class="val">space-between</span>; <span class="cm">/* eixo principal */</span>
-  <span class="prop">align-items</span>: <span class="val">center</span>;          <span class="cm">/* eixo cruzado */</span>
-  <span class="prop">flex-wrap</span>: <span class="val">wrap</span>;              <span class="cm">/* quebra linha se necessário */</span>
-  <span class="prop">gap</span>: <span class="val">1rem</span>;
+      <pre><code class="language-css">.container {
+  display: flex;
+  justify-content: space-between; /* eixo principal */
+  align-items: center;          /* eixo cruzado */
+  flex-wrap: wrap;              /* quebra linha se necessário */
+  gap: 1rem;
 }</code></pre>
 
       <h3>CSS Grid</h3>
       <p>Ideal para layouts em duas dimensões (linhas e colunas):</p>
-      <pre><code><span class="sel">.grid</span> {
-  <span class="prop">display</span>: <span class="val">grid</span>;
-  <span class="prop">grid-template-columns</span>: <span class="val">repeat(3, 1fr)</span>;  <span class="cm">/* 3 colunas iguais */</span>
-  <span class="prop">grid-template-rows</span>: <span class="val">auto</span>;
-  <span class="prop">gap</span>: <span class="val">1.5rem</span>;
+      <pre><code class="language-css">.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 3 colunas iguais */
+  grid-template-rows: auto;
+  gap: 1.5rem;
 }
 
-<span class="cm">/* Item ocupando 2 colunas */</span>
-<span class="sel">.destaque</span> {
-  <span class="prop">grid-column</span>: <span class="val">1 / 3</span>;
+/* Item ocupando 2 colunas */
+.destaque {
+  grid-column: 1 / 3;
 }</code></pre>
 
       <h3>Media Queries — Responsividade</h3>
-      <pre><code><span class="cm">/* Mobile first: estilos base são para mobile */</span>
-<span class="sel">.card</span> { <span class="prop">width</span>: <span class="val">100%</span>; }
+      <pre><code class="language-css">/* Mobile first: estilos base são para mobile */
+.card { width: 100%; }
 
-<span class="cm">/* Tablet */</span>
-<span class="kw">@media</span> (min-width: <span class="num">768px</span>) {
-  <span class="sel">.card</span> { <span class="prop">width</span>: <span class="val">48%</span>; }
+/* Tablet */
+@media (min-width: 768px) {
+  .card { width: 48%; }
 }
 
-<span class="cm">/* Desktop */</span>
-<span class="kw">@media</span> (min-width: <span class="num">1024px</span>) {
-  <span class="sel">.card</span> { <span class="prop">width</span>: <span class="val">30%</span>; }
+/* Desktop */
+@media (min-width: 1024px) {
+  .card { width: 30%; }
 }</code></pre>
 
       <h3>Variáveis CSS (Custom Properties)</h3>
-      <pre><code><span class="sel">:root</span> {
-  <span class="prop">--cor-primaria</span>: <span class="val">#3b82f6</span>;
-  <span class="prop">--espaco-base</span>: <span class="val">1rem</span>;
-  <span class="prop">--fonte-titulo</span>: <span class="val">'Inter', sans-serif</span>;
+      <pre><code class="language-css">:root {
+  --cor-primaria: #3b82f6;
+  --espaco-base: 1rem;
+  --fonte-titulo: 'Inter', sans-serif;
 }
 
-<span class="sel">h1</span> {
-  <span class="prop">color</span>: <span class="val">var(--cor-primaria)</span>;
-  <span class="prop">font-family</span>: <span class="val">var(--fonte-titulo)</span>;
-  <span class="prop">margin-bottom</span>: <span class="val">var(--espaco-base)</span>;
+h1 {
+  color: var(--cor-primaria);
+  font-family: var(--fonte-titulo);
+  margin-bottom: var(--espaco-base);
 }</code></pre>
 
       <h3>Transições e Animações</h3>
-      <pre><code><span class="cm">/* Transição suave */</span>
-<span class="sel">button</span> {
-  <span class="prop">background</span>: <span class="val">#3b82f6</span>;
-  <span class="prop">transition</span>: <span class="val">background 0.3s ease, transform 0.2s</span>;
+      <pre><code class="language-css">/* Transição suave */
+button {
+  background: #3b82f6;
+  transition: background 0.3s ease, transform 0.2s;
 }
-<span class="sel">button:hover</span> {
-  <span class="prop">background</span>: <span class="val">#1d4ed8</span>;
-  <span class="prop">transform</span>: <span class="val">scale(1.05)</span>;
+button:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);
 }
 
-<span class="cm">/* Animação com keyframes */</span>
-<span class="kw">@keyframes</span> <span class="fn">fadeIn</span> {
-  <span class="kw">from</span> { <span class="prop">opacity</span>: <span class="val">0</span>; <span class="prop">transform</span>: <span class="val">translateY(20px)</span>; }
-  <span class="kw">to</span>   { <span class="prop">opacity</span>: <span class="val">1</span>; <span class="prop">transform</span>: <span class="val">translateY(0)</span>; }
+/* Animação com keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-<span class="sel">.card</span> { <span class="prop">animation</span>: <span class="val">fadeIn 0.4s ease</span>; }</code></pre>
+.card { animation: fadeIn 0.4s ease; }</code></pre>
 
       <h3>Propriedades de texto em CSS3</h3>
       <table>
@@ -982,57 +982,57 @@
       <p class="subtitle">JavaScript adiciona interatividade e comportamento dinâmico às páginas web — manipulação do DOM, eventos, validações e muito mais.</p>
 
       <h3>Fundamentos</h3>
-      <pre><code><span class="cm">// Variáveis</span>
-<span class="kw">const</span> nome = <span class="str">"Marcus"</span>;   <span class="cm">// imutável (preferir)</span>
-<span class="kw">let</span> idade = <span class="num">25</span>;          <span class="cm">// mutável</span>
+      <pre><code class="language-javascript">// Variáveis
+const nome = "Marcus";   // imutável (preferir)
+let idade = 25;          // mutável
 
-<span class="cm">// Funções</span>
-<span class="kw">function</span> <span class="fn">saudar</span>(nome) {
-  <span class="kw">return</span> <span class="str">`Olá, ${nome}!`</span>;
+// Funções
+function saudar(nome) {
+  return `Olá, ${nome}!`;
 }
 
-<span class="cm">// Arrow function</span>
-<span class="kw">const</span> <span class="fn">dobrar</span> = (n) => n * <span class="num">2</span>;
+// Arrow function
+const dobrar = (n) => n * 2;
 
-<span class="cm">// Arrays</span>
-<span class="kw">const</span> frutas = [<span class="str">"maçã"</span>, <span class="str">"banana"</span>, <span class="str">"uva"</span>];
-frutas.<span class="fn">forEach</span>(f => console.<span class="fn">log</span>(f));
-<span class="kw">const</span> maiusculas = frutas.<span class="fn">map</span>(f => f.<span class="fn">toUpperCase</span>());</code></pre>
+// Arrays
+const frutas = ["maçã", "banana", "uva"];
+frutas.forEach(f => console.log(f));
+const maiusculas = frutas.map(f => f.toUpperCase());</code></pre>
 
       <h3>Manipulação do DOM</h3>
-      <pre><code><span class="cm">// Selecionar elementos</span>
-<span class="kw">const</span> btn = document.<span class="fn">querySelector</span>(<span class="str">'#meu-botao'</span>);
-<span class="kw">const</span> cards = document.<span class="fn">querySelectorAll</span>(<span class="str">'.card'</span>);
+      <pre><code class="language-javascript">// Selecionar elementos
+const btn = document.querySelector('#meu-botao');
+const cards = document.querySelectorAll('.card');
 
-<span class="cm">// Modificar conteúdo</span>
-btn.textContent = <span class="str">'Clique aqui'</span>;
-btn.style.background = <span class="str">'#3b82f6'</span>;
-btn.classList.<span class="fn">add</span>(<span class="str">'ativo'</span>);
-btn.classList.<span class="fn">toggle</span>(<span class="str">'visivel'</span>);
+// Modificar conteúdo
+btn.textContent = 'Clique aqui';
+btn.style.background = '#3b82f6';
+btn.classList.add('ativo');
+btn.classList.toggle('visivel');
 
-<span class="cm">// Criar e inserir elemento</span>
-<span class="kw">const</span> li = document.<span class="fn">createElement</span>(<span class="str">'li'</span>);
-li.textContent = <span class="str">'Novo item'</span>;
-document.<span class="fn">querySelector</span>(<span class="str">'ul'</span>).<span class="fn">appendChild</span>(li);</code></pre>
+// Criar e inserir elemento
+const li = document.createElement('li');
+li.textContent = 'Novo item';
+document.querySelector('ul').appendChild(li);</code></pre>
 
       <h3>Eventos</h3>
-      <pre><code><span class="cm">// Click</span>
-btn.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, () => {
-  <span class="fn">alert</span>(<span class="str">'Clicou!'</span>);
+      <pre><code class="language-javascript">// Click
+btn.addEventListener('click', () => {
+  alert('Clicou!');
 });
 
-<span class="cm">// Formulário</span>
-document.<span class="fn">querySelector</span>(<span class="str">'form'</span>)
-  .<span class="fn">addEventListener</span>(<span class="str">'submit'</span>, (e) => {
-    e.<span class="fn">preventDefault</span>(); <span class="cm">// impede o envio padrão</span>
-    <span class="kw">const</span> nome = document.<span class="fn">querySelector</span>(<span class="str">'#nome'</span>).value;
-    console.<span class="fn">log</span>(<span class="str">`Enviando: ${nome}`</span>);
+// Formulário
+document.querySelector('form')
+  .addEventListener('submit', (e) => {
+    e.preventDefault(); // impede o envio padrão
+    const nome = document.querySelector('#nome').value;
+    console.log(`Enviando: ${nome}`);
   });
 
-<span class="cm">// Input em tempo real</span>
-document.<span class="fn">querySelector</span>(<span class="str">'#busca'</span>)
-  .<span class="fn">addEventListener</span>(<span class="str">'input'</span>, (e) => {
-    console.<span class="fn">log</span>(e.target.value);
+// Input em tempo real
+document.querySelector('#busca')
+  .addEventListener('input', (e) => {
+    console.log(e.target.value);
   });</code></pre>
 
       <h3>Eventos comuns</h3>
@@ -1074,29 +1074,29 @@ document.<span class="fn">querySelector</span>(<span class="str">'#busca'</span>
       </table>
 
       <h3>Controle de fluxo</h3>
-      <pre><code><span class="cm">// if / else</span>
-<span class="kw">if</span> (idade >= <span class="num">18</span>) {
-  console.<span class="fn">log</span>(<span class="str">"Adulto"</span>);
-} <span class="kw">else</span> {
-  console.<span class="fn">log</span>(<span class="str">"Menor"</span>);
+      <pre><code class="language-javascript">// if / else
+if (idade >= 18) {
+  console.log("Adulto");
+} else {
+  console.log("Menor");
 }
 
-<span class="cm">// switch</span>
-<span class="kw">switch</span> (dia) {
-  <span class="kw">case</span> <span class="str">"seg"</span>: console.<span class="fn">log</span>(<span class="str">"Segunda"</span>); <span class="kw">break</span>;
-  <span class="kw">case</span> <span class="str">"ter"</span>: console.<span class="fn">log</span>(<span class="str">"Terça"</span>);   <span class="kw">break</span>;
-  <span class="kw">default</span>:  console.<span class="fn">log</span>(<span class="str">"Outro dia"</span>);
+// switch
+switch (dia) {
+  case "seg": console.log("Segunda"); break;
+  case "ter": console.log("Terça");   break;
+  default:  console.log("Outro dia");
 }
 
-<span class="cm">// for — número de iterações conhecido</span>
-<span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">0</span>; i < <span class="num">5</span>; i++) { console.<span class="fn">log</span>(i); }
+// for — número de iterações conhecido
+for (let i = 0; i < 5; i++) { console.log(i); }
 
-<span class="cm">// while — condição avaliada antes</span>
-<span class="kw">let</span> i = <span class="num">0</span>;
-<span class="kw">while</span> (i < <span class="num">5</span>) { console.<span class="fn">log</span>(i); i++; }
+// while — condição avaliada antes
+let i = 0;
+while (i < 5) { console.log(i); i++; }
 
-<span class="cm">// do...while — executa ao menos uma vez</span>
-<span class="kw">do</span> { console.<span class="fn">log</span>(i); i++; } <span class="kw">while</span> (i < <span class="num">5</span>);</code></pre>
+// do...while — executa ao menos uma vez
+do { console.log(i); i++; } while (i < 5);</code></pre>
 
       <h3>Métodos nativos úteis</h3>
       <table>
@@ -1120,22 +1120,22 @@ document.<span class="fn">querySelector</span>(<span class="str">'#busca'</span>
       </table>
 
       <h3>Manipulação DOM — referência rápida</h3>
-      <pre><code><span class="kw">const</span> el = document.<span class="fn">getElementById</span>(<span class="str">"box"</span>);
+      <pre><code class="language-javascript">const el = document.getElementById("box");
 
-<span class="cm">// Conteúdo</span>
-el.innerHTML = <span class="str">"&lt;b&gt;Novo&lt;/b&gt;"</span>;   <span class="cm">// interpreta HTML</span>
-el.textContent = <span class="str">"Apenas texto"</span>;  <span class="cm">// só texto (seguro)</span>
+// Conteúdo
+el.innerHTML = "&lt;b&gt;Novo&lt;/b&gt;";   // interpreta HTML
+el.textContent = "Apenas texto";  // só texto (seguro)
 
-<span class="cm">// Atributos</span>
-el.<span class="fn">setAttribute</span>(<span class="str">"class"</span>, <span class="str">"ativo"</span>);
-<span class="kw">const</span> cls = el.<span class="fn">getAttribute</span>(<span class="str">"class"</span>);  <span class="cm">// "ativo"</span>
-el.<span class="fn">removeAttribute</span>(<span class="str">"disabled"</span>);
+// Atributos
+el.setAttribute("class", "ativo");
+const cls = el.getAttribute("class");  // "ativo"
+el.removeAttribute("disabled");
 
-<span class="cm">// Criar e remover</span>
-<span class="kw">const</span> p = document.<span class="fn">createElement</span>(<span class="str">"p"</span>);
-p.textContent = <span class="str">"Novo parágrafo"</span>;
-document.body.<span class="fn">appendChild</span>(p);
-p.parentNode.<span class="fn">removeChild</span>(p); <span class="cm">// ou p.remove()</span></code></pre>
+// Criar e remover
+const p = document.createElement("p");
+p.textContent = "Novo parágrafo";
+document.body.appendChild(p);
+p.parentNode.removeChild(p); // ou p.remove()</code></pre>
 
       <h3>Categorias de eventos</h3>
       <table>
@@ -1147,16 +1147,16 @@ p.parentNode.<span class="fn">removeChild</span>(p); <span class="cm">// ou p.re
       </table>
 
       <h3>Como incluir JavaScript na página</h3>
-      <pre><code><span class="cm">&lt;!-- 1. Inline (evitar) --&gt;</span>
-<span class="tag-c">&lt;button</span> <span class="attr">onclick</span>=<span class="str">"alert('Clicou!')"</span><span class="tag-c">&gt;</span>Clique<span class="tag-c">&lt;/button&gt;</span>
+      <pre><code class="language-markup">&lt;!-- 1. Inline (evitar) --&gt;
+&lt;button onclick="alert('Clicou!')"&gt;Clique&lt;/button&gt;
 
-<span class="cm">&lt;!-- 2. Interno (bloco &lt;script&gt; no HTML) --&gt;</span>
-<span class="tag-c">&lt;script&gt;</span>
-  console.log(<span class="str">"Página carregada"</span>);
-<span class="tag-c">&lt;/script&gt;</span>
+&lt;!-- 2. Interno (bloco &lt;script&gt; no HTML) --&gt;
+&lt;script&gt;
+  console.log("Página carregada");
+&lt;/script&gt;
 
-<span class="cm">&lt;!-- 3. Externo (recomendado — antes de &lt;/body&gt;) --&gt;</span>
-<span class="tag-c">&lt;script</span> <span class="attr">src</span>=<span class="str">"js/main.js"</span><span class="tag-c">&gt;&lt;/script&gt;</span></code></pre>
+&lt;!-- 3. Externo (recomendado — antes de &lt;/body&gt;) --&gt;
+&lt;script src="js/main.js"&gt;&lt;/script&gt;</code></pre>
 
       <div class="callout warning">
         <strong>Práticas Modernas — JavaScript</strong>
@@ -1198,65 +1198,65 @@ p.parentNode.<span class="fn">removeChild</span>(p); <span class="cm">// ou p.re
 
       <h3>JSON — JavaScript Object Notation</h3>
       <p>Formato leve para troca de dados entre cliente e servidor:</p>
-      <pre><code>{
-  <span class="str">"usuario"</span>: {
-    <span class="str">"id"</span>: <span class="num">1</span>,
-    <span class="str">"nome"</span>: <span class="str">"Marcus"</span>,
-    <span class="str">"ativo"</span>: <span class="kw">true</span>,
-    <span class="str">"notas"</span>: [<span class="num">8.5</span>, <span class="num">9.0</span>, <span class="num">7.5</span>],
-    <span class="str">"endereco"</span>: <span class="kw">null</span>
+      <pre><code class="language-javascript">{
+  "usuario": {
+    "id": 1,
+    "nome": "Marcus",
+    "ativo": true,
+    "notas": [8.5, 9.0, 7.5],
+    "endereco": null
   }
 }</code></pre>
 
       <h3>Fetch API — moderno e padrão</h3>
-      <pre><code><span class="cm">// GET — buscar dados</span>
-<span class="fn">fetch</span>(<span class="str">'https://api.exemplo.com/usuarios'</span>)
-  .<span class="fn">then</span>(res => res.<span class="fn">json</span>())
-  .<span class="fn">then</span>(dados => {
-    dados.<span class="fn">forEach</span>(u => console.<span class="fn">log</span>(u.nome));
+      <pre><code class="language-javascript">// GET — buscar dados
+fetch('https://api.exemplo.com/usuarios')
+  .then(res => res.json())
+  .then(dados => {
+    dados.forEach(u => console.log(u.nome));
   })
-  .<span class="fn">catch</span>(err => console.<span class="fn">error</span>(<span class="str">'Erro:'</span>, err));
+  .catch(err => console.error('Erro:', err));
 
-<span class="cm">// POST — enviar dados</span>
-<span class="fn">fetch</span>(<span class="str">'/api/usuarios'</span>, {
-  method: <span class="str">'POST'</span>,
-  headers: { <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span> },
-  body: JSON.<span class="fn">stringify</span>({ nome: <span class="str">'Ana'</span>, email: <span class="str">'ana@email.com'</span> })
+// POST — enviar dados
+fetch('/api/usuarios', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ nome: 'Ana', email: 'ana@email.com' })
 })
-  .<span class="fn">then</span>(res => res.<span class="fn">json</span>())
-  .<span class="fn">then</span>(novo => console.<span class="fn">log</span>(<span class="str">'Criado:'</span>, novo));</code></pre>
+  .then(res => res.json())
+  .then(novo => console.log('Criado:', novo));</code></pre>
 
       <h3>Async/Await — sintaxe mais limpa</h3>
-      <pre><code><span class="kw">async function</span> <span class="fn">buscarUsuarios</span>() {
-  <span class="kw">try</span> {
-    <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/api/usuarios'</span>);
-    <span class="kw">const</span> dados = <span class="kw">await</span> res.<span class="fn">json</span>();
+      <pre><code class="language-javascript">async function buscarUsuarios() {
+  try {
+    const res = await fetch('/api/usuarios');
+    const dados = await res.json();
 
-    <span class="kw">const</span> lista = document.<span class="fn">querySelector</span>(<span class="str">'#lista'</span>);
-    dados.<span class="fn">forEach</span>(u => {
-      <span class="kw">const</span> li = document.<span class="fn">createElement</span>(<span class="str">'li'</span>);
+    const lista = document.querySelector('#lista');
+    dados.forEach(u => {
+      const li = document.createElement('li');
       li.textContent = u.nome;
-      lista.<span class="fn">appendChild</span>(li);
+      lista.appendChild(li);
     });
-  } <span class="kw">catch</span> (err) {
-    console.<span class="fn">error</span>(<span class="str">'Falha na requisição:'</span>, err);
+  } catch (err) {
+    console.error('Falha na requisição:', err);
   }
 }
 
-<span class="fn">buscarUsuarios</span>();</code></pre>
+buscarUsuarios();</code></pre>
 
       <h3>JSON.stringify e JSON.parse</h3>
-      <pre><code><span class="cm">// Objeto JS → string JSON</span>
-<span class="kw">const</span> str = JSON.<span class="fn">stringify</span>({ nome: <span class="str">"Ana"</span>, idade: <span class="num">30</span> });
-<span class="cm">// → '{"nome":"Ana","idade":30}'</span>
+      <pre><code class="language-javascript">// Objeto JS → string JSON
+const str = JSON.stringify({ nome: "Ana", idade: 30 });
+// → '{"nome":"Ana","idade":30}'
 
-<span class="cm">// String JSON → objeto JS</span>
-<span class="kw">const</span> obj = JSON.<span class="fn">parse</span>(<span class="str">'{"nome":"Ana","idade":30}'</span>);
-<span class="cm">// → { nome: 'Ana', idade: 30 }</span>
+// String JSON → objeto JS
+const obj = JSON.parse('{"nome":"Ana","idade":30}');
+// → { nome: 'Ana', idade: 30 }
 
-<span class="cm">// Salvar no LocalStorage</span>
-localStorage.<span class="fn">setItem</span>(<span class="str">'usuario'</span>, JSON.<span class="fn">stringify</span>(obj));
-<span class="kw">const</span> salvo = JSON.<span class="fn">parse</span>(localStorage.<span class="fn">getItem</span>(<span class="str">'usuario'</span>));</code></pre>
+// Salvar no LocalStorage
+localStorage.setItem('usuario', JSON.stringify(obj));
+const salvo = JSON.parse(localStorage.getItem('usuario'));</code></pre>
 
       <div class="callout">
         <strong>Sobre XMLHttpRequest</strong>
@@ -1265,19 +1265,19 @@ localStorage.<span class="fn">setItem</span>(<span class="str">'usuario'</span>,
 
       <h3>XMLHttpRequest — como funciona por baixo</h3>
       <p>O objeto <code>XMLHttpRequest</code> (XHR) é a base original do AJAX — entender seu ciclo ajuda a compreender o <code>fetch</code>:</p>
-      <pre><code><span class="kw">var</span> xhr = <span class="kw">new</span> XMLHttpRequest();
+      <pre><code class="language-javascript">var xhr = new XMLHttpRequest();
 
-<span class="cm">// Definir o que fazer quando a resposta chegar</span>
-xhr.onreadystatechange = <span class="kw">function</span>() {
-  <span class="kw">if</span> (xhr.readyState === <span class="num">4</span> && xhr.status === <span class="num">200</span>) {
-    <span class="kw">var</span> dados = JSON.<span class="fn">parse</span>(xhr.responseText);
-    console.<span class="fn">log</span>(dados);
+// Definir o que fazer quando a resposta chegar
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    var dados = JSON.parse(xhr.responseText);
+    console.log(dados);
   }
 };
 
-<span class="cm">// Configurar: método, URL, assíncrono=true</span>
-xhr.<span class="fn">open</span>(<span class="str">"GET"</span>, <span class="str">"server.php"</span>, <span class="kw">true</span>);
-xhr.<span class="fn">send</span>();</code></pre>
+// Configurar: método, URL, assíncrono=true
+xhr.open("GET", "server.php", true);
+xhr.send();</code></pre>
 
       <h3>Estados do XMLHttpRequest (<code>readyState</code>)</h3>
       <table>
@@ -1290,21 +1290,21 @@ xhr.<span class="fn">send</span>();</code></pre>
       </table>
 
       <h3>Ciclo completo AJAX + JSON + PHP</h3>
-      <pre><code><span class="cm">/* server.php — PHP retorna JSON */</span>
-<span class="cm">&lt;?php</span>
+      <pre><code class="language-php">/* server.php — PHP retorna JSON */
+&lt;?php
 $clientes = [
   ["nome" => "Ana",    "email" => "ana@email.com"],
   ["nome" => "Carlos", "email" => "carlos@email.com"]
 ];
 header("Content-Type: application/json");
 echo json_encode($clientes);
-<span class="cm">?&gt;</span></code></pre>
-      <pre><code><span class="cm">/* cliente.js — consome com fetch */</span>
-<span class="fn">fetch</span>(<span class="str">"server.php"</span>)
-  .<span class="fn">then</span>(res => res.<span class="fn">json</span>())
-  .<span class="fn">then</span>(clientes => {
-    clientes.<span class="fn">forEach</span>(c => {
-      console.<span class="fn">log</span>(c.nome, c.email);
+?&gt;</code></pre>
+      <pre><code class="language-javascript">/* cliente.js — consome com fetch */
+fetch("server.php")
+  .then(res => res.json())
+  .then(clientes => {
+    clientes.forEach(c => {
+      console.log(c.nome, c.email);
     });
   });</code></pre>
 
@@ -1368,15 +1368,15 @@ echo json_encode($clientes);
 
       <h3>Variáveis</h3>
       <p>Toda variável começa com <code>$</code>. O PHP tem tipagem fraca — o tipo muda automaticamente conforme o contexto.</p>
-      <pre><code><span class="cm">// Declaração e tipagem dinâmica</span>
-$nome = <span class="str">"Ana"</span>;      <span class="cm">// string</span>
-$idade = <span class="num">30</span>;       <span class="cm">// integer</span>
-$preco = <span class="num">9.99</span>;     <span class="cm">// float</span>
-$ativo = <span class="kw">true</span>;    <span class="cm">// boolean</span>
+      <pre><code class="language-php">// Declaração e tipagem dinâmica
+$nome = "Ana";      // string
+$idade = 30;       // integer
+$preco = 9.99;     // float
+$ativo = true;    // boolean
 
-<span class="cm">// Regras: inicia com letra ou _; case-sensitive; sem espaços</span>
-$meu_nome = <span class="str">"Carlos"</span>;   <span class="cm">// válido</span>
-$MeuNome = <span class="str">"outro"</span>;     <span class="cm">// variável diferente de $meu_nome</span></code></pre>
+// Regras: inicia com letra ou _; case-sensitive; sem espaços
+$meu_nome = "Carlos";   // válido
+$MeuNome = "outro";     // variável diferente de $meu_nome</code></pre>
 
       <h3>Superglobais</h3>
       <p>Variáveis nativas disponíveis em qualquer parte do código, sem precisar declarar:</p>
@@ -1395,13 +1395,13 @@ $MeuNome = <span class="str">"outro"</span>;     <span class="cm">// variável d
 
       <h3>Constantes</h3>
       <p>Constantes mantêm o valor fixo durante toda a execução. Por convenção, usam letras maiúsculas. Não levam <code>$</code>.</p>
-      <pre><code><span class="cm">// define() — disponível desde as primeiras versões</span>
-<span class="fn">define</span>(<span class="str">"PI"</span>, <span class="num">3.14159</span>);
-<span class="cm">// const — disponível desde PHP 5.3 em escopo global</span>
-<span class="kw">const</span> VERSAO = <span class="str">"1.0"</span>;
+      <pre><code class="language-javascript">// define() — disponível desde as primeiras versões
+define("PI", 3.14159);
+// const — disponível desde PHP 5.3 em escopo global
+const VERSAO = "1.0";
 
-echo PI;     <span class="cm">// 3.14159</span>
-echo VERSAO; <span class="cm">// 1.0</span></code></pre>
+echo PI;     // 3.14159
+echo VERSAO; // 1.0</code></pre>
 
       <h3>Constantes Mágicas</h3>
       <p>Constantes predefinidas cujo valor muda conforme onde são usadas:</p>
@@ -1418,16 +1418,16 @@ echo VERSAO; <span class="cm">// 1.0</span></code></pre>
       </table>
 
       <h3>var_dump() e phpinfo()</h3>
-      <pre><code><span class="cm">// var_dump — mostra tipo e valor; útil para depuração</span>
-$arr = [<span class="num">1</span>, <span class="str">"dois"</span>, <span class="kw">true</span>];
-<span class="fn">var_dump</span>($arr);
-<span class="cm">// array(3) { [0]=> int(1) [1]=> string(4) "dois" [2]=> bool(true) }</span>
+      <pre><code class="language-php">// var_dump — mostra tipo e valor; útil para depuração
+$arr = [1, "dois", true];
+var_dump($arr);
+// array(3) { [0]=> int(1) [1]=> string(4) "dois" [2]=> bool(true) }
 
-<span class="cm">// phpinfo — exibe configuração completa do ambiente PHP</span>
-<span class="fn">phpinfo</span>();                      <span class="cm">// tudo (INFO_ALL)</span>
-<span class="fn">phpinfo</span>(INFO_GENERAL);          <span class="cm">// versão, servidor, SO</span>
-<span class="fn">phpinfo</span>(INFO_CONFIGURATION);    <span class="cm">// diretivas do php.ini</span>
-<span class="fn">phpinfo</span>(INFO_MODULES);          <span class="cm">// extensões carregadas</span></code></pre>
+// phpinfo — exibe configuração completa do ambiente PHP
+phpinfo();                      // tudo (INFO_ALL)
+phpinfo(INFO_GENERAL);          // versão, servidor, SO
+phpinfo(INFO_CONFIGURATION);    // diretivas do php.ini
+phpinfo(INFO_MODULES);          // extensões carregadas</code></pre>
 
       <h3>Operadores</h3>
       <table>
@@ -1494,103 +1494,103 @@ $arr = [<span class="num">1</span>, <span class="str">"dois"</span>, <span class
       </table>
 
       <h3>if / elseif / else</h3>
-      <pre><code>$media = <span class="num">8.5</span>;
+      <pre><code class="language-php">$media = 8.5;
 
-<span class="kw">if</span> ($media >= <span class="num">9</span>) {
-    $conceito = <span class="str">"A"</span>;
-} <span class="kw">elseif</span> ($media >= <span class="num">8</span>) {
-    $conceito = <span class="str">"B"</span>;
-} <span class="kw">elseif</span> ($media >= <span class="num">7</span>) {
-    $conceito = <span class="str">"C"</span>;
-} <span class="kw">else</span> {
-    $conceito = <span class="str">"Reprovado"</span>;
+if ($media >= 9) {
+    $conceito = "A";
+} elseif ($media >= 8) {
+    $conceito = "B";
+} elseif ($media >= 7) {
+    $conceito = "C";
+} else {
+    $conceito = "Reprovado";
 }
-echo $conceito; <span class="cm">// B</span></code></pre>
+echo $conceito; // B</code></pre>
 
       <h3>switch / case / break / default</h3>
       <p>Substitui múltiplos <code>if/elseif</code> quando se compara uma variável com vários valores fixos. O <code>break</code> impede que os casos seguintes sejam executados.</p>
-      <pre><code>$conceito = <span class="str">"B"</span>;
+      <pre><code class="language-php">$conceito = "B";
 
-<span class="kw">switch</span> ($conceito) {
-    <span class="kw">case</span> <span class="str">"A"</span>:
-        echo <span class="str">"Excelente"</span>;
-        <span class="kw">break</span>;
-    <span class="kw">case</span> <span class="str">"B"</span>:
-        echo <span class="str">"Plenamente aprovado"</span>;
-        <span class="kw">break</span>;
-    <span class="kw">case</span> <span class="str">"C"</span>:
-        echo <span class="str">"Aprovado"</span>;
-        <span class="kw">break</span>;
-    <span class="kw">default</span>:
-        echo <span class="str">"Reprovado"</span>;
+switch ($conceito) {
+    case "A":
+        echo "Excelente";
+        break;
+    case "B":
+        echo "Plenamente aprovado";
+        break;
+    case "C":
+        echo "Aprovado";
+        break;
+    default:
+        echo "Reprovado";
 }</code></pre>
 
       <h3>Operador ternário</h3>
       <p>Versão compacta do <code>if/else</code> para expressões simples: <code>condição ? valor_se_true : valor_se_false</code></p>
-      <pre><code>$media = <span class="num">7.5</span>;
-$situacao = ($media >= <span class="num">7</span>) ? <span class="str">"Aprovado"</span> : <span class="str">"Reprovado"</span>;
-echo $situacao; <span class="cm">// Aprovado</span></code></pre>
+      <pre><code class="language-php">$media = 7.5;
+$situacao = ($media >= 7) ? "Aprovado" : "Reprovado";
+echo $situacao; // Aprovado</code></pre>
 
       <h3>while — condição verificada antes</h3>
-      <pre><code>$i = <span class="num">1</span>;
-<span class="kw">while</span> ($i <= <span class="num">10</span>) {
+      <pre><code class="language-php">$i = 1;
+while ($i <= 10) {
     echo $i;
     $i++;
 }
-<span class="cm">// Saída: 12345678910</span>
-<span class="cm">// Se $i já for > 10 na entrada, o bloco nunca executa</span></code></pre>
+// Saída: 12345678910
+// Se $i já for > 10 na entrada, o bloco nunca executa</code></pre>
 
       <h3>do while — condição verificada depois</h3>
-      <pre><code>$i = <span class="num">1</span>;
-<span class="kw">do</span> {
+      <pre><code class="language-php">$i = 1;
+do {
     echo $i;
     $i++;
-} <span class="kw">while</span> ($i <= <span class="num">10</span>);
-<span class="cm">// Saída: 12345678910</span>
-<span class="cm">// O bloco executa pelo menos uma vez, mesmo se condição for falsa</span></code></pre>
+} while ($i <= 10);
+// Saída: 12345678910
+// O bloco executa pelo menos uma vez, mesmo se condição for falsa</code></pre>
 
       <h3>for — número fixo de iterações</h3>
-      <pre><code><span class="cm">// Sintaxe: for (inicialização; condição; incremento)</span>
-<span class="kw">for</span> ($i = <span class="num">1</span>; $i <= <span class="num">10</span>; $i++) {
+      <pre><code class="language-php">// Sintaxe: for (inicialização; condição; incremento)
+for ($i = 1; $i <= 10; $i++) {
     echo $i;
 }
-<span class="cm">// Saída: 12345678910</span>
+// Saída: 12345678910
 
-<span class="cm">// Sintaxe alternativa com endfor</span>
-<span class="kw">for</span> ($i = <span class="num">1</span>; $i <= <span class="num">5</span>; $i++):
-    echo $i . <span class="str">" "</span>;
-<span class="kw">endfor</span>;</code></pre>
+// Sintaxe alternativa com endfor
+for ($i = 1; $i <= 5; $i++):
+    echo $i . " ";
+endfor;</code></pre>
 
       <h3>continue e break</h3>
-      <pre><code><span class="cm">// continue — pula para a próxima iteração</span>
-<span class="kw">for</span> ($i = <span class="num">1</span>; $i <= <span class="num">10</span>; $i++) {
-    <span class="kw">if</span> ($i >= <span class="num">3</span> && $i <= <span class="num">6</span>) <span class="kw">continue</span>;
-    echo $i . <span class="str">" "</span>;
+      <pre><code class="language-php">// continue — pula para a próxima iteração
+for ($i = 1; $i <= 10; $i++) {
+    if ($i >= 3 && $i <= 6) continue;
+    echo $i . " ";
 }
-<span class="cm">// Saída: 1 2 7 8 9 10</span>
+// Saída: 1 2 7 8 9 10
 
-<span class="cm">// break — encerra o laço imediatamente</span>
-<span class="kw">for</span> ($i = <span class="num">1</span>; $i <= <span class="num">10</span>; $i++) {
-    <span class="kw">if</span> ($i === <span class="num">6</span>) <span class="kw">break</span>;
-    echo $i . <span class="str">" "</span>;
+// break — encerra o laço imediatamente
+for ($i = 1; $i <= 10; $i++) {
+    if ($i === 6) break;
+    echo $i . " ";
 }
-<span class="cm">// Saída: 1 2 3 4 5</span></code></pre>
+// Saída: 1 2 3 4 5</code></pre>
 
       <div class="callout warning">
         <strong>Práticas Modernas — Estruturas de Controle PHP</strong>
         <p><strong>match (PHP 8.0+):</strong> substitui <code>switch</code> com comparação estrita (<code>===</code>), retorna valor e não precisa de <code>break</code>.</p>
-        <pre><code>$conceito = <span class="str">"B"</span>;
-$msg = <span class="kw">match</span>($conceito) {
-    <span class="str">"A"</span>      => <span class="str">"Excelente"</span>,
-    <span class="str">"B"</span>      => <span class="str">"Plenamente aprovado"</span>,
-    <span class="str">"C"</span>      => <span class="str">"Aprovado"</span>,
-    <span class="kw">default</span> => <span class="str">"Reprovado"</span>,
+        <pre><code class="language-php">$conceito = "B";
+$msg = match($conceito) {
+    "A"      => "Excelente",
+    "B"      => "Plenamente aprovado",
+    "C"      => "Aprovado",
+    default => "Reprovado",
 };
-echo $msg; <span class="cm">// Plenamente aprovado</span></code></pre>
+echo $msg; // Plenamente aprovado</code></pre>
         <p><strong>Null coalescing <code>??</code> (PHP 7+):</strong> retorna o lado esquerdo se não for <code>null</code>, caso contrário o lado direito — evita verificações manuais com isset.</p>
-        <pre><code>$nome = $_GET[<span class="str">'nome'</span>] ?? <span class="str">"Visitante"</span>;</code></pre>
+        <pre><code class="language-php">$nome = $_GET['nome'] ?? "Visitante";</code></pre>
         <p><strong>Null coalescing assignment <code>??=</code> (PHP 7.4+):</strong> atribui apenas se o lado esquerdo for <code>null</code>.</p>
-        <pre><code>$usuario[<span class="str">'perfil'</span>] ??= <span class="str">"padrão"</span>;</code></pre>
+        <pre><code class="language-php">$usuario['perfil'] ??= "padrão";</code></pre>
       </div>
 
       <div class="callout tip">
@@ -1621,147 +1621,147 @@ echo $msg; <span class="cm">// Plenamente aprovado</span></code></pre>
 
       <h3>Arrays</h3>
       <p>Um array é uma coleção de pares chave-valor. Índices numéricos começam em zero. O PHP permite tipos misturados no mesmo array.</p>
-      <pre><code><span class="cm">// Sintaxe moderna (PHP 5.4+) — preferida</span>
-$cores = [<span class="str">"Amarelo"</span>, <span class="str">"Verde"</span>, <span class="str">"Vermelho"</span>];
+      <pre><code class="language-php">// Sintaxe moderna (PHP 5.4+) — preferida
+$cores = ["Amarelo", "Verde", "Vermelho"];
 
-<span class="cm">// Sintaxe antiga</span>
-$cores = <span class="fn">array</span>(<span class="str">"Amarelo"</span>, <span class="str">"Verde"</span>, <span class="str">"Vermelho"</span>);
+// Sintaxe antiga
+$cores = array("Amarelo", "Verde", "Vermelho");
 
-<span class="cm">// Acesso pelo índice (começa em 0)</span>
-echo $cores[<span class="num">0</span>]; <span class="cm">// Amarelo</span>
-echo $cores[<span class="num">2</span>]; <span class="cm">// Vermelho</span>
+// Acesso pelo índice (começa em 0)
+echo $cores[0]; // Amarelo
+echo $cores[2]; // Vermelho
 
-<span class="cm">// Índice manual</span>
-$cores = [<span class="num">1</span> => <span class="str">"Amarelo"</span>, <span class="num">2</span> => <span class="str">"Azul"</span>];
-echo $cores[<span class="num">1</span>]; <span class="cm">// Amarelo</span>
+// Índice manual
+$cores = [1 => "Amarelo", 2 => "Azul"];
+echo $cores[1]; // Amarelo
 
-<span class="cm">// Inserção dinâmica (índice automático)</span>
+// Inserção dinâmica (índice automático)
 $lista = [];
-$lista[] = <span class="str">"item1"</span>;
-$lista[] = <span class="str">"item2"</span>;</code></pre>
+$lista[] = "item1";
+$lista[] = "item2";</code></pre>
 
       <h3>Arrays Associativos</h3>
       <p>Usam strings como chaves — mais legíveis que índices numéricos.</p>
-      <pre><code>$endereco = [
-    <span class="str">"rua"</span>    => <span class="str">"Av. Brasil"</span>,
-    <span class="str">"numero"</span> => <span class="str">"100"</span>,
-    <span class="str">"cidade"</span> => <span class="str">"São Paulo"</span>,
+      <pre><code class="language-php">$endereco = [
+    "rua"    => "Av. Brasil",
+    "numero" => "100",
+    "cidade" => "São Paulo",
 ];
 
-echo $endereco[<span class="str">"rua"</span>];    <span class="cm">// Av. Brasil</span>
-echo $endereco[<span class="str">"cidade"</span>]; <span class="cm">// São Paulo</span></code></pre>
+echo $endereco["rua"];    // Av. Brasil
+echo $endereco["cidade"]; // São Paulo</code></pre>
 
       <h3>Arrays Multidimensionais</h3>
       <p>Arrays dentro de arrays. A notação usa múltiplos índices em sequência.</p>
-      <pre><code>$curso = [
-    <span class="str">"PHP"</span> => [
-        <span class="str">"disciplina"</span> => <span class="str">"Programação em PHP"</span>,
-        <span class="str">"CH"</span>         => <span class="num">60</span>,
+      <pre><code class="language-php">$curso = [
+    "PHP" => [
+        "disciplina" => "Programação em PHP",
+        "CH"         => 60,
     ],
-    <span class="str">"C"</span> => [
-        <span class="str">"disciplina"</span> => <span class="str">"Programação em C"</span>,
-        <span class="str">"CH"</span>         => <span class="num">80</span>,
+    "C" => [
+        "disciplina" => "Programação em C",
+        "CH"         => 80,
     ],
 ];
 
-echo $curso[<span class="str">"PHP"</span>][<span class="str">"disciplina"</span>]; <span class="cm">// Programação em PHP</span>
-echo $curso[<span class="str">"C"</span>][<span class="str">"CH"</span>];          <span class="cm">// 80</span></code></pre>
+echo $curso["PHP"]["disciplina"]; // Programação em PHP
+echo $curso["C"]["CH"];          // 80</code></pre>
 
       <h3>foreach</h3>
-      <pre><code><span class="cm">// Percorrer somente valores</span>
-<span class="kw">foreach</span> ($cores <span class="kw">as</span> $cor) {
-    echo $cor . <span class="str">" "</span>;
+      <pre><code class="language-php">// Percorrer somente valores
+foreach ($cores as $cor) {
+    echo $cor . " ";
 }
 
-<span class="cm">// Percorrer chave e valor</span>
-<span class="kw">foreach</span> ($endereco <span class="kw">as</span> $chave => $valor) {
-    echo <span class="str">"$chave: $valor\n"</span>;
+// Percorrer chave e valor
+foreach ($endereco as $chave => $valor) {
+    echo "$chave: $valor\n";
 }
 
-<span class="cm">// Percorrer array multidimensional com list()</span>
-<span class="kw">foreach</span> ($alunos <span class="kw">as</span> [$nome, $nota]) {
-    echo <span class="str">"$nome: $nota\n"</span>;
+// Percorrer array multidimensional com list()
+foreach ($alunos as [$nome, $nota]) {
+    echo "$nome: $nota\n";
 }</code></pre>
 
       <h3>Funções</h3>
-      <pre><code><span class="cm">// Definição básica</span>
-<span class="kw">function</span> <span class="fn">somar</span>($a, $b) {
-    <span class="kw">return</span> $a + $b;
+      <pre><code class="language-php">// Definição básica
+function somar($a, $b) {
+    return $a + $b;
 }
-echo <span class="fn">somar</span>(<span class="num">3</span>, <span class="num">4</span>); <span class="cm">// 7</span>
+echo somar(3, 4); // 7
 
-<span class="cm">// Tipo de retorno explícito</span>
-<span class="kw">function</span> <span class="fn">dividir</span>($a, $b): <span class="kw">float</span> {
-    <span class="kw">return</span> $a / $b;
+// Tipo de retorno explícito
+function dividir($a, $b): float {
+    return $a / $b;
 }
 
-<span class="cm">// Parâmetro com valor padrão</span>
-<span class="kw">function</span> <span class="fn">potencia</span>($base, $exp = <span class="num">2</span>): <span class="kw">float</span> {
-    <span class="kw">return</span> $base ** $exp;
+// Parâmetro com valor padrão
+function potencia($base, $exp = 2): float {
+    return $base ** $exp;
 }
-echo <span class="fn">potencia</span>(<span class="num">3</span>);    <span class="cm">// 9 (usa exp=2)</span>
-echo <span class="fn">potencia</span>(<span class="num">3</span>, <span class="num">3</span>); <span class="cm">// 27</span>
+echo potencia(3);    // 9 (usa exp=2)
+echo potencia(3, 3); // 27
 
-<span class="cm">// Passagem por referência (&)</span>
-<span class="kw">function</span> <span class="fn">incrementar</span>(&$n) { $n++; }
-$x = <span class="num">5</span>;
-<span class="fn">incrementar</span>($x);
-echo $x; <span class="cm">// 6</span></code></pre>
+// Passagem por referência (&)
+function incrementar(&$n) { $n++; }
+$x = 5;
+incrementar($x);
+echo $x; // 6</code></pre>
 
       <h3>Funções Variádicas</h3>
       <p>Recebem número indeterminado de argumentos via <code>...$args</code> (PHP 5.6+).</p>
-      <pre><code><span class="kw">function</span> <span class="fn">somar</span>(...$nums): <span class="kw">float</span> {
-    $total = <span class="num">0</span>;
-    <span class="kw">foreach</span> ($nums <span class="kw">as</span> $n) $total += $n;
-    <span class="kw">return</span> $total;
+      <pre><code class="language-php">function somar(...$nums): float {
+    $total = 0;
+    foreach ($nums as $n) $total += $n;
+    return $total;
 }
-echo <span class="fn">somar</span>(<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>); <span class="cm">// 10</span></code></pre>
+echo somar(1, 2, 3, 4); // 10</code></pre>
 
       <h3>Funções Anônimas</h3>
       <p>Funções sem nome — podem ser atribuídas a variáveis ou passadas como callback. Note o <code>;</code> após o fechamento da chave.</p>
-      <pre><code><span class="cm">// Atribuída a variável</span>
-$dobro = <span class="kw">function</span>($n) { <span class="kw">return</span> $n * <span class="num">2</span>; };
-echo $dobro(<span class="num">5</span>); <span class="cm">// 10</span>
+      <pre><code class="language-php">// Atribuída a variável
+$dobro = function($n) { return $n * 2; };
+echo $dobro(5); // 10
 
-<span class="cm">// Como callback em usort (ordenar array)</span>
-$jogadores = [[<span class="str">"Ana"</span>, <span class="num">95</span>], [<span class="str">"Bob"</span>, <span class="num">80</span>], [<span class="str">"Cia"</span>, <span class="num">88</span>]];
-<span class="fn">usort</span>($jogadores, <span class="kw">function</span>($a, $b) {
-    <span class="kw">return</span> $b[<span class="num">1</span>] - $a[<span class="num">1</span>]; <span class="cm">// decrescente por nota</span>
+// Como callback em usort (ordenar array)
+$jogadores = [["Ana", 95], ["Bob", 80], ["Cia", 88]];
+usort($jogadores, function($a, $b) {
+    return $b[1] - $a[1]; // decrescente por nota
 });
-<span class="cm">// [[Ana, 95], [Cia, 88], [Bob, 80]]</span></code></pre>
+// [[Ana, 95], [Cia, 88], [Bob, 80]]</code></pre>
 
       <h3>Operações com Data e Hora</h3>
-      <pre><code><span class="cm">// date() — captura data do servidor</span>
-echo <span class="fn">date</span>(<span class="str">"d/m/Y"</span>);       <span class="cm">// ex: 21/04/2026</span>
-echo <span class="fn">date</span>(<span class="str">"H:i:s"</span>);       <span class="cm">// ex: 14:30:00</span>
-echo <span class="fn">date</span>(<span class="str">"d/m/Y H:i"</span>);   <span class="cm">// ex: 21/04/2026 14:30</span>
+      <pre><code class="language-php">// date() — captura data do servidor
+echo date("d/m/Y");       // ex: 21/04/2026
+echo date("H:i:s");       // ex: 14:30:00
+echo date("d/m/Y H:i");   // ex: 21/04/2026 14:30
 
-<span class="cm">// DateTime — manipulação orientada a objetos</span>
-$hoje = <span class="kw">new</span> DateTime();
-$outra = <span class="kw">new</span> DateTime(<span class="str">"2025-01-01"</span>);
+// DateTime — manipulação orientada a objetos
+$hoje = new DateTime();
+$outra = new DateTime("2025-01-01");
 
-<span class="cm">// Adicionar período: P=período, 1M=1 mês, 1D=1 dia</span>
-$hoje-><span class="fn">add</span>(<span class="kw">new</span> DateInterval(<span class="str">"P1M1D"</span>));
+// Adicionar período: P=período, 1M=1 mês, 1D=1 dia
+$hoje->add(new DateInterval("P1M1D"));
 
-<span class="cm">// Subtrair período: 1Y=1 ano</span>
-$hoje-><span class="fn">sub</span>(<span class="kw">new</span> DateInterval(<span class="str">"P1Y"</span>));
+// Subtrair período: 1Y=1 ano
+$hoje->sub(new DateInterval("P1Y"));
 
-<span class="cm">// Diferença entre datas</span>
-$diff = $hoje-><span class="fn">diff</span>($outra);
-echo $diff-><span class="fn">format</span>(<span class="str">"%R%a dias"</span>); <span class="cm">// ex: +365 dias</span></code></pre>
+// Diferença entre datas
+$diff = $hoje->diff($outra);
+echo $diff->format("%R%a dias"); // ex: +365 dias</code></pre>
       <p>Configure o fuso horário no <code>php.ini</code>: <code>date.timezone = America/Sao_Paulo</code>. Reinicie o Apache após alterar.</p>
 
       <div class="callout warning">
         <strong>Práticas Modernas — Arrays, Funções e Datas PHP</strong>
         <p><strong>Arrow functions <code>fn=&gt;</code> (PHP 7.4+):</strong> sintaxe compacta para funções anônimas com uma expressão — captura automaticamente variáveis do escopo externo.</p>
-        <pre><code>$multiplicador = <span class="num">3</span>;
-$triplicar = <span class="kw">fn</span>($n) => $n * $multiplicador;
-echo $triplicar(<span class="num">5</span>); <span class="cm">// 15</span></code></pre>
+        <pre><code class="language-php">$multiplicador = 3;
+$triplicar = fn($n) => $n * $multiplicador;
+echo $triplicar(5); // 15</code></pre>
         <p><strong>Named arguments (PHP 8.0+):</strong> passa parâmetros pelo nome — ignora a ordem e torna o código mais legível.</p>
-        <pre><code>echo <span class="fn">substr</span>(string: <span class="str">"Hello World"</span>, offset: <span class="num">6</span>, length: <span class="num">5</span>); <span class="cm">// World</span></code></pre>
+        <pre><code class="language-javascript">echo substr(string: "Hello World", offset: 6, length: 5); // World</code></pre>
         <p><strong>array_map / array_filter / array_reduce:</strong> funções de alta ordem para transformar arrays sem loops explícitos.</p>
-        <pre><code>$dobros = <span class="fn">array_map</span>(<span class="kw">fn</span>($n) => $n * <span class="num">2</span>, [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>]); <span class="cm">// [2, 4, 6]</span>
-$pares  = <span class="fn">array_filter</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>], <span class="kw">fn</span>($n) => $n % <span class="num">2</span> === <span class="num">0</span>); <span class="cm">// [2, 4]</span></code></pre>
+        <pre><code class="language-php">$dobros = array_map(fn($n) => $n * 2, [1, 2, 3]); // [2, 4, 6]
+$pares  = array_filter([1, 2, 3, 4], fn($n) => $n % 2 === 0); // [2, 4]</code></pre>
         <p><strong>DateTimeImmutable (PHP 5.5+):</strong> versão imutável do DateTime — cada operação retorna um novo objeto, evitando efeitos colaterais.</p>
         <p><strong>Carbon:</strong> biblioteca popular para datas (usada no Laravel) — adiciona métodos fluentes como <code>Carbon::now()->addWeeks(2)</code>.</p>
       </div>
@@ -1795,7 +1795,7 @@ $pares  = <span class="fn">array_filter</span>([<span class="num">1</span>, <spa
 
       <h3>Formulários HTML + PHP — o ciclo</h3>
       <p>Formulários são a principal interface entre o usuário e o servidor web. O HTML monta o formulário; o PHP processa os dados recebidos no servidor. Cada campo do formulário vira uma chave no array <code>$_GET</code> ou <code>$_POST</code>.</p>
-      <pre><code><span class="cm">&lt;!-- HTML: formulário envia para si mesmo via POST --&gt;</span>
+      <pre><code>&lt;!-- HTML: formulário envia para si mesmo via POST --&gt;
 &lt;form name="cadastro" method="post" action="cadastro.php"&gt;
   &lt;input type="text" name="nome" /&gt;
   &lt;input type="email" name="email" /&gt;
@@ -1821,55 +1821,55 @@ $pares  = <span class="fn">array_filter</span>([<span class="num">1</span>, <spa
       </table>
 
       <h3>Receber e verificar dados</h3>
-      <pre><code><span class="cm">// Verificar se o formulário foi submetido</span>
-<span class="kw">if</span> (<span class="fn">isset</span>($_POST[<span class="str">'enviar'</span>]) && !<span class="fn">empty</span>($_POST)) {
+      <pre><code class="language-php">// Verificar se o formulário foi submetido
+if (isset($_POST['enviar']) && !empty($_POST)) {
 
-    <span class="cm">// Ler campos individuais com valor padrão se ausente (null)</span>
-    $nome  = <span class="fn">isset</span>($_POST[<span class="str">'nome'</span>])  ? $_POST[<span class="str">'nome'</span>]  : <span class="kw">null</span>;
-    $email = <span class="fn">isset</span>($_POST[<span class="str">'email'</span>]) ? $_POST[<span class="str">'email'</span>] : <span class="kw">null</span>;
+    // Ler campos individuais com valor padrão se ausente (null)
+    $nome  = isset($_POST['nome'])  ? $_POST['nome']  : null;
+    $email = isset($_POST['email']) ? $_POST['email'] : null;
 
-    <span class="cm">// PHP 7+ — forma mais curta com null coalescing</span>
-    $nome  = $_POST[<span class="str">'nome'</span>]  ?? <span class="kw">null</span>;
-    $email = $_POST[<span class="str">'email'</span>] ?? <span class="kw">null</span>;
+    // PHP 7+ — forma mais curta com null coalescing
+    $nome  = $_POST['nome']  ?? null;
+    $email = $_POST['email'] ?? null;
 
-    <span class="cm">// Percorrer todos os campos do POST</span>
-    <span class="kw">foreach</span> ($_POST <span class="kw">as</span> $chave => $valor) {
-        echo <span class="str">"$chave: $valor&lt;br&gt;"</span>;
+    // Percorrer todos os campos do POST
+    foreach ($_POST as $chave => $valor) {
+        echo "$chave: $valor&lt;br&gt;";
     }
 }</code></pre>
 
       <div class="callout">
         <strong>Campos checkbox e radio</strong>
         <p>Campos <code>checkbox</code> e <code>radio</code> <strong>não são enviados</strong> quando nenhuma opção está marcada — o índice nem existe no <code>$_POST</code>. Use sempre <code>isset()</code> antes de acessar:</p>
-        <pre><code>$aceite = <span class="fn">isset</span>($_POST[<span class="str">'aceite'</span>]) ? <span class="str">"Sim"</span> : <span class="str">"Não"</span>;</code></pre>
+        <pre><code class="language-php">$aceite = isset($_POST['aceite']) ? "Sim" : "Não";</code></pre>
         <p>Para checkbox com múltipla seleção, declare o name como array no HTML: <code>name="estados[]"</code>. O PHP receberá um array em <code>$_POST['estados']</code> — percorra com <code>foreach</code>.</p>
       </div>
 
       <h3>Tratamento e validação de dados</h3>
-      <pre><code><span class="cm">// Remover tags HTML e PHP (proteção contra XSS básico)</span>
-$nome = <span class="fn">strip_tags</span>($_POST[<span class="str">'nome'</span>] ?? <span class="str">''</span>);
+      <pre><code class="language-php">// Remover tags HTML e PHP (proteção contra XSS básico)
+$nome = strip_tags($_POST['nome'] ?? '');
 
-<span class="cm">// Limpar todos os campos de uma vez</span>
-<span class="kw">foreach</span> ($_POST <span class="kw">as</span> $k => $v) {
-    $_POST[$k] = <span class="fn">strip_tags</span>($v);
+// Limpar todos os campos de uma vez
+foreach ($_POST as $k => $v) {
+    $_POST[$k] = strip_tags($v);
 }
 
-<span class="cm">// Verificar se é numérico (aceita ponto, não vírgula)</span>
-<span class="kw">if</span> (!<span class="fn">is_numeric</span>($_POST[<span class="str">'idade'</span>])) {
-    $erros[] = <span class="str">"Idade deve ser numérica"</span>;
+// Verificar se é numérico (aceita ponto, não vírgula)
+if (!is_numeric($_POST['idade'])) {
+    $erros[] = "Idade deve ser numérica";
 }
 
-<span class="cm">// Sanitizar — extrair apenas inteiros e sinais + -</span>
-$idade = <span class="fn">filter_var</span>($_POST[<span class="str">'idade'</span>], FILTER_SANITIZE_NUMBER_INT);
+// Sanitizar — extrair apenas inteiros e sinais + -
+$idade = filter_var($_POST['idade'], FILTER_SANITIZE_NUMBER_INT);
 
-<span class="cm">// Validar e-mail</span>
-<span class="kw">if</span> (!<span class="fn">filter_var</span>($_POST[<span class="str">'email'</span>], FILTER_VALIDATE_EMAIL)) {
-    $erros[] = <span class="str">"E-mail inválido"</span>;
+// Validar e-mail
+if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    $erros[] = "E-mail inválido";
 }
 
-<span class="cm">// Verificar se campo obrigatório está preenchido</span>
-<span class="kw">if</span> (<span class="fn">empty</span>(<span class="fn">trim</span>($_POST[<span class="str">'nome'</span>] ?? <span class="str">''</span>))) {
-    $erros[] = <span class="str">"Nome obrigatório"</span>;
+// Verificar se campo obrigatório está preenchido
+if (empty(trim($_POST['nome'] ?? ''))) {
+    $erros[] = "Nome obrigatório";
 }</code></pre>
 
       <h3>filter_var — principais filtros</h3>
@@ -1943,71 +1943,71 @@ $idade = <span class="fn">filter_var</span>($_POST[<span class="str">'idade'</sp
       </table>
 
       <h3>Conexão com PDO</h3>
-      <pre><code><span class="cm">// funcoes.php — conexão PDO reutilizável</span>
-<span class="kw">function</span> <span class="fn">conecta_bd</span>() {
-    <span class="kw">try</span> {
-        $pdo = <span class="kw">new</span> PDO(
-            <span class="str">"mysql:host=localhost;dbname=ua14;charset=utf8"</span>,
-            <span class="str">"root"</span>,
-            <span class="str">""</span>
+      <pre><code class="language-php">// funcoes.php — conexão PDO reutilizável
+function conecta_bd() {
+    try {
+        $pdo = new PDO(
+            "mysql:host=localhost;dbname=ua14;charset=utf8",
+            "root",
+            ""
         );
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        <span class="kw">return</span> $pdo;
-    } <span class="kw">catch</span> (PDOException $e) {
-        <span class="kw">die</span>(<span class="str">"Erro de conexão: "</span> . $e->getMessage());
+        return $pdo;
+    } catch (PDOException $e) {
+        die("Erro de conexão: " . $e->getMessage());
     }
 }</code></pre>
 
       <h3>INSERT — gravar novo registro</h3>
-      <pre><code><span class="cm">// inclui.php — usando prepared statement (evita SQL injection)</span>
-<span class="fn">require_once</span> <span class="str">"inicia.php"</span>;
+      <pre><code class="language-php">// inclui.php — usando prepared statement (evita SQL injection)
+require_once "inicia.php";
 
-$titulo = $_POST[<span class="str">'titulo'</span>] ?? <span class="kw">null</span>;
-$autor  = $_POST[<span class="str">'autor'</span>]  ?? <span class="kw">null</span>;
+$titulo = $_POST['titulo'] ?? null;
+$autor  = $_POST['autor']  ?? null;
 
-<span class="kw">if</span> (<span class="fn">empty</span>($titulo) || <span class="fn">empty</span>($autor)) {
-    <span class="kw">die</span>(<span class="str">"Preencha todos os campos."</span>);
+if (empty($titulo) || empty($autor)) {
+    die("Preencha todos os campos.");
 }
 
-$pdo  = <span class="fn">conecta_bd</span>();
-$stmt = $pdo-><span class="fn">prepare</span>(<span class="str">"INSERT INTO livros (titulo, autor) VALUES (:titulo, :autor)"</span>);
-$ok   = $stmt-><span class="fn">execute</span>([<span class="str">':titulo'</span> => $titulo, <span class="str">':autor'</span> => $autor]);
+$pdo  = conecta_bd();
+$stmt = $pdo->prepare("INSERT INTO livros (titulo, autor) VALUES (:titulo, :autor)");
+$ok   = $stmt->execute([':titulo' => $titulo, ':autor' => $autor]);
 
-<span class="kw">if</span> ($ok) {
-    <span class="fn">header</span>(<span class="str">"Location: index.php"</span>);
-} <span class="kw">else</span> {
-    echo <span class="str">"Erro ao incluir."</span>;
+if ($ok) {
+    header("Location: index.php");
+} else {
+    echo "Erro ao incluir.";
 }</code></pre>
 
       <h3>SELECT — listar registros</h3>
-      <pre><code><span class="cm">// index.php — buscar e exibir todos os registros</span>
-$pdo   = <span class="fn">conecta_bd</span>();
-$total = $pdo-><span class="fn">query</span>(<span class="str">"SELECT COUNT(*) FROM livros"</span>)-><span class="fn">fetchColumn</span>();
-$stmt  = $pdo-><span class="fn">query</span>(<span class="str">"SELECT * FROM livros ORDER BY titulo"</span>);
+      <pre><code class="language-sql">// index.php — buscar e exibir todos os registros
+$pdo   = conecta_bd();
+$total = $pdo->query("SELECT COUNT(*) FROM livros")->fetchColumn();
+$stmt  = $pdo->query("SELECT * FROM livros ORDER BY titulo");
 
-<span class="kw">while</span> ($row = $stmt-><span class="fn">fetch</span>(PDO::FETCH_ASSOC)) {
-    echo $row[<span class="str">'titulo'</span>] . <span class="str">" — "</span> . $row[<span class="str">'autor'</span>] . <span class="str">"&lt;br&gt;"</span>;
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    echo $row['titulo'] . " — " . $row['autor'] . "&lt;br&gt;";
 }</code></pre>
 
       <h3>UPDATE — alterar registro</h3>
-      <pre><code><span class="cm">// altera.php — atualizar campos de um registro específico</span>
-$cod   = $_POST[<span class="str">'cod_livro'</span>] ?? <span class="kw">null</span>;
-$titulo = $_POST[<span class="str">'titulo'</span>]   ?? <span class="kw">null</span>;
+      <pre><code class="language-sql">// altera.php — atualizar campos de um registro específico
+$cod   = $_POST['cod_livro'] ?? null;
+$titulo = $_POST['titulo']   ?? null;
 
-$pdo  = <span class="fn">conecta_bd</span>();
-$stmt = $pdo-><span class="fn">prepare</span>(<span class="str">"UPDATE livros SET titulo = :titulo WHERE cod_livro = :cod"</span>);
-$ok   = $stmt-><span class="fn">execute</span>([<span class="str">':titulo'</span> => $titulo, <span class="str">':cod'</span> => $cod]);
+$pdo  = conecta_bd();
+$stmt = $pdo->prepare("UPDATE livros SET titulo = :titulo WHERE cod_livro = :cod");
+$ok   = $stmt->execute([':titulo' => $titulo, ':cod' => $cod]);
 
-<span class="kw">if</span> ($ok) <span class="fn">header</span>(<span class="str">"Location: index.php"</span>);</code></pre>
+if ($ok) header("Location: index.php");</code></pre>
 
       <h3>DELETE — excluir registro</h3>
-      <pre><code><span class="cm">// exclui.php — sempre use WHERE para não apagar tudo!</span>
-$cod = $_GET[<span class="str">'cod'</span>] ?? <span class="kw">null</span>;
+      <pre><code class="language-sql">// exclui.php — sempre use WHERE para não apagar tudo!
+$cod = $_GET['cod'] ?? null;
 
-$pdo  = <span class="fn">conecta_bd</span>();
-$stmt = $pdo-><span class="fn">prepare</span>(<span class="str">"DELETE FROM livros WHERE cod_livro = :cod"</span>);
-$stmt-><span class="fn">execute</span>([<span class="str">':cod'</span> => $cod]);
-<span class="fn">header</span>(<span class="str">"Location: index.php"</span>);</code></pre>
+$pdo  = conecta_bd();
+$stmt = $pdo->prepare("DELETE FROM livros WHERE cod_livro = :cod");
+$stmt->execute([':cod' => $cod]);
+header("Location: index.php");</code></pre>
 
       <div class="callout warning">
         <strong>Práticas Modernas — CRUD PHP/MySQL</strong>
@@ -2057,13 +2057,13 @@ $stmt-><span class="fn">execute</span>([<span class="str">':cod'</span> => $cod]
 
       <h3>Composer — o gerenciador de dependências PHP</h3>
       <p>O Composer é ao PHP o que o npm é ao Node.js. Ele baixa, instala e gerencia pacotes e suas dependências automaticamente via arquivo <code>composer.json</code>.</p>
-      <pre><code><span class="cm"># Instalar uma dependência</span>
+      <pre><code># Instalar uma dependência
 composer require vendor/pacote
 
-<span class="cm"># Instalar dependências do projeto (composer.json existente)</span>
+# Instalar dependências do projeto (composer.json existente)
 composer install
 
-<span class="cm"># Atualizar dependências</span>
+# Atualizar dependências
 composer update</code></pre>
 
       <h3>Arquitetura MVC</h3>
@@ -2085,15 +2085,15 @@ View → (exibe para) → Usuário</code></pre>
       <h3>Estrutura de projeto Zend Skeleton (referência)</h3>
       <pre><code>/projeto/
 ├── config/
-│   └── modules.config.php   <span class="cm">← rotas de cada módulo</span>
+│   └── modules.config.php   ← rotas de cada módulo
 ├── module/
 │   └── Application/
 │       ├── src/
-│       │   └── Controller/  <span class="cm">← controllers</span>
-│       │   └── Model/       <span class="cm">← models / entidades</span>
-│       └── view/            <span class="cm">← arquivos .phtml (View)</span>
+│       │   └── Controller/  ← controllers
+│       │   └── Model/       ← models / entidades
+│       └── view/            ← arquivos .phtml (View)
 └── public/
-    └── index.php            <span class="cm">← ponto de entrada</span></code></pre>
+    └── index.php            ← ponto de entrada</code></pre>
       <p>Arquivos de View no Zend usam extensão <code>.phtml</code>. O arquivo <code>module.config.php</code> define as rotas que o Controller recebe.</p>
 
       <div class="callout warning">
@@ -2145,15 +2145,15 @@ View → (exibe para) → Usuário</code></pre>
       </table>
 
       <h3>Fluxo de login com MVC</h3>
-      <pre><code><span class="cm">// Estrutura de pastas básica</span>
+      <pre><code>// Estrutura de pastas básica
 /exemplo_mvc/
-├── index.php         <span class="cm">← ponto de entrada, dispara o Controller</span>
+├── index.php         ← ponto de entrada, dispara o Controller
 ├── Controller/
-│   └── controller.php <span class="cm">← recebe dados, chama Model, envia para View</span>
+│   └── controller.php ← recebe dados, chama Model, envia para View
 ├── Model/
-│   └── model.php      <span class="cm">← valida usuário e senha, regras de negócio</span>
+│   └── model.php      ← valida usuário e senha, regras de negócio
 └── View/
-    └── view.php       <span class="cm">← exibe formulário de login e resultado</span></code></pre>
+    └── view.php       ← exibe formulário de login e resultado</code></pre>
 
       <h3>Vantagens do MVC</h3>
       <ul>
@@ -2165,27 +2165,27 @@ View → (exibe para) → Usuário</code></pre>
 
       <h3>Padrão Singleton</h3>
       <p>Garante que uma classe seja instanciada <strong>uma única vez</strong> em toda a execução — o mesmo objeto é retornado sempre que requisitado. Usado principalmente em: conexão com banco de dados, classes de configuração, gerenciadores de log.</p>
-      <pre><code><span class="cm">// conexao.php — Singleton para conexão com banco</span>
-<span class="kw">class</span> Conexao {
-    <span class="kw">private static</span> $instancia = <span class="kw">null</span>;  <span class="cm">// armazena a única instância</span>
+      <pre><code class="language-sql">// conexao.php — Singleton para conexão com banco
+class Conexao {
+    private static $instancia = null;  // armazena a única instância
 
-    <span class="kw">private function</span> <span class="fn">__construct</span>() {}  <span class="cm">// private: impede new Conexao()</span>
+    private function __construct() {}  // private: impede new Conexao()
 
-    <span class="kw">public static function</span> <span class="fn">getInstance</span>() {
-        <span class="kw">if</span> (self::$instancia === <span class="kw">null</span>) {
-            self::$instancia = <span class="kw">new</span> PDO(
-                <span class="str">"mysql:host=localhost;dbname=ua16"</span>,
-                <span class="str">"root"</span>, <span class="str">""</span>
+    public static function getInstance() {
+        if (self::$instancia === null) {
+            self::$instancia = new PDO(
+                "mysql:host=localhost;dbname=ua16",
+                "root", ""
             );
         }
-        <span class="kw">return</span> self::$instancia;
+        return self::$instancia;
     }
 }
 
-<span class="cm">// Uso: nunca new Conexao() — sempre via ::getInstance()</span>
-$pdo = Conexao::<span class="fn">getInstance</span>();
-$stmt = $pdo-><span class="fn">query</span>(<span class="str">"SELECT * FROM alunos"</span>);
-echo $stmt-><span class="fn">fetch</span>()[<span class="str">'nome'</span>];</code></pre>
+// Uso: nunca new Conexao() — sempre via ::getInstance()
+$pdo = Conexao::getInstance();
+$stmt = $pdo->query("SELECT * FROM alunos");
+echo $stmt->fetch()['nome'];</code></pre>
 
       <h3>Regras do Singleton</h3>
       <ol>
@@ -2196,33 +2196,33 @@ echo $stmt-><span class="fn">fetch</span>()[<span class="str">'nome'</span>];</c
 
       <h3>Padrão Factory</h3>
       <p>Cria objetos de forma dinâmica sem que o chamador precise conhecer a classe concreta — a classe "fábrica" decide qual classe instanciar com base em um parâmetro de entrada.</p>
-      <pre><code><span class="cm">// Interface define o contrato</span>
-<span class="kw">interface</span> Veiculo {
-    <span class="kw">public function</span> <span class="fn">modelo</span>(): string;
+      <pre><code class="language-php">// Interface define o contrato
+interface Veiculo {
+    public function modelo(): string;
 }
 
-<span class="cm">// Classes concretas implementam a interface</span>
-<span class="kw">class</span> Renault <span class="kw">implements</span> Veiculo {
-    <span class="kw">public function</span> <span class="fn">modelo</span>(): string { <span class="kw">return</span> <span class="str">"Renault Sandero"</span>; }
+// Classes concretas implementam a interface
+class Renault implements Veiculo {
+    public function modelo(): string { return "Renault Sandero"; }
 }
-<span class="kw">class</span> Ford <span class="kw">implements</span> Veiculo {
-    <span class="kw">public function</span> <span class="fn">modelo</span>(): string { <span class="kw">return</span> <span class="str">"Ford Ka"</span>; }
+class Ford implements Veiculo {
+    public function modelo(): string { return "Ford Ka"; }
 }
 
-<span class="cm">// Classe Factory decide qual instanciar</span>
-<span class="kw">class</span> VeiculoFactory {
-    <span class="kw">public static function</span> <span class="fn">criar</span>(string $marca): Veiculo {
-        <span class="kw">return match</span>($marca) {
-            <span class="str">"Renault"</span>   => <span class="kw">new</span> Renault(),
-            <span class="str">"Ford"</span>      => <span class="kw">new</span> Ford(),
-            <span class="kw">default</span>    => <span class="kw">throw new</span> \InvalidArgumentException(<span class="str">"Marca desconhecida"</span>),
+// Classe Factory decide qual instanciar
+class VeiculoFactory {
+    public static function criar(string $marca): Veiculo {
+        return match($marca) {
+            "Renault"   => new Renault(),
+            "Ford"      => new Ford(),
+            default    => throw new \InvalidArgumentException("Marca desconhecida"),
         };
     }
 }
 
-<span class="cm">// Uso: o chamador não sabe nem precisa saber qual classe é criada</span>
-$v = VeiculoFactory::<span class="fn">criar</span>(<span class="str">"Ford"</span>);
-echo $v-><span class="fn">modelo</span>(); <span class="cm">// Ford Ka</span></code></pre>
+// Uso: o chamador não sabe nem precisa saber qual classe é criada
+$v = VeiculoFactory::criar("Ford");
+echo $v->modelo(); // Ford Ka</code></pre>
 
       <h3>Benefícios do Factory</h3>
       <ul>
@@ -2267,5 +2267,7 @@ echo $v-><span class="fn">modelo</span>(); <span class="cm">// Ford Ka</span></c
 </div>
 
 <script src="../assets/js/nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>

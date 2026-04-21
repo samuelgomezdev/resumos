@@ -822,7 +822,7 @@
         <tr><td><strong>Header</strong></td><td>Não</td><td>Informações adicionais (autenticação, transação, rastreamento). Quando presente, deve ser o primeiro filho do Envelope.</td></tr>
         <tr><td><strong>Body</strong></td><td>Sim</td><td>Contém o payload real da mensagem (a operação e seus parâmetros). Pode incluir o elemento <code>Fault</code> para reportar erros.</td></tr>
       </table>
-      <pre><code><span class="cm">&lt;!-- Estrutura completa de uma mensagem SOAP --&gt;</span>
+      <pre><code>&lt;!-- Estrutura completa de uma mensagem SOAP --&gt;
 &lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
   &lt;soap:Header&gt;
     &lt;auth:token xmlns:auth="..."&gt;abc123&lt;/auth:token&gt;
@@ -1685,27 +1685,27 @@
       </ul>
 
       <h4>SELECT — anatomia completa</h4>
-      <pre><code><span class="kw">SELECT</span>   nome, telefone          <span class="cm">-- O Quê: colunas desejadas</span>
-<span class="kw">FROM</span>     Cliente                 <span class="cm">-- De Onde: tabela fonte</span>
-<span class="kw">WHERE</span>    mes_aniversario = <span class="str">'janeiro'</span> <span class="cm">-- O Filtro: condição</span>
-<span class="kw">ORDER BY</span> nome <span class="kw">ASC</span>;               <span class="cm">-- Ordenação</span></code></pre>
+      <pre><code class="language-sql">SELECT   nome, telefone          -- O Quê: colunas desejadas
+FROM     Cliente                 -- De Onde: tabela fonte
+WHERE    mes_aniversario = 'janeiro' -- O Filtro: condição
+ORDER BY nome ASC;               -- Ordenação</code></pre>
 
       <h4>INSERT, UPDATE, DELETE</h4>
-      <pre><code><span class="cm">-- Inserir</span>
-<span class="kw">INSERT INTO</span> Cliente (nome, email, telefone)
-<span class="kw">VALUES</span> (<span class="str">'Marcus'</span>, <span class="str">'marcus@email.com'</span>, <span class="str">'(47) 99999-0000'</span>);
+      <pre><code class="language-sql">-- Inserir
+INSERT INTO Cliente (nome, email, telefone)
+VALUES ('Marcus', 'marcus@email.com', '(47) 99999-0000');
 
-<span class="cm">-- Atualizar</span>
-<span class="kw">UPDATE</span> Produto <span class="kw">SET</span> preco = <span class="num">29.90</span> <span class="kw">WHERE</span> id = <span class="num">15</span>;
+-- Atualizar
+UPDATE Produto SET preco = 29.90 WHERE id = 15;
 
-<span class="cm">-- Deletar (sempre com WHERE!)</span>
-<span class="kw">DELETE FROM</span> Pedido <span class="kw">WHERE</span> status = <span class="str">'cancelado'</span> <span class="kw">AND</span> data < <span class="str">'2023-01-01'</span>;</code></pre>
+-- Deletar (sempre com WHERE!)
+DELETE FROM Pedido WHERE status = 'cancelado' AND data < '2023-01-01';</code></pre>
 
       <h4>JOIN — unindo tabelas</h4>
-      <pre><code><span class="kw">SELECT</span> c.nome, p.data, p.status
-<span class="kw">FROM</span>   Cliente c
-<span class="kw">INNER JOIN</span> Pedido p <span class="kw">ON</span> c.id = p.id_cliente
-<span class="kw">WHERE</span>  p.status = <span class="str">'pendente'</span>;</code></pre>
+      <pre><code class="language-sql">SELECT c.nome, p.data, p.status
+FROM   Cliente c
+INNER JOIN Pedido p ON c.id = p.id_cliente
+WHERE  p.status = 'pendente';</code></pre>
 
       <table>
         <tr><th>Tipo de JOIN</th><th>Retorna</th></tr>
@@ -1932,33 +1932,33 @@
       </table>
 
       <h3>Exemplo completo — Sistema Imobiliário</h3>
-      <pre><code><span class="kw">CREATE TABLE</span> Proprietario (
-  id_proprietario <span class="fn">INT</span>          <span class="kw">PRIMARY KEY AUTO_INCREMENT</span>,
-  nome            <span class="fn">VARCHAR</span>(<span class="num">100</span>) <span class="kw">NOT NULL</span>,
-  cpf             <span class="fn">VARCHAR</span>(<span class="num">14</span>)  <span class="kw">UNIQUE NOT NULL</span>,
-  telefone        <span class="fn">VARCHAR</span>(<span class="num">18</span>),
-  email           <span class="fn">VARCHAR</span>(<span class="num">100</span>) <span class="kw">NOT NULL</span>
+      <pre><code class="language-sql">CREATE TABLE Proprietario (
+  id_proprietario INT          PRIMARY KEY AUTO_INCREMENT,
+  nome            VARCHAR(100) NOT NULL,
+  cpf             VARCHAR(14)  UNIQUE NOT NULL,
+  telefone        VARCHAR(18),
+  email           VARCHAR(100) NOT NULL
 );
 
-<span class="kw">CREATE TABLE</span> Imovel (
-  id_imovel       <span class="fn">INT</span>            <span class="kw">PRIMARY KEY AUTO_INCREMENT</span>,
-  endereco        <span class="fn">VARCHAR</span>(<span class="num">255</span>)   <span class="kw">NOT NULL</span>,
-  tipo            <span class="fn">VARCHAR</span>(<span class="num">50</span>)    <span class="kw">NOT NULL</span>,
-  preco           <span class="fn">DECIMAL</span>(<span class="num">12</span>,<span class="num">2</span>)  <span class="kw">NOT NULL CHECK</span> (preco > <span class="num">0</span>),
-  disponivel      <span class="fn">BOOLEAN</span>        <span class="kw">DEFAULT</span> <span class="kw">TRUE</span>,
-  id_proprietario <span class="fn">INT</span>            <span class="kw">NOT NULL</span>,
-  <span class="kw">FOREIGN KEY</span> (id_proprietario) <span class="kw">REFERENCES</span> Proprietario(id_proprietario)
+CREATE TABLE Imovel (
+  id_imovel       INT            PRIMARY KEY AUTO_INCREMENT,
+  endereco        VARCHAR(255)   NOT NULL,
+  tipo            VARCHAR(50)    NOT NULL,
+  preco           DECIMAL(12,2)  NOT NULL CHECK (preco > 0),
+  disponivel      BOOLEAN        DEFAULT TRUE,
+  id_proprietario INT            NOT NULL,
+  FOREIGN KEY (id_proprietario) REFERENCES Proprietario(id_proprietario)
 );
 
-<span class="kw">CREATE TABLE</span> Contrato (
-  id_contrato  <span class="fn">INT</span>  <span class="kw">PRIMARY KEY AUTO_INCREMENT</span>,
-  tipo         <span class="fn">ENUM</span>(<span class="str">'venda'</span>, <span class="str">'aluguel'</span>) <span class="kw">NOT NULL</span>,
-  data_inicio  <span class="fn">DATE</span> <span class="kw">NOT NULL</span>,
-  data_fim     <span class="fn">DATE</span>,
-  valor        <span class="fn">DECIMAL</span>(<span class="num">12</span>,<span class="num">2</span>) <span class="kw">NOT NULL</span>,
-  id_imovel    <span class="fn">INT</span>  <span class="kw">NOT NULL REFERENCES</span> Imovel(id_imovel),
-  id_cliente   <span class="fn">INT</span>  <span class="kw">NOT NULL REFERENCES</span> Cliente(id_cliente),
-  id_corretor  <span class="fn">INT</span>  <span class="kw">REFERENCES</span> Corretor(id_corretor)
+CREATE TABLE Contrato (
+  id_contrato  INT  PRIMARY KEY AUTO_INCREMENT,
+  tipo         ENUM('venda', 'aluguel') NOT NULL,
+  data_inicio  DATE NOT NULL,
+  data_fim     DATE,
+  valor        DECIMAL(12,2) NOT NULL,
+  id_imovel    INT  NOT NULL REFERENCES Imovel(id_imovel),
+  id_cliente   INT  NOT NULL REFERENCES Cliente(id_cliente),
+  id_corretor  INT  REFERENCES Corretor(id_corretor)
 );</code></pre>
 
       <h3>Elementos do MER</h3>
@@ -2059,5 +2059,7 @@
 </div>
 
 <script src="../assets/js/nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>
