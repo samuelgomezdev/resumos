@@ -1,0 +1,131 @@
+<h2>Qual direção de design?</h2>
+<p class="subtitle">Clique na opção que mais combina com o que você tem em mente</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="stripe-dark" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#05050f;border-radius:8px;padding:20px;font-family:Inter,sans-serif;min-height:200px;position:relative;overflow:hidden;">
+        <!-- orb -->
+        <div style="position:absolute;width:200px;height:200px;background:radial-gradient(circle,rgba(99,102,241,0.35),transparent);border-radius:50%;top:-60px;right:-40px;"></div>
+        <div style="position:absolute;width:150px;height:150px;background:radial-gradient(circle,rgba(139,92,246,0.2),transparent);border-radius:50%;bottom:-40px;left:20px;"></div>
+        <!-- header -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;position:relative;z-index:1;">
+          <span style="color:#6366f1;font-weight:800;font-size:14px;letter-spacing:-0.3px;">Resumos<span style="color:#818cf8">.dev</span></span>
+          <span style="color:#64748b;font-size:11px;">GitHub →</span>
+        </div>
+        <!-- hero -->
+        <div style="position:relative;z-index:1;">
+          <div style="display:inline-block;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:20px;padding:3px 10px;font-size:10px;color:#818cf8;font-weight:600;letter-spacing:0.5px;margin-bottom:10px;">ADS · UNIVALI</div>
+          <div style="font-size:26px;font-weight:800;letter-spacing:-1px;line-height:1.1;background:linear-gradient(135deg,#f1f5f9,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;">Resumos de ADS</div>
+          <div style="color:#64748b;font-size:11px;line-height:1.5;max-width:220px;margin-bottom:16px;">Compilado de anotações e resumos das disciplinas de ADS.</div>
+          <!-- mini cards -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:10px;">
+              <div style="width:18px;height:18px;background:rgba(99,102,241,0.2);border-radius:5px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;">
+                <div style="width:10px;height:10px;background:#6366f1;border-radius:2px;"></div>
+              </div>
+              <div style="color:#e2e8f0;font-size:10px;font-weight:700;">Software Design</div>
+              <div style="color:#475569;font-size:9px;margin-top:2px;">UML · Arquitetura</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:10px;">
+              <div style="width:18px;height:18px;background:rgba(52,211,153,0.15);border-radius:5px;margin-bottom:6px;"></div>
+              <div style="color:#e2e8f0;font-size:10px;font-weight:700;">Responsive Web</div>
+              <div style="color:#475569;font-size:9px;margin-top:2px;">HTML · CSS · JS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Stripe Dark</h3>
+      <p>Fundo preto, gradiente roxo-azul, tipografia ultra-bold com letter-spacing negativo, orbs animados no hero. Visual mais premium e dramático.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="apple-light" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#f5f5f7;border-radius:8px;padding:20px;font-family:-apple-system,Inter,sans-serif;min-height:200px;">
+        <!-- header -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+          <span style="color:#1d1d1f;font-weight:700;font-size:14px;letter-spacing:-0.3px;">Resumos<span style="color:#0071e3">.dev</span></span>
+          <span style="color:#6e6e73;font-size:11px;">GitHub →</span>
+        </div>
+        <!-- hero -->
+        <div style="margin-bottom:16px;">
+          <div style="font-size:24px;font-weight:800;letter-spacing:-1px;line-height:1.1;color:#1d1d1f;margin-bottom:8px;">Resumos de <span style="color:#0071e3;">ADS</span></div>
+          <div style="color:#6e6e73;font-size:11px;line-height:1.5;max-width:220px;margin-bottom:14px;">Compilado de anotações e resumos das disciplinas de ADS.</div>
+          <div style="display:flex;gap:6px;margin-bottom:16px;">
+            <span style="background:white;border:1px solid #d2d2d7;border-radius:20px;padding:2px 8px;font-size:9px;color:#6e6e73;">ADS · UNIVALI</span>
+            <span style="background:white;border:1px solid #d2d2d7;border-radius:20px;padding:2px 8px;font-size:9px;color:#6e6e73;">Open Source</span>
+          </div>
+          <!-- mini cards -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <div style="background:white;border-radius:10px;padding:10px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+              <div style="width:18px;height:18px;background:#e8f0fe;border-radius:5px;margin-bottom:6px;"></div>
+              <div style="color:#1d1d1f;font-size:10px;font-weight:700;">Software Design</div>
+              <div style="color:#6e6e73;font-size:9px;margin-top:2px;">UML · Arquitetura</div>
+            </div>
+            <div style="background:white;border-radius:10px;padding:10px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+              <div style="width:18px;height:18px;background:#e6f9f0;border-radius:5px;margin-bottom:6px;"></div>
+              <div style="color:#1d1d1f;font-size:10px;font-weight:700;">Responsive Web</div>
+              <div style="color:#6e6e73;font-size:9px;margin-top:2px;">HTML · CSS · JS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Apple Light</h3>
+      <p>Fundo branco/cinza claro, tipografia apple.com, cards brancos com sombra suave, azul Apple como accent. Clean e minimalista.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="hybrid" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#09090e;border-radius:8px;padding:20px;font-family:Inter,sans-serif;min-height:200px;position:relative;overflow:hidden;">
+        <!-- subtle gradient top -->
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(88,166,255,0.06) 0%,transparent 50%,rgba(99,102,241,0.04) 100%);pointer-events:none;"></div>
+        <!-- header -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;position:relative;z-index:1;">
+          <span style="color:#58a6ff;font-weight:800;font-size:14px;letter-spacing:-0.3px;">Resumos<span style="color:#3fb950">.dev</span></span>
+          <span style="color:#6e7681;font-size:11px;">GitHub →</span>
+        </div>
+        <!-- hero -->
+        <div style="position:relative;z-index:1;">
+          <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(88,166,255,0.1);border:1px solid rgba(88,166,255,0.2);border-radius:20px;padding:3px 10px;font-size:10px;color:#58a6ff;font-weight:500;margin-bottom:10px;">
+            <div style="width:5px;height:5px;background:#3fb950;border-radius:50%;"></div>
+            ADS · UNIVALI
+          </div>
+          <div style="font-size:26px;font-weight:800;letter-spacing:-1.5px;line-height:1.05;margin-bottom:8px;">
+            <span style="color:#f0f6fc;">Resumos de </span>
+            <span style="background:linear-gradient(90deg,#58a6ff,#3fb950);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">ADS</span>
+          </div>
+          <div style="color:#8b949e;font-size:11px;line-height:1.5;max-width:220px;margin-bottom:14px;">Compilado de anotações e resumos das disciplinas de ADS.</div>
+          <!-- mini cards glass -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px;backdrop-filter:blur(4px);">
+              <div style="display:inline-block;background:rgba(88,166,255,0.15);border-radius:5px;padding:4px;margin-bottom:6px;">
+                <div style="width:10px;height:10px;background:#58a6ff;border-radius:2px;opacity:0.8;"></div>
+              </div>
+              <div style="color:#e6edf3;font-size:10px;font-weight:700;letter-spacing:-0.2px;">Software Design</div>
+              <div style="color:#6e7681;font-size:9px;margin-top:2px;">UML · Arquitetura</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px;backdrop-filter:blur(4px);">
+              <div style="display:inline-block;background:rgba(63,185,80,0.15);border-radius:5px;padding:4px;margin-bottom:6px;">
+                <div style="width:10px;height:10px;background:#3fb950;border-radius:2px;opacity:0.8;"></div>
+              </div>
+              <div style="color:#e6edf3;font-size:10px;font-weight:700;letter-spacing:-0.2px;">Responsive Web</div>
+              <div style="color:#6e7681;font-size:9px;margin-top:2px;">HTML · CSS · JS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Hybrid Premium</h3>
+      <p>Dark mode mas com espaçamento Apple + gradientes Stripe. Cards com efeito glass, tipografia bold com tracking negativo. Meu favorito para este projeto.</p>
+    </div>
+  </div>
+
+</div>

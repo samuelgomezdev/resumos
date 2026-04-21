@@ -4,128 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pensamento Computacional — Resumos ADS</title>
+  <meta name="description" content="Resumos de Pensamento Computacional: algoritmos, lógica, linguagem C, estruturas de controle, vetores e matrizes." />
+  <meta name="theme-color" content="#070710" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/base.css">
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .back {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color .2s;
-    }
-    .back::before { content: "← "; }
-    .back:hover { color: var(--text); }
-    header h1 { font-size: 1.1rem; font-weight: 700; }
-
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem 1.5rem;
-      text-align: center;
-    }
-
-    .wip-icon {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-10px); }
-    }
-
-    h2 {
-      font-size: clamp(1.4rem, 4vw, 2rem);
-      font-weight: 800;
-      margin-bottom: .75rem;
-    }
-
-    .desc {
-      color: var(--muted);
-      font-size: .95rem;
-      max-width: 480px;
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: .5rem;
-      margin-bottom: 2.5rem;
-    }
-    .chip {
-      background: rgba(255,255,255,.05);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: .75rem;
-      padding: .3rem .75rem;
-      border-radius: 20px;
-    }
-
-    .progress-bar {
-      width: 280px;
-      height: 6px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 0 auto 1rem;
-    }
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      border-radius: 999px;
-    }
-    .progress-label {
-      font-size: .72rem;
-      color: var(--muted);
-    }
-
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      margin-top: 2.5rem;
-      padding: .6rem 1.25rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: .85rem;
-      transition: border-color .2s, color .2s;
-    }
-    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: .8rem;
-    }
-    footer a { color: var(--accent); text-decoration: none; }
-  </style>
+  <link rel="stylesheet" href="../assets/css/discipline.css">
 </head>
 <body>
 
@@ -134,34 +19,46 @@
   <h1>Pensamento Computacional</h1>
 </header>
 
-<main>
-  <div class="wip-icon">🧠</div>
-  <h2>Resumo em construção</h2>
-  <p class="desc">
-    Os resumos desta disciplina ainda estão sendo preparados.
-    Em breve você vai encontrar aqui conteúdo sobre algoritmos, lógica de programação,
-    linguagem C, estruturas de controle, vetores e matrizes.
+<main class="wip">
+
+  <div class="wip-icon" style="background: rgba(247,129,102,0.1); color: var(--accent3);">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/>
+    </svg>
+  </div>
+
+  <h2 class="wip-title">Resumos em preparação</h2>
+
+  <p class="wip-desc">
+    Os resumos desta disciplina estão sendo elaborados. Em breve você encontrará conteúdo completo sobre fundamentos de algoritmos, lógica de programação, linguagem C, vetores e matrizes.
   </p>
 
-  <div class="chips">
-    <span class="chip">Algoritmos</span>
-    <span class="chip">Linguagem C</span>
-    <span class="chip">Lógica</span>
-    <span class="chip">Vetores</span>
-    <span class="chip">Estruturas de Controle</span>
+  <div class="wip-chips">
+    <span class="wip-chip">Algoritmos</span>
+    <span class="wip-chip">Linguagem C</span>
+    <span class="wip-chip">Lógica</span>
+    <span class="wip-chip">Estruturas de Controle</span>
+    <span class="wip-chip">Vetores e Matrizes</span>
+    <span class="wip-chip">Funções</span>
   </div>
 
-  <div class="progress-bar">
-    <div class="progress-fill"></div>
+  <div class="wip-progress">
+    <div class="wip-progress-fill" style="width: 10%;"></div>
   </div>
-  <p class="progress-label">0% — em breve</p>
+  <p class="wip-progress-label">10% — em breve</p>
 
-  <a class="back-btn" href="../index.html">← Voltar ao início</a>
+  <a class="wip-back" href="../index.html">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    Voltar ao início
+  </a>
+
 </main>
 
 <footer>
   Feito com ♥ para facilitar os estudos &mdash;
-  <a href="https://github.com/marcusteixeirabr/resumos" target="_blank" rel="noopener">@marcusteixeirabr</a>
+  <a href="https://github.com/DigitalBoostofc/resumos" target="_blank" rel="noopener">@DigitalBoostofc</a>
 </footer>
 
 </body>
