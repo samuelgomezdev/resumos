@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/discipline.css">
+  <link rel="stylesheet" href="../pagefind/pagefind-ui.css">
 </head>
 <body>
 
@@ -20,12 +21,13 @@
   </button>
   <a class="back" href="../index.html">Início</a>
   <h1>Responsive Web Development</h1>
+  <button class="search-btn" id="search-btn" aria-label="Buscar (Ctrl+K)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><span class="search-btn-label">Buscar</span><kbd>Ctrl K</kbd></button>
 </header>
 <div id="nav-overlay"></div>
 
 <div class="layout">
 
-  <aside id="sidebar">
+  <aside id="sidebar" data-pagefind-ignore>
     <div class="sidebar-group">
       <span class="sidebar-label">HTML</span>
       <a href="#ua1" data-sec="ua1" class="active"><span class="num">UA1</span> HTML — Fundamentos</a>
@@ -59,7 +61,7 @@
     </div>
   </aside>
 
-  <main id="content">
+  <main id="content" data-pagefind-body>
 
     <!-- UA1 -->
     <section id="ua1" class="active">
@@ -2269,5 +2271,47 @@ echo $v->modelo(); // Ford Ka</code></pre>
 <script src="../assets/js/nav.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js"></script>
+
+<!-- Search modal -->
+<div id="search-modal" class="search-modal" role="dialog" aria-modal="true" aria-label="Buscar no site" aria-hidden="true">
+  <div class="search-modal-backdrop" id="search-backdrop"></div>
+  <div class="search-modal-inner">
+    <div id="search"></div>
+  </div>
+</div>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script>
+(function () {
+  var modal   = document.getElementById('search-modal');
+  var btn     = document.getElementById('search-btn');
+  var backdrop = document.getElementById('search-backdrop');
+  var pf;
+
+  function openSearch() {
+    if (!pf) pf = new PagefindUI({ element: '#search', showSubResults: true, resetStyles: false });
+    modal.removeAttribute('aria-hidden');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () {
+      var inp = modal.querySelector('input');
+      if (inp) inp.focus();
+    }, 60);
+  }
+
+  function closeSearch() {
+    modal.setAttribute('aria-hidden', 'true');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (btn)      btn.addEventListener('click', openSearch);
+  if (backdrop) backdrop.addEventListener('click', closeSearch);
+
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeSearch();
+  });
+})();
+</script>
 </body>
 </html>

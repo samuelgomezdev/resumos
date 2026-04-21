@@ -1,0 +1,3 @@
+site = "."
+output_path = "pagefind"
+glob = "{index.html,software-design/index.html,responsive-web/index.html,engenharia-requisitos/index.html,pensamento-computacional/index.html}"
