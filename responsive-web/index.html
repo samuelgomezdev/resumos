@@ -1349,6 +1349,7 @@ echo json_encode($clientes);
     <!-- ===== UA10 ===== -->
     <section id="ua10">
       <h2>UA10 — PHP: Introdução</h2>
+      <p class="subtitle">PHP é uma linguagem de script server-side que gera HTML dinamicamente no servidor. É a base do desenvolvimento web back-end em ambiente LAMP/XAMPP e motor de sistemas como WordPress.</p>
 
       <h3>O que é PHP?</h3>
       <p>PHP (PHP: Hypertext Preprocessor) é uma linguagem de script server-side de tipagem fraca e dinâmica. Os arquivos PHP usam a extensão <code>.php</code> e são executados no servidor, não no navegador. O código PHP fica entre as tags <code>&lt;?php</code> e <code>?&gt;</code>.</p>
@@ -1475,6 +1476,7 @@ $arr = [<span class="num">1</span>, <span class="str">"dois"</span>, <span class
     <!-- ===== UA11 ===== -->
     <section id="ua11">
       <h2>UA11 — PHP: Estruturas de Controle</h2>
+      <p class="subtitle">Operadores, condicionais, laços e funções são os blocos de construção de qualquer lógica de programação em PHP. Dominar esses elementos é a base para criar scripts dinâmicos e processamento de dados no servidor.</p>
 
       <h3>Operadores relacionais e lógicos</h3>
       <table>
@@ -1615,6 +1617,7 @@ echo $msg; <span class="cm">// Plenamente aprovado</span></code></pre>
     <!-- ===== UA12 ===== -->
     <section id="ua12">
       <h2>UA12 — PHP: Outros Comandos</h2>
+      <p class="subtitle">Arrays, funções de string, manipulação de datas e includes compõem o arsenal de comandos PHP para organizar código, reutilizar lógica e manipular dados de forma eficiente.</p>
 
       <h3>Arrays</h3>
       <p>Um array é uma coleção de pares chave-valor. Índices numéricos começam em zero. O PHP permite tipos misturados no mesmo array.</p>
@@ -1788,6 +1791,7 @@ $pares  = <span class="fn">array_filter</span>([<span class="num">1</span>, <spa
     <!-- ===== UA13 ===== -->
     <section id="ua13">
       <h2>UA13 — PHP: Formulários</h2>
+      <p class="subtitle">Formulários são a principal interface entre o usuário e o servidor. O PHP captura os dados enviados via GET ou POST, valida, sanitiza e responde dinamicamente — é o ciclo fundamental de qualquer aplicação web interativa.</p>
 
       <h3>Formulários HTML + PHP — o ciclo</h3>
       <p>Formulários são a principal interface entre o usuário e o servidor web. O HTML monta o formulário; o PHP processa os dados recebidos no servidor. Cada campo do formulário vira uma chave no array <code>$_GET</code> ou <code>$_POST</code>.</p>
@@ -1913,6 +1917,7 @@ $idade = <span class="fn">filter_var</span>($_POST[<span class="str">'idade'</sp
     <!-- ===== UA14 ===== -->
     <section id="ua14">
       <h2>UA14 — PHP: CRUD com MySQL</h2>
+      <p class="subtitle">CRUD (Create, Read, Update, Delete) é o ciclo completo de persistência de dados. Com PHP e MySQL via PDO, é possível construir sistemas completos de gestão de registros com formulários, listagens e exclusão segura.</p>
 
       <h3>O que é CRUD?</h3>
       <p>CRUD é o conjunto fundamental de operações de persistência de dados em qualquer sistema:</p>
@@ -2037,6 +2042,7 @@ $stmt-><span class="fn">execute</span>([<span class="str">':cod'</span> => $cod]
     <!-- ===== UA15 ===== -->
     <section id="ua15">
       <h2>UA15 — PHP: Frameworks</h2>
+      <p class="subtitle">Frameworks encapsulam boas práticas e padronizam o desenvolvimento — em vez de reinventar a roda, o desenvolvedor segue uma estrutura já testada. O MVC é o padrão central na maioria dos frameworks PHP modernos.</p>
 
       <h3>O que é um framework?</h3>
       <p>Um framework é um pacote de software com conjuntos de classes, funções e procedimentos que padronizam e agilizam o desenvolvimento. Em vez de implementar tudo do zero, o desenvolvedor segue a estrutura e as convenções do framework, beneficiando-se de componentes testados por especialistas.</p>
@@ -2124,6 +2130,7 @@ View → (exibe para) → Usuário</code></pre>
     <!-- ===== UA16 ===== -->
     <section id="ua16">
       <h2>UA16 — PHP: Padrões de Projeto</h2>
+      <p class="subtitle">Design patterns são soluções consagradas para problemas recorrentes de organização de código. MVC, Singleton e Factory são os padrões centrais ensinados no curso e amplamente usados em frameworks PHP.</p>
 
       <h3>O que são Design Patterns?</h3>
       <p>Padrões de projeto (design patterns) são soluções reutilizáveis para problemas comuns de organização e arquitetura de software. Não existe um padrão ideal para todos os casos — cada um tem finalidade e características específicas. Os mais cobrados no curso são <strong>MVC</strong>, <strong>Singleton</strong> e <strong>Factory</strong>.</p>

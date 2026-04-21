@@ -503,9 +503,15 @@
         <p>Nenhuma estimativa é exata. O valor está no processo: ele força a equipe a pensar sobre o problema antes de codificar. A melhor abordagem combina planejamento formal e métodos ágeis, ajustando o equilíbrio conforme o tipo de projeto (Sommerville, 2011).</p>
       </div>
 
-      <div class="callout green">
-        <strong>Dica de prova — identifique os elementos do plano</strong>
-        <p>Quando o enunciado descrever <em>como o usuário vai interagir com o sistema</em> ou <em>como o software se comunicará com outros sistemas via APIs</em>, o elemento em foco é o <strong>Projeto de Interface</strong>. Se falar de <em>equipe e papéis</em>, é <strong>Organização do Projeto</strong>. Se falar de <em>o que pode dar errado</em>, é <strong>Análise de Riscos</strong>.</p>
+      <div class="callout tip">
+        <strong>Dicas para a Prova</strong>
+        <ul>
+          <li>Quando o enunciado descrever <em>como o usuário vai interagir</em> ou <em>como o software se comunicará via APIs</em>, o elemento em foco é o <strong>Projeto de Interface</strong>.</li>
+          <li>Se falar de <em>equipe e papéis</em>, é <strong>Organização do Projeto</strong>. Se falar de <em>o que pode dar errado</em>, é <strong>Análise de Riscos</strong>.</li>
+          <li>As 7 seções do plano de projeto: Introdução, Organização, Análise de Riscos, Requisitos de HW/SW, WBS, Cronograma, Monitoração.</li>
+          <li>Custo de esforço = maior componente do custo de software (engloba o tempo da equipe).</li>
+          <li>WBS: divida tarefas até durarem entre 1 semana e 8–10 semanas.</li>
+        </ul>
       </div>
 
       <h4>Referências bibliográficas desta UA</h4>
@@ -628,9 +634,15 @@
         <tr><td>Matriz de Requisitos</td><td>Rastreabilidade entre requisitos e componentes</td></tr>
       </table>
 
-      <div class="callout green">
-        <strong>Dica de prova — escolha de arquitetura por contexto</strong>
-        <p>Sistema de RH corporativo com acesso interno apenas, alta segurança, servidor central fornecendo interface para terminais → <strong>Cliente-Servidor</strong>. O servidor centraliza os dados críticos; os terminais apenas interagem com o sistema sem armazenar informações sensíveis localmente.</p>
+      <div class="callout tip">
+        <strong>Dicas para a Prova</strong>
+        <ul>
+          <li>Sistema de RH corporativo com acesso interno, servidor central e terminais → <strong>Cliente-Servidor</strong>. O servidor centraliza dados críticos; os terminais apenas interagem.</li>
+          <li>Documento de Especificação de Projeto segue padrão IEEE: 7 seções incluindo Arquitetura, Projeto de Dados, Componente e Interface.</li>
+          <li><strong>Coesão funcional</strong> = melhor nível (todos os elementos contribuem para uma única função). <strong>Coesão coincidental</strong> = pior nível.</li>
+          <li><strong>Acoplamento de conteúdo</strong> = pior nível (um módulo acessa internamente outro). <strong>Acoplamento por mensagem</strong> = melhor.</li>
+          <li>Alta coesão + baixo acoplamento = design de qualidade.</li>
+        </ul>
       </div>
 
       <h4>Referências bibliográficas desta UA</h4>
