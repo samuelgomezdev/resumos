@@ -1549,6 +1549,43 @@
         <p>Nunca execute <code>DELETE FROM tabela</code> sem uma cláusula <code>WHERE</code>. Você apagará todos os registros da tabela. Em produção, isso pode ser irreversível. Sempre teste um <code>SELECT</code> com o mesmo <code>WHERE</code> antes de executar um DELETE ou UPDATE.</p>
       </div>
 
+      <h3>Principais SGBDs e licenças</h3>
+      <table>
+        <tr><th>Banco de Dados</th><th>Licença</th><th>Custo de administração</th><th>Tamanho do projeto</th></tr>
+        <tr><td>MySQL</td><td>Paga</td><td>Baixo</td><td>Pequeno a médio</td></tr>
+        <tr><td>MariaDB</td><td>Gratuita</td><td>Baixo</td><td>Pequeno a médio</td></tr>
+        <tr><td>Microsoft SQL Server (Standard/Enterprise)</td><td>Paga</td><td>Alto</td><td>Médio a grande</td></tr>
+        <tr><td>Microsoft SQL Server (Express)</td><td>Gratuita</td><td>Médio</td><td>Pequeno</td></tr>
+        <tr><td>PostgreSQL</td><td>Gratuita</td><td>Médio</td><td>Médio a grande</td></tr>
+        <tr><td>Oracle</td><td>Paga</td><td>Alto</td><td>Grande</td></tr>
+        <tr><td>MongoDB</td><td>Gratuita</td><td>Alto</td><td>Médio a grande (NoSQL)</td></tr>
+      </table>
+      <p>MongoDB é <strong>não relacional</strong> — não usa SQL. Organiza dados em documentos JSON e oferece velocidade de resposta superior a consultas em cenários de alta escala.</p>
+
+      <h3>Propriedades ACID</h3>
+      <p>Garantem a robustez de transações em banco de dados relacionais:</p>
+      <div class="cards">
+        <div class="card"><h4>Atomicidade</h4><p>A transação é tudo ou nada. Se uma operação falhar no meio, todas as alterações são desfeitas (rollback).</p></div>
+        <div class="card"><h4>Consistência</h4><p>O banco sai de um estado válido e chega a outro estado válido. Regras e constraints são respeitadas.</p></div>
+        <div class="card"><h4>Isolamento</h4><p>Transações concorrentes não interferem entre si. O resultado é como se fossem executadas em série.</p></div>
+        <div class="card"><h4>Durabilidade</h4><p>Uma vez confirmada (commit), a transação persiste mesmo em caso de falha de energia ou crash.</p></div>
+      </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a prova — UA14</strong>
+        <ul>
+          <li>Banco de dados supera planilha em: pesquisa avançada, volume, integridade e automação.</li>
+          <li><strong>Chave primária ideal:</strong> ISBN para livros (número único mundialmente por edição).</li>
+          <li>Tipos de atributos: <code>VARCHAR</code>=texto, <code>INT</code>=inteiro, <code>DATE</code>=data, <code>BOOLEAN</code>=0 ou 1.</li>
+          <li>Em SELECT: <code>SELECT</code> e <code>FROM</code> são obrigatórios; <code>WHERE</code> é <strong>opcional</strong>.</li>
+          <li>Projeto pequeno com orçamento limitado → <strong>MariaDB</strong> (gratuita, baixo custo de administração).</li>
+          <li>MongoDB é não relacional (NoSQL) — não usa SQL.</li>
+          <li>ACID: Atomicidade, Consistência, Isolamento, Durabilidade.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Barboza, F. F. M. <em>Modelagem e Desenvolvimento de Banco de Dados</em>. Porto Alegre: SAGAH, 2018. | Elmasri, R.; Navathe, S. B. <em>Fundamentals of database systems</em>. 4. ed. London: Pearson, 2007.</p>
+
       <div class="section-nav">
         <a href="#" data-sec="ua13" class="prev">Diag. de Sequência</a>
         <a href="#" data-sec="ua15" class="next">DER</a>
@@ -1609,12 +1646,55 @@
         <div class="card"><h4>N:N (Muitos para Muitos)</h4><p>Várias de A se relacionam com várias de B. Exige entidade associativa. Ex.: Pedido ↔ Produto.</p></div>
       </div>
 
+      <h3>MER vs. DER — distinção importante</h3>
+      <table>
+        <tr><th></th><th>MER (Modelo Entidade-Relacionamento)</th><th>DER (Diagrama ER)</th></tr>
+        <tr><td><strong>O que é</strong></td><td>Modelo conceitual e abstrato</td><td>Representação gráfica do MER</td></tr>
+        <tr><td><strong>Nível</strong></td><td>Conceitual — independe de tecnologia</td><td>Lógico/físico — detalha tabelas e atributos</td></tr>
+        <tr><td><strong>Foco</strong></td><td>Estrutura geral dos dados</td><td>Entidades, atributos, relacionamentos em diagrama</td></tr>
+        <tr><td><strong>Propósito</strong></td><td>Comunicação entre equipe e cliente</td><td>Base para implementação do banco</td></tr>
+      </table>
+
+      <h3>Notação de Peter Chen (original)</h3>
+      <table>
+        <tr><th>Figura</th><th>Representa</th></tr>
+        <tr><td>Retângulo</td><td>Entidade</td></tr>
+        <tr><td>Elipse</td><td>Atributo</td></tr>
+        <tr><td>Losango</td><td>Relacionamento</td></tr>
+        <tr><td>"1" e "N" ao lado das entidades</td><td>Cardinalidade</td></tr>
+      </table>
+      <p>Problema: fica visualmente poluído em sistemas com muitas tabelas. Por isso, usa-se hoje a notação <strong>UML</strong>, com atributos <em>dentro</em> do retângulo da entidade.</p>
+
+      <h3>Passos para criar um DER</h3>
+      <ol>
+        <li>Estudar e compreender o negócio do cliente (levantamento de requisitos).</li>
+        <li>Identificar as <strong>entidades</strong> necessárias (ex.: clínica → Cliente, Médico, Remédio, Funcionário, Fornecedor).</li>
+        <li>Definir os <strong>atributos</strong> de cada entidade e marcar chaves primárias.</li>
+        <li>Estabelecer os <strong>relacionamentos</strong> entre entidades (verbo de ação: "cliente <em>agenda</em> consulta").</li>
+        <li>Definir a <strong>cardinalidade</strong> de cada relacionamento (1:1, 1:N, N:N).</li>
+        <li>Identificar se há necessidade de <strong>entidade associativa</strong> (relacionamentos N:N).</li>
+      </ol>
+
       <h3>Exemplo de DER — Loja Virtual</h3>
-      <div class="diagram">  [Cliente] ─1:N─ &lt;realiza&gt; ─N:1─ [Pedido] ─1:N─ &lt;contém&gt; ─N:N─ [Produto]
-                                                 │                         │
-                                            [ItemPedido] (entidade associativa)
-                                            - quantidade
-                                            - preco_unitario</div>
+      <table>
+        <tr><th>Entidade A</th><th>Relacionamento</th><th>Cardinalidade</th><th>Entidade B</th></tr>
+        <tr><td>Cliente</td><td>realiza</td><td>1:N</td><td>Pedido</td></tr>
+        <tr><td>Pedido</td><td>contém</td><td>N:N</td><td>Produto</td></tr>
+        <tr><td colspan="4" style="font-style:italic;color:#888">Relacionamento N:N → entidade associativa ItemPedido (quantidade, preco_unitario)</td></tr>
+      </table>
+
+      <div class="callout tip">
+        <strong>Dicas para a prova — UA15</strong>
+        <ul>
+          <li>DER Peter Chen: entidades = <strong>retângulos</strong>; atributos = elipses; relacionamentos = <strong>losangos</strong>. (Afirmação "entidades = losangos" é FALSA.)</li>
+          <li>O DER é correto quando representa entidades, atributos e relacionamentos antes da implementação — facilita identificar erros.</li>
+          <li>Chave primária: garante unicidade, não aceita nulos, não aceita valores repetidos. Pode ser composta.</li>
+          <li>Relacionamento N:N: uma entidade pode se relacionar com várias instâncias da outra e vice-versa — exige tabela intermediária.</li>
+          <li>MER = conceitual (abstrato); DER = representação gráfica do MER (lógico/físico).</li>
+        </ul>
+      </div>
+
+      <p class="ref">Barboza, F. F. M. <em>Modelagem e Desenvolvimento de Banco de Dados</em>. Porto Alegre: SAGAH, 2018. | Rodrigues, J. Modelo Entidade Relacionamento (MER) e Diagrama Entidade-Relacionamento (DER). DevMedia, 2014.</p>
 
       <div class="section-nav">
         <a href="#" data-sec="ua14" class="prev">Conceitos de BD</a>
@@ -1690,6 +1770,57 @@
   id_corretor  <span class="fn">INT</span>  <span class="kw">REFERENCES</span> Corretor(id_corretor)
 );</code></pre>
 
+      <h3>Elementos do MER</h3>
+      <p>O MER é constituído por três elementos básicos: <strong>entidades</strong>, <strong>atributos</strong> e <strong>relacionamentos</strong>. (Fileto, 2006: "facilitar o projeto do BD, possibilitando especificar a estrutura lógica geral do BD")</p>
+
+      <h3>Tipos de entidades</h3>
+      <table>
+        <tr><th>Tipo</th><th>Definição</th><th>Exemplo</th></tr>
+        <tr><td><strong>Físicas</strong></td><td>Existem no mundo real</td><td>Cliente, Produto, Fornecedor, Funcionário</td></tr>
+        <tr><td><strong>Lógicas</strong></td><td>Nascem da interação entre entidades físicas</td><td>Venda, Matrícula, Relatório, Grupo de usuários</td></tr>
+      </table>
+      <table>
+        <tr><th>Classificação</th><th>Definição</th><th>Exemplo</th></tr>
+        <tr><td><strong>Fortes</strong></td><td>Existem por si mesmas, sem dependência</td><td>Produto em sistema de estoque</td></tr>
+        <tr><td><strong>Fracas</strong></td><td>Dependem de outra entidade para existir</td><td>Fornecedor (depende de Produto existir)</td></tr>
+        <tr><td><strong>Associativas</strong></td><td>Existem para representar relacionamentos com atributos próprios</td><td>"Desconto de compra" entre Fornecedor e Compra</td></tr>
+      </table>
+
+      <h3>Tipos de atributos</h3>
+      <table>
+        <tr><th>Tipo</th><th>Descrição</th><th>Exemplo</th></tr>
+        <tr><td><strong>Descritivo</strong></td><td>Descreve uma característica da entidade</td><td>nome</td></tr>
+        <tr><td><strong>Nominativo</strong></td><td>Descreve e também identifica a entidade como única</td><td>código do cliente</td></tr>
+        <tr><td><strong>Referencial</strong></td><td>Representa a entidade na relação com outra (chave estrangeira)</td><td>CPF do cliente na tabela Venda</td></tr>
+      </table>
+      <table>
+        <tr><th>Classificação</th><th>Descrição</th><th>Exemplo</th></tr>
+        <tr><td><strong>Simples</strong></td><td>Um único atributo define a característica</td><td>nome</td></tr>
+        <tr><td><strong>Composto</strong></td><td>Múltiplos atributos combinados definem uma característica</td><td>endereço = rua + número + bairro + cidade + estado</td></tr>
+      </table>
+      <p><strong>Nota:</strong> campos numéricos são preferidos como chave primária — o banco já indexa a coluna automaticamente, acelerando consultas.</p>
+
+      <h3>Os três níveis do MER</h3>
+      <div class="cards">
+        <div class="card"><h4>Conceitual</h4><p>Visão abstrata e de alto nível. Define entidades e relacionamentos sem preocupação com detalhes técnicos. Linguagem do negócio.</p></div>
+        <div class="card"><h4>Lógico</h4><p>Adapta o modelo conceitual para BD relacional: adiciona atributos, chaves primárias e estrangeiras. Tecnologia-independente.</p></div>
+        <div class="card"><h4>Físico</h4><p>Transforma o modelo lógico em tabelas reais (SQL) em um SGBD específico, com tipos de dados, constraints e índices.</p></div>
+      </div>
+
+      <h3>Exemplo prático — Livraria (MER do zero)</h3>
+      <table>
+        <tr><th>Entidade</th><th>Chave Primária</th><th>Atributos</th></tr>
+        <tr><td>Cliente</td><td>CPF</td><td>Nome, Sobrenome, Telefone, Celular, Endereço, Bairro, Cidade, Estado</td></tr>
+        <tr><td>Livro</td><td>ISBN</td><td>Nome, Autor, Coautor, Estoque, Qtd_páginas, Valor, Fornecedor</td></tr>
+        <tr><td>Vendedor</td><td>ID</td><td>Nome, Comissão, Horário de trabalho</td></tr>
+      </table>
+      <table>
+        <tr><th>Relacionamento</th><th>Cardinalidade</th></tr>
+        <tr><td>Cliente ↔ Livro</td><td>N:N (cliente compra vários livros; livro é comprado por vários clientes)</td></tr>
+        <tr><td>Cliente → Vendedor</td><td>N:1 (cliente é atendido por um vendedor; vendedor atende vários clientes)</td></tr>
+        <tr><td>Livro ↔ Vendedor</td><td>N:N (livro é vendido por vários; vendedor vende vários livros)</td></tr>
+      </table>
+
       <div class="callout green">
         <strong>Checklist de um MER bem feito</strong>
         <p>
@@ -1701,6 +1832,21 @@
           ✓ Nomes consistentes (snake_case, singulares para tabelas)
         </p>
       </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a prova — UA16</strong>
+        <ul>
+          <li><strong>3 elementos do MER:</strong> entidades, atributos e relacionamentos. (Tabelas, consultas e triggers são conceitos SQL, não MER.)</li>
+          <li>Entidades = objetos; atributos = características; relacionamentos = como interagem. Atributos NÃO definem relações entre entidades.</li>
+          <li>Relacionamento correto numa clínica: Paciente –(1:N)– Consulta (cada paciente agenda múltiplas consultas; cada consulta tem um paciente).</li>
+          <li>Entidade forte = existe por si só; entidade fraca = depende de outra; associativa = representa relacionamento com dados próprios.</li>
+          <li>Atributos: descritivo (característica), nominativo (identifica), referencial (FK para outra entidade).</li>
+          <li>3 níveis do MER: conceitual → lógico → físico.</li>
+          <li>MER facilita o desenvolvimento — mas NÃO elimina a necessidade de definir atributos durante a implementação.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Barboza, F. F. M. <em>Modelagem e Desenvolvimento de Banco de Dados</em>. Porto Alegre: SAGAH, 2018. | Fileto, R. O Modelo Entidade-Relacionamento. UFSC, 2006.</p>
 
       <div class="section-nav">
         <a href="#" data-sec="ua15" class="prev">DER</a>
