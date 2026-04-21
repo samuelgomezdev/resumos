@@ -1,22 +1,39 @@
-# Editor
+# ── Editores ────────────────────────────────────────────
 .vscode/
 .idea/
 *.swp
 *.swo
+*.bak
 
-# Claude Code
+# ── Claude Code / ferramentas de agente ─────────────────
 .claude/
+.agents/
+.superpowers/
 
-# OS
+# ── Skills CLI ──────────────────────────────────────────
+skills-lock.json
+
+# ── Sistema Operacional ─────────────────────────────────
 .DS_Store
+.DS_Store?
+._*
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-# Logs
-*.log
-
-# Dependências
+# ── Dependências ────────────────────────────────────────
 node_modules/
 
-# Skills CLI
-.agents/
-skills-lock.json
+# ── Ambiente ────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── PDFs e binários grandes ─────────────────────────────
+*.pdf
+
+# ── Logs e temporários ──────────────────────────────────
+*.log
+*.tmp
+*.temp
+npm-debug.log*
