@@ -172,6 +172,15 @@
         <li><strong>Quando usar:</strong> aplicações Web, sistemas de e-commerce, portais corporativos — qualquer cenário com muitos clientes acessando dados centralizados.</li>
       </ul>
 
+      <h3>Arquitetura Orientada a Serviços (SOA)</h3>
+      <p>A SOA (<em>Service-Oriented Architecture</em>) estrutura o sistema como um conjunto de <strong>serviços independentes e reutilizáveis</strong>, cada um realizando uma função específica e exposto via contrato padronizado. Em vez de uma única aplicação, o sistema é composto por serviços que podem ser descobertos, invocados e combinados (Hirama, 2011).</p>
+      <ul>
+        <li><strong>Vantagem:</strong> reusabilidade e interoperabilidade — um serviço de verificação de crédito pode ser consumido por sistemas distintos sem reescrita. Serviços podem ser escritos em diferentes linguagens e rodar em plataformas heterogêneas.</li>
+        <li><strong>Trade-off:</strong> infraestrutura complexa (ESB — Enterprise Service Bus), dependência de registros de serviço (UDDI), e protocolos verbosos como SOAP/WSDL aumentam o overhead.</li>
+        <li><strong>Quando usar:</strong> integração de múltiplos sistemas legados heterogêneos em grandes organizações que precisam de reuso e agilidade nos negócios.</li>
+      </ul>
+      <p>A SOA é frequentemente apontada como precursora dos microsserviços — a principal diferença é a granularidade: um serviço SOA tende a cobrir um domínio inteiro, enquanto um microsserviço cobre uma única capacidade de negócio (Richards; Ford, 2024).</p>
+
       <div class="callout">
         <strong>Saiba mais — MVC (Model-View-Controller)</strong>
         <p>MVC é um padrão arquitetural que organiza a aplicação em três camadas colaborativas: <strong>Model</strong> (dados e regras de negócio), <strong>View</strong> (apresentação ao usuário) e <strong>Controller</strong> (coordenação entre Model e View). É frequentemente aplicado dentro de uma arquitetura Cliente-Servidor — o servidor implementa Model + Controller enquanto o cliente renderiza a View. Frameworks como Spring MVC, Django e Ruby on Rails popularizaram esse padrão.</p>
@@ -183,6 +192,7 @@
         <tr><td>Monolítica</td><td>Baixo</td><td>Baixa</td><td>Baixa</td><td>Alto</td></tr>
         <tr><td>Em Camadas</td><td>Médio</td><td>Média</td><td>Média</td><td>Médio</td></tr>
         <tr><td>Cliente-Servidor</td><td>Médio</td><td>Média</td><td>Média</td><td>Médio</td></tr>
+        <tr><td>SOA</td><td>Alto</td><td>Média</td><td>Alta</td><td>Médio</td></tr>
         <tr><td>Microsserviços</td><td>Alto</td><td>Alta</td><td>Altíssima</td><td>Baixo</td></tr>
         <tr><td>Orientada a Eventos</td><td>Alto</td><td>Alta</td><td>Altíssima</td><td>Mínimo</td></tr>
       </table>
@@ -234,6 +244,30 @@
         <p>"A arquitetura representa as decisões de design significativas que moldam um sistema, onde significativo é medido pelo custo de mudança." — Robert C. Martin (2019). Decisões arquiteturais erradas se tornam dívida técnica que compromete a evolução do produto — e corrigi-las depois custa muito mais do que acertar no início.</p>
       </div>
 
+      <div class="callout warning">
+        <strong>Práticas Modernas — Arquitetura de Sistemas</strong>
+        <p>O campo evoluiu além dos estilos clássicos ensinados no curso. Algumas tendências relevantes para novos projetos:</p>
+        <ul>
+          <li><strong>Monolito Modular</strong> — o "strangler fig pattern" permite migrar um monolito legado para microsserviços de forma incremental, extraindo um serviço por vez. É o caminho recomendado antes de adotar microsserviços do zero.</li>
+          <li><strong>Serverless / FaaS</strong> — arquiteturas como AWS Lambda e Azure Functions eliminam o gerenciamento de servidores; o desenvolvedor implanta funções individuais que escalam automaticamente. Ideal para workloads pontuais e event-driven.</li>
+          <li><strong>Edge Computing</strong> — processamento distribuído geograficamente próximo ao usuário final (CDN com lógica, Cloudflare Workers). Reduz latência em aplicações globais.</li>
+          <li><strong>Platform Engineering</strong> — times dedicados a construir uma "plataforma interna" (IDP — Internal Developer Platform) que abstrai infraestrutura e padroniza deploys para todos os microsserviços da organização.</li>
+          <li><strong>FinOps na arquitetura</strong> — a escolha arquitetural agora inclui custo operacional em nuvem como critério central. Microsserviços mal dimensionados geram custos muito maiores que um monolito equivalente.</li>
+        </ul>
+      </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a Prova</strong>
+        <ul>
+          <li>Microsserviços <strong>aumentam</strong> a complexidade de desenvolvimento — não a reduzem. Cada serviço tem seu próprio ciclo de vida, pipeline e banco de dados.</li>
+          <li>Arquitetura em camadas: o benefício central é a <strong>separação de responsabilidades</strong> — é possível trocar a camada de interface sem alterar as regras de negócio.</li>
+          <li>A escolha de arquitetura impacta diretamente <strong>eficiência, manutenção e escalabilidade</strong> — não é uma decisão cosmética.</li>
+          <li>Arquitetura orientada a eventos = comunicação <strong>assíncrona</strong> e componentes <strong>desacoplados</strong>. O produtor não precisa conhecer os consumidores.</li>
+          <li>Microsserviços distribuídos permitem <strong>escalabilidade global</strong>, mas introduzem <strong>desafios de latência e consistência entre regiões</strong>.</li>
+          <li>SOA vs. Microsserviços: a principal diferença é a granularidade — serviços SOA cobrem domínios inteiros; microsserviços cobrem uma única capacidade de negócio.</li>
+        </ul>
+      </div>
+
       <h4>Referências bibliográficas desta UA</h4>
       <ul>
         <li>BASS, L.; CLEMENTS, P.; KAZMAN, R. <em>Software Architecture in Practice</em>. 4. ed. Addison-Wesley, 2021.</li>
@@ -241,6 +275,7 @@
         <li>PRESSMAN, R. S.; MAXIM, B. R. <em>Engenharia de Software: Uma Abordagem Profissional</em>. 9. ed. McGraw-Hill, 2021.</li>
         <li>RICHARDS, M.; FORD, N. <em>Fundamentals of Software Architecture</em>. O'Reilly, 2024.</li>
         <li>MARTIN, R. C. <em>Clean Architecture</em>. Prentice Hall, 2019.</li>
+        <li>HIRAMA, K. <em>Engenharia de Software: qualidade e produtividade com tecnologia</em>. LTC, 2011.</li>
       </ul>
 
       <div class="section-nav">
@@ -337,6 +372,30 @@
       <div class="callout green">
         <strong>Modelagem não é burocracia</strong>
         <p>O objetivo não é gerar documentação pela documentação. É criar um entendimento compartilhado. Um diagrama desenhado numa reunião de 30 minutos pode evitar semanas de retrabalho. A escolha de quais diagramas usar fica a critério da necessidade do projeto — pode-se usar todos ou apenas alguns dos que a UML disponibiliza (Sommerville, 2011).</p>
+      </div>
+
+      <div class="callout warning">
+        <strong>Práticas Modernas — Modelagem e UML</strong>
+        <p>Ferramentas e abordagens que complementam ou substituem o uso tradicional da UML nos projetos atuais:</p>
+        <ul>
+          <li><strong>UML como código</strong> — ferramentas como <em>PlantUML</em> e <em>Mermaid.js</em> permitem gerar diagramas a partir de texto puro, versionado em Git junto com o código. Fim do problema de "diagramas desatualizados em PowerPoint".</li>
+          <li><strong>C4 Model (Simon Brown)</strong> — hierarquia de 4 níveis de abstração (Contexto → Container → Componente → Código) que simplifica a comunicação arquitetural sem o overhead da notação UML completa. Amplamente adotado em times ágeis.</li>
+          <li><strong>Architecture Decision Records (ADRs)</strong> — documentos curtos que registram <em>por quê</em> uma decisão arquitetural foi tomada. Substituem grandes documentos de especificação com registros imutáveis e auditáveis.</li>
+          <li><strong>Modelagem ágil</strong> — o manifesto ágil não bane a modelagem; recomenda "just enough design upfront". Diagramas de sequência e componentes continuam valiosos, mas feitos em colaboração, não por um arquiteto isolado.</li>
+          <li><strong>Domain-Driven Design (DDD)</strong> — abordagem que conecta diretamente a modelagem do software ao domínio de negócio. Conceitos como Bounded Context e Ubiquitous Language complementam o que UML representa estruturalmente.</li>
+        </ul>
+      </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a Prova</strong>
+        <ul>
+          <li>Diagrama de atividades = <strong>diagrama de estado</strong> onde todos ou a maioria dos estados representam <strong>execuções de atividades</strong> (fluxo de trabalho).</li>
+          <li>A vantagem de diagramas que tem <strong>relação direta com visão arquitetural</strong> é a <strong>visão mais abrangente do sistema</strong> — permite entender módulos e partes.</li>
+          <li>A <strong>primeira atividade</strong> da fase de projeto é a <strong>representação da arquitetura do sistema</strong> (projeto arquitetural = projeto de alto nível).</li>
+          <li>Entrada da fase de projeto: <strong>especificação de requisitos</strong>. Saída: <strong>modelos e artefatos que documentam as principais decisões tomadas</strong>.</li>
+          <li>Diagrama de sequência: melhor para leitura de <strong>fluxo temporal</strong> de chamadas e documentação formal. Diagrama de comunicação: melhor para <strong>rascunho em quadro branco</strong> (economiza espaço).</li>
+          <li>As três perspectivas de uso da UML (Larman): <strong>conceitual</strong> (mundo real), <strong>especificação</strong> (abstração de software sem comprometimento tecnológico), <strong>implementação</strong> (tecnologia específica).</li>
+        </ul>
       </div>
 
       <h4>Referências bibliográficas desta UA</h4>
