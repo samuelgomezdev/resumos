@@ -166,6 +166,77 @@ td:first-child { color: var(--text); }
 .section-nav a.next::after  { content: " →"; }
 .section-nav a.prev::before { content: "← "; }
 
+/* ── Galeria de slides ── */
+.slide-gallery {
+  margin: 1.5rem 0;
+}
+
+.slide-gallery .gallery-label {
+  font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--accent4); margin-bottom: .75rem; display: block;
+}
+
+.slides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: .75rem;
+}
+
+.slide-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color .2s, transform .2s;
+  background: var(--surface2);
+}
+
+.slide-item:hover {
+  border-color: var(--accent4);
+  transform: translateY(-2px);
+}
+
+.slide-item img {
+  width: 100%; display: block;
+  aspect-ratio: 16/9; object-fit: cover;
+}
+
+.slide-item figcaption {
+  font-size: .72rem; color: var(--muted);
+  padding: .4rem .6rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,.9);
+  align-items: center; justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 92vw; max-height: 88vh; border-radius: var(--radius); }
+.lightbox-close {
+  position: fixed; top: 1.25rem; right: 1.5rem;
+  color: var(--muted); font-size: 1.75rem; cursor: pointer;
+  background: none; border: none; line-height: 1;
+  transition: color .2s;
+}
+.lightbox-close:hover { color: var(--text); }
+.lightbox-prev, .lightbox-next {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  color: var(--muted); font-size: 2rem; cursor: pointer;
+  background: none; border: none; padding: 1rem;
+  transition: color .2s;
+}
+.lightbox-prev:hover, .lightbox-next:hover { color: var(--text); }
+.lightbox-prev { left: .5rem; }
+.lightbox-next { right: .5rem; }
+.lightbox-caption {
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  color: var(--muted); font-size: .8rem; text-align: center;
+  background: rgba(0,0,0,.6); padding: .4rem 1rem; border-radius: 20px;
+}
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
   aside { display: none; }
