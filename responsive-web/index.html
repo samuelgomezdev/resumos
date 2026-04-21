@@ -52,6 +52,10 @@
       <a href="#" data-sec="ua10"><span class="num">UA10</span> PHP — Introdução</a>
       <a href="#" data-sec="ua11"><span class="num">UA11</span> PHP — Estruturas de Controle</a>
       <a href="#" data-sec="ua12"><span class="num">UA12</span> PHP — Outros Comandos</a>
+      <a href="#" data-sec="ua13"><span class="num">UA13</span> PHP — Formulários</a>
+      <a href="#" data-sec="ua14"><span class="num">UA14</span> PHP — CRUD com MySQL</a>
+      <a href="#" data-sec="ua15"><span class="num">UA15</span> PHP — Frameworks</a>
+      <a href="#" data-sec="ua16"><span class="num">UA16</span> PHP — Padrões de Projeto</a>
     </div>
   </aside>
 
@@ -1777,6 +1781,477 @@ $pares  = <span class="fn">array_filter</span>([<span class="num">1</span>, <spa
 
       <div class="section-nav">
         <a href="#" data-sec="ua11" class="prev">PHP — Estruturas de Controle</a>
+        <a href="#" data-sec="ua13" class="next">PHP — Formulários</a>
+      </div>
+    </section>
+
+    <!-- ===== UA13 ===== -->
+    <section id="ua13">
+      <h2>UA13 — PHP: Formulários</h2>
+
+      <h3>Formulários HTML + PHP — o ciclo</h3>
+      <p>Formulários são a principal interface entre o usuário e o servidor web. O HTML monta o formulário; o PHP processa os dados recebidos no servidor. Cada campo do formulário vira uma chave no array <code>$_GET</code> ou <code>$_POST</code>.</p>
+      <pre><code><span class="cm">&lt;!-- HTML: formulário envia para si mesmo via POST --&gt;</span>
+&lt;form name="cadastro" method="post" action="cadastro.php"&gt;
+  &lt;input type="text" name="nome" /&gt;
+  &lt;input type="email" name="email" /&gt;
+  &lt;input type="submit" name="enviar" value="Enviar" /&gt;
+&lt;/form&gt;</code></pre>
+
+      <h3>Atributos essenciais do &lt;form&gt;</h3>
+      <table>
+        <tr><th>Atributo</th><th>Função</th></tr>
+        <tr><td><code>name</code></td><td>Identifica o formulário na página (pode haver múltiplos)</td></tr>
+        <tr><td><code>method</code></td><td>Método HTTP de envio: <code>get</code> ou <code>post</code></td></tr>
+        <tr><td><code>action</code></td><td>URL do script que receberá os dados; sem ele, envia para a própria página</td></tr>
+        <tr><td><code>submit</code></td><td>Botão que dispara a submissão</td></tr>
+      </table>
+
+      <h3>GET vs POST</h3>
+      <table>
+        <tr><th></th><th>GET</th><th>POST</th></tr>
+        <tr><td>Onde os dados ficam</td><td>Na URL: <code>?nome=Ana&amp;email=…</code></td><td>No corpo da requisição — invisível na URL</td></tr>
+        <tr><td>Segurança</td><td>Inseguro — dados visíveis e alteráveis pelo usuário</td><td>Mais seguro — dados ocultos</td></tr>
+        <tr><td>Superglobal PHP</td><td><code>$_GET['campo']</code></td><td><code>$_POST['campo']</code></td></tr>
+        <tr><td>Uso recomendado</td><td>Pesquisas, filtros (dados não sigilosos)</td><td>Cadastros, logins, dados sensíveis</td></tr>
+      </table>
+
+      <h3>Receber e verificar dados</h3>
+      <pre><code><span class="cm">// Verificar se o formulário foi submetido</span>
+<span class="kw">if</span> (<span class="fn">isset</span>($_POST[<span class="str">'enviar'</span>]) && !<span class="fn">empty</span>($_POST)) {
+
+    <span class="cm">// Ler campos individuais com valor padrão se ausente (null)</span>
+    $nome  = <span class="fn">isset</span>($_POST[<span class="str">'nome'</span>])  ? $_POST[<span class="str">'nome'</span>]  : <span class="kw">null</span>;
+    $email = <span class="fn">isset</span>($_POST[<span class="str">'email'</span>]) ? $_POST[<span class="str">'email'</span>] : <span class="kw">null</span>;
+
+    <span class="cm">// PHP 7+ — forma mais curta com null coalescing</span>
+    $nome  = $_POST[<span class="str">'nome'</span>]  ?? <span class="kw">null</span>;
+    $email = $_POST[<span class="str">'email'</span>] ?? <span class="kw">null</span>;
+
+    <span class="cm">// Percorrer todos os campos do POST</span>
+    <span class="kw">foreach</span> ($_POST <span class="kw">as</span> $chave => $valor) {
+        echo <span class="str">"$chave: $valor&lt;br&gt;"</span>;
+    }
+}</code></pre>
+
+      <div class="callout">
+        <strong>Campos checkbox e radio</strong>
+        <p>Campos <code>checkbox</code> e <code>radio</code> <strong>não são enviados</strong> quando nenhuma opção está marcada — o índice nem existe no <code>$_POST</code>. Use sempre <code>isset()</code> antes de acessar:</p>
+        <pre><code>$aceite = <span class="fn">isset</span>($_POST[<span class="str">'aceite'</span>]) ? <span class="str">"Sim"</span> : <span class="str">"Não"</span>;</code></pre>
+        <p>Para checkbox com múltipla seleção, declare o name como array no HTML: <code>name="estados[]"</code>. O PHP receberá um array em <code>$_POST['estados']</code> — percorra com <code>foreach</code>.</p>
+      </div>
+
+      <h3>Tratamento e validação de dados</h3>
+      <pre><code><span class="cm">// Remover tags HTML e PHP (proteção contra XSS básico)</span>
+$nome = <span class="fn">strip_tags</span>($_POST[<span class="str">'nome'</span>] ?? <span class="str">''</span>);
+
+<span class="cm">// Limpar todos os campos de uma vez</span>
+<span class="kw">foreach</span> ($_POST <span class="kw">as</span> $k => $v) {
+    $_POST[$k] = <span class="fn">strip_tags</span>($v);
+}
+
+<span class="cm">// Verificar se é numérico (aceita ponto, não vírgula)</span>
+<span class="kw">if</span> (!<span class="fn">is_numeric</span>($_POST[<span class="str">'idade'</span>])) {
+    $erros[] = <span class="str">"Idade deve ser numérica"</span>;
+}
+
+<span class="cm">// Sanitizar — extrair apenas inteiros e sinais + -</span>
+$idade = <span class="fn">filter_var</span>($_POST[<span class="str">'idade'</span>], FILTER_SANITIZE_NUMBER_INT);
+
+<span class="cm">// Validar e-mail</span>
+<span class="kw">if</span> (!<span class="fn">filter_var</span>($_POST[<span class="str">'email'</span>], FILTER_VALIDATE_EMAIL)) {
+    $erros[] = <span class="str">"E-mail inválido"</span>;
+}
+
+<span class="cm">// Verificar se campo obrigatório está preenchido</span>
+<span class="kw">if</span> (<span class="fn">empty</span>(<span class="fn">trim</span>($_POST[<span class="str">'nome'</span>] ?? <span class="str">''</span>))) {
+    $erros[] = <span class="str">"Nome obrigatório"</span>;
+}</code></pre>
+
+      <h3>filter_var — principais filtros</h3>
+      <table>
+        <tr><th>Filtro</th><th>Tipo</th><th>O que faz</th></tr>
+        <tr><td><code>FILTER_VALIDATE_EMAIL</code></td><td>Validate</td><td>Verifica se é e-mail válido (retorna valor ou false)</td></tr>
+        <tr><td><code>FILTER_VALIDATE_INT</code></td><td>Validate</td><td>Verifica se é inteiro válido</td></tr>
+        <tr><td><code>FILTER_VALIDATE_URL</code></td><td>Validate</td><td>Verifica se é URL válida</td></tr>
+        <tr><td><code>FILTER_SANITIZE_NUMBER_INT</code></td><td>Sanitize</td><td>Extrai apenas dígitos e sinais <code>+</code> <code>-</code></td></tr>
+        <tr><td><code>FILTER_SANITIZE_EMAIL</code></td><td>Sanitize</td><td>Remove caracteres inválidos de e-mail</td></tr>
+        <tr><td><code>FILTER_SANITIZE_STRING</code></td><td>Sanitize</td><td>Remove tags HTML (deprecated no PHP 8.1)</td></tr>
+      </table>
+
+      <div class="callout warning">
+        <strong>Práticas Modernas — Formulários PHP</strong>
+        <p><strong>Validação em duas camadas:</strong> HTML5 (<code>required</code>, <code>type="email"</code>, <code>min/max</code>) valida no cliente; PHP valida no servidor. As duas são necessárias — nunca confie só no cliente.<br>
+        <strong>CSRF protection:</strong> formulários POST devem incluir um token anti-CSRF para evitar requisições forjadas. Frameworks como Laravel e Symfony geram isso automaticamente via <code>@csrf</code> / CSRF middleware.<br>
+        <strong>Prepared Statements:</strong> ao usar dados de formulário em SQL, <strong>nunca</strong> concatene strings — use PDO com <code>bindParam()</code> ou <code>execute(['campo' => $valor])</code>.<br>
+        <strong>htmlspecialchars():</strong> ao exibir de volta na página dados enviados pelo usuário, use <code>htmlspecialchars($valor, ENT_QUOTES, 'UTF-8')</code> para prevenir XSS.<br>
+        <strong>Enctype multipart/form-data:</strong> obrigatório para upload de arquivos junto com <code>$_FILES</code>.</p>
+      </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a prova — UA13</strong>
+        <ul>
+          <li>A interação usuário-servidor em páginas dinâmicas ocorre por meio de <strong>formulários HTML</strong>.</li>
+          <li>Propriedades do <code>&lt;form&gt;</code>: <strong>name</strong>, <strong>method</strong>, <strong>action</strong>. (Não: <code>class</code>, <code>to</code>, <code>select</code>, <code>input</code>.)</li>
+          <li>Sintaxe correta para leitura POST: <code>$_POST['nome']</code> (colchetes e aspas).</li>
+          <li>Tratamento de dados via scripts PHP ocorre no <strong>servidor de aplicação web</strong>.</li>
+          <li><code>FILTER_SANITIZE_NUMBER_INT</code> = <strong>extrai</strong> apenas números inteiros e sinais <code>+/-</code>; não valida, apenas limpa.</li>
+          <li><code>GET</code>: dados aparecem na URL — use apenas para dados não sigilosos.</li>
+          <li><code>isset()</code> verifica se variável existe; <code>empty()</code> verifica se está vazia.</li>
+          <li><code>strip_tags()</code> remove tags HTML/PHP do conteúdo enviado.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Saraiva, M. O. <em>Desenvolvimento de Sistemas com PHP</em>. Porto Alegre: SAGAH, 2018.</p>
+
+      <div class="section-nav">
+        <a href="#" data-sec="ua12" class="prev">PHP — Outros Comandos</a>
+        <a href="#" data-sec="ua14" class="next">PHP — CRUD com MySQL</a>
+      </div>
+    </section>
+
+    <!-- ===== UA14 ===== -->
+    <section id="ua14">
+      <h2>UA14 — PHP: CRUD com MySQL</h2>
+
+      <h3>O que é CRUD?</h3>
+      <p>CRUD é o conjunto fundamental de operações de persistência de dados em qualquer sistema:</p>
+      <table>
+        <tr><th>Letra</th><th>Operação</th><th>SQL</th><th>Descrição</th></tr>
+        <tr><td><strong>C</strong></td><td>Create</td><td><code>INSERT INTO</code></td><td>Inserir novo registro</td></tr>
+        <tr><td><strong>R</strong></td><td>Read</td><td><code>SELECT</code></td><td>Consultar / listar registros</td></tr>
+        <tr><td><strong>U</strong></td><td>Update</td><td><code>UPDATE … SET</code></td><td>Atualizar registro existente</td></tr>
+        <tr><td><strong>D</strong></td><td>Delete</td><td><code>DELETE FROM</code></td><td>Excluir registro</td></tr>
+      </table>
+
+      <h3>Estrutura de arquivos de um módulo CRUD</h3>
+      <table>
+        <tr><th>Arquivo</th><th>Responsabilidade</th></tr>
+        <tr><td><code>inicia.php</code></td><td>Constantes de configuração (host, usuário, senha, banco)</td></tr>
+        <tr><td><code>funcoes.php</code></td><td>Função de conexão PDO + funções utilitárias (validação de CPF, datas…)</td></tr>
+        <tr><td><code>index.php</code></td><td>Tela principal — lista todos os registros (READ), botões Incluir/Alterar/Excluir</td></tr>
+        <tr><td><code>form_inclui.php</code></td><td>Formulário HTML para inserção (campos = colunas da tabela, exceto PK autoincrementada)</td></tr>
+        <tr><td><code>inclui.php</code></td><td>Processa o INSERT, valida campos, redireciona após sucesso</td></tr>
+        <tr><td><code>form_altera.php</code></td><td>Formulário pré-preenchido com dados do registro selecionado</td></tr>
+        <tr><td><code>altera.php</code></td><td>Processa o UPDATE com a chave primária recebida via GET/POST</td></tr>
+        <tr><td><code>exclui.php</code></td><td>Executa o DELETE após confirmação do usuário</td></tr>
+      </table>
+
+      <h3>Conexão com PDO</h3>
+      <pre><code><span class="cm">// funcoes.php — conexão PDO reutilizável</span>
+<span class="kw">function</span> <span class="fn">conecta_bd</span>() {
+    <span class="kw">try</span> {
+        $pdo = <span class="kw">new</span> PDO(
+            <span class="str">"mysql:host=localhost;dbname=ua14;charset=utf8"</span>,
+            <span class="str">"root"</span>,
+            <span class="str">""</span>
+        );
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        <span class="kw">return</span> $pdo;
+    } <span class="kw">catch</span> (PDOException $e) {
+        <span class="kw">die</span>(<span class="str">"Erro de conexão: "</span> . $e->getMessage());
+    }
+}</code></pre>
+
+      <h3>INSERT — gravar novo registro</h3>
+      <pre><code><span class="cm">// inclui.php — usando prepared statement (evita SQL injection)</span>
+<span class="fn">require_once</span> <span class="str">"inicia.php"</span>;
+
+$titulo = $_POST[<span class="str">'titulo'</span>] ?? <span class="kw">null</span>;
+$autor  = $_POST[<span class="str">'autor'</span>]  ?? <span class="kw">null</span>;
+
+<span class="kw">if</span> (<span class="fn">empty</span>($titulo) || <span class="fn">empty</span>($autor)) {
+    <span class="kw">die</span>(<span class="str">"Preencha todos os campos."</span>);
+}
+
+$pdo  = <span class="fn">conecta_bd</span>();
+$stmt = $pdo-><span class="fn">prepare</span>(<span class="str">"INSERT INTO livros (titulo, autor) VALUES (:titulo, :autor)"</span>);
+$ok   = $stmt-><span class="fn">execute</span>([<span class="str">':titulo'</span> => $titulo, <span class="str">':autor'</span> => $autor]);
+
+<span class="kw">if</span> ($ok) {
+    <span class="fn">header</span>(<span class="str">"Location: index.php"</span>);
+} <span class="kw">else</span> {
+    echo <span class="str">"Erro ao incluir."</span>;
+}</code></pre>
+
+      <h3>SELECT — listar registros</h3>
+      <pre><code><span class="cm">// index.php — buscar e exibir todos os registros</span>
+$pdo   = <span class="fn">conecta_bd</span>();
+$total = $pdo-><span class="fn">query</span>(<span class="str">"SELECT COUNT(*) FROM livros"</span>)-><span class="fn">fetchColumn</span>();
+$stmt  = $pdo-><span class="fn">query</span>(<span class="str">"SELECT * FROM livros ORDER BY titulo"</span>);
+
+<span class="kw">while</span> ($row = $stmt-><span class="fn">fetch</span>(PDO::FETCH_ASSOC)) {
+    echo $row[<span class="str">'titulo'</span>] . <span class="str">" — "</span> . $row[<span class="str">'autor'</span>] . <span class="str">"&lt;br&gt;"</span>;
+}</code></pre>
+
+      <h3>UPDATE — alterar registro</h3>
+      <pre><code><span class="cm">// altera.php — atualizar campos de um registro específico</span>
+$cod   = $_POST[<span class="str">'cod_livro'</span>] ?? <span class="kw">null</span>;
+$titulo = $_POST[<span class="str">'titulo'</span>]   ?? <span class="kw">null</span>;
+
+$pdo  = <span class="fn">conecta_bd</span>();
+$stmt = $pdo-><span class="fn">prepare</span>(<span class="str">"UPDATE livros SET titulo = :titulo WHERE cod_livro = :cod"</span>);
+$ok   = $stmt-><span class="fn">execute</span>([<span class="str">':titulo'</span> => $titulo, <span class="str">':cod'</span> => $cod]);
+
+<span class="kw">if</span> ($ok) <span class="fn">header</span>(<span class="str">"Location: index.php"</span>);</code></pre>
+
+      <h3>DELETE — excluir registro</h3>
+      <pre><code><span class="cm">// exclui.php — sempre use WHERE para não apagar tudo!</span>
+$cod = $_GET[<span class="str">'cod'</span>] ?? <span class="kw">null</span>;
+
+$pdo  = <span class="fn">conecta_bd</span>();
+$stmt = $pdo-><span class="fn">prepare</span>(<span class="str">"DELETE FROM livros WHERE cod_livro = :cod"</span>);
+$stmt-><span class="fn">execute</span>([<span class="str">':cod'</span> => $cod]);
+<span class="fn">header</span>(<span class="str">"Location: index.php"</span>);</code></pre>
+
+      <div class="callout warning">
+        <strong>Práticas Modernas — CRUD PHP/MySQL</strong>
+        <p><strong>PDO + Prepared Statements:</strong> padrão atual — evita SQL Injection e suporta múltiplos SGBDs. Nunca concatene variáveis direto no SQL.<br>
+        <strong>ORM (Object-Relational Mapping):</strong> em projetos reais, camadas como Eloquent (Laravel), Doctrine (Symfony) ou Propel mapeiam tabelas a classes PHP, eliminando SQL manual e tornando o código mais expressivo.<br>
+        <strong>Migrations:</strong> controle de versão do banco de dados via arquivos de migração (Laravel <code>php artisan migrate</code>, Phinx). Mantém o schema consistente entre ambientes (dev/staging/prod).<br>
+        <strong>MVC/Repository Pattern:</strong> separe a lógica de acesso ao banco (Repository) da lógica de negócio (Service) e da apresentação (Controller/View). Evita misturar HTML com queries SQL no mesmo arquivo.<br>
+        <strong>WHERE obrigatório no DELETE/UPDATE:</strong> um DELETE sem WHERE apaga todos os registros da tabela — erro grave e irreversível sem backup.</p>
+      </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a prova — UA14</strong>
+        <ul>
+          <li>CRUD = <strong>C</strong>reate (INSERT), <strong>R</strong>ead (SELECT), <strong>U</strong>pdate (UPDATE), <strong>D</strong>elete (DELETE).</li>
+          <li><code>INSERT INTO</code> = operação <strong>Create</strong> — grava novos registros.</li>
+          <li><code>DELETE FROM produtos WHERE estoque = 0</code> = remove produtos com estoque zero.</li>
+          <li>A cláusula <code>WHERE</code> no DELETE é essencial para <strong>evitar apagar todos os registros</strong> da tabela.</li>
+          <li><code>UPDATE … SET … WHERE id = 8</code> = operação <strong>Update</strong> — modifica campo de registro específico.</li>
+          <li>PDO (PHP Data Objects) = interface para conexão com o banco de dados.</li>
+          <li>Arquivos separados por função (inicia, funcoes, form, inclui, altera, exclui) = melhor organização e manutenção.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Barreto, J. S. <em>Desenvolvimento de Sistemas com PHP</em>. Porto Alegre: SAGAH, 2018. | Silberschatz, A.; Korth, H. F.; Sudarshan, S. <em>Database System Concepts</em>. McGraw-Hill, 2011.</p>
+
+      <div class="section-nav">
+        <a href="#" data-sec="ua13" class="prev">PHP — Formulários</a>
+        <a href="#" data-sec="ua15" class="next">PHP — Frameworks</a>
+      </div>
+    </section>
+
+    <!-- ===== UA15 ===== -->
+    <section id="ua15">
+      <h2>UA15 — PHP: Frameworks</h2>
+
+      <h3>O que é um framework?</h3>
+      <p>Um framework é um pacote de software com conjuntos de classes, funções e procedimentos que padronizam e agilizam o desenvolvimento. Em vez de implementar tudo do zero, o desenvolvedor segue a estrutura e as convenções do framework, beneficiando-se de componentes testados por especialistas.</p>
+
+      <h3>Framework Zend (histórico)</h3>
+      <p>O material do curso apresenta o <strong>Zend Framework 3</strong> — framework open-source, 100% orientado a objetos, licença New BSD, compatível com PHP 5.6+. Era mantido pela empresa Zend Technologies com contribuições de Google, Microsoft e outras.</p>
+
+      <div class="callout warning">
+        <strong>Atenção — Zend foi renomeado para Laminas</strong>
+        <p>Em 2019, o Zend Framework foi doado à Linux Foundation e renomeado para <strong>Laminas Project</strong>. O pacote <code>zendframework/zendframework</code> está abandonado. Use o equivalente moderno: <code>laminas/laminas-mvc</code>. Porém, para projetos PHP novos em 2024+, a recomendação do mercado é usar <strong>Laravel</strong> ou <strong>Symfony</strong>.</p>
+      </div>
+
+      <h3>Composer — o gerenciador de dependências PHP</h3>
+      <p>O Composer é ao PHP o que o npm é ao Node.js. Ele baixa, instala e gerencia pacotes e suas dependências automaticamente via arquivo <code>composer.json</code>.</p>
+      <pre><code><span class="cm"># Instalar uma dependência</span>
+composer require vendor/pacote
+
+<span class="cm"># Instalar dependências do projeto (composer.json existente)</span>
+composer install
+
+<span class="cm"># Atualizar dependências</span>
+composer update</code></pre>
+
+      <h3>Arquitetura MVC</h3>
+      <p>O padrão MVC separa a aplicação em três camadas:</p>
+      <table>
+        <tr><th>Camada</th><th>Responsabilidade</th><th>Exemplo</th></tr>
+        <tr><td><strong>Model</strong></td><td>Dados, regras de negócio, acesso ao banco</td><td>Classe <code>Livro</code> com métodos de busca</td></tr>
+        <tr><td><strong>View</strong></td><td>Apresentação ao usuário</td><td>Arquivo HTML/PHP que exibe a lista de livros</td></tr>
+        <tr><td><strong>Controller</strong></td><td>Recebe requisições, coordena Model e View</td><td>Classe que processa POST e redireciona</td></tr>
+      </table>
+
+      <h3>Fluxo de uma requisição em MVC</h3>
+      <pre><code>Usuário → (requisição) → Controller
+Controller → (chama) → Model (processa regras/dados)
+Model → (retorna dados) → Controller
+Controller → (passa dados) → View
+View → (exibe para) → Usuário</code></pre>
+
+      <h3>Estrutura de projeto Zend Skeleton (referência)</h3>
+      <pre><code>/projeto/
+├── config/
+│   └── modules.config.php   <span class="cm">← rotas de cada módulo</span>
+├── module/
+│   └── Application/
+│       ├── src/
+│       │   └── Controller/  <span class="cm">← controllers</span>
+│       │   └── Model/       <span class="cm">← models / entidades</span>
+│       └── view/            <span class="cm">← arquivos .phtml (View)</span>
+└── public/
+    └── index.php            <span class="cm">← ponto de entrada</span></code></pre>
+      <p>Arquivos de View no Zend usam extensão <code>.phtml</code>. O arquivo <code>module.config.php</code> define as rotas que o Controller recebe.</p>
+
+      <div class="callout warning">
+        <strong>Práticas Modernas — Frameworks PHP em 2024+</strong>
+        <p><strong>Laravel:</strong> framework mais popular do mundo PHP. Artisan CLI, Eloquent ORM, Blade templating, autenticação, queues, broadcasting — ecossistema completo. Versão atual: Laravel 11.<br>
+        <strong>Symfony:</strong> framework robusto e modular, base do Drupal e partes do Laravel. Excelente para APIs e sistemas enterprise.<br>
+        <strong>Slim / Lumen:</strong> microframeworks para APIs REST simples e leves — quando não precisa de todo o ecossistema do Laravel.<br>
+        <strong>Laminas (antigo Zend):</strong> mantido pela Linux Foundation, mais usado em sistemas legados.<br>
+        <strong>Composer + PSR-4 autoloading:</strong> base de qualquer projeto PHP moderno — define convenções de namespaces e carregamento automático de classes.<br>
+        <strong>PHP-FIG PSRs:</strong> padrões de interoperabilidade (PSR-7 para HTTP, PSR-12 para estilo de código, PSR-15 para middleware) seguidos por todos os frameworks modernos.</p>
+      </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a prova — UA15</strong>
+        <ul>
+          <li>Zend é compatível com <strong>PHP 5.6 ou mais recente</strong>.</li>
+          <li>A instalação do Zend é feita <strong>via Composer</strong> (não executável, não já incluso no XAMPP).</li>
+          <li>O modelo de projeto base do Zend chama-se <strong>Skeleton Application</strong>.</li>
+          <li><code>module.config.php</code> define as <strong>rotas</strong> da aplicação (mapeamento URL → Controller).</li>
+          <li>Arquivos da camada View no Zend têm extensão <strong>.phtml</strong>.</li>
+          <li>MVC: <strong>Model</strong> = dados/lógica; <strong>View</strong> = apresentação; <strong>Controller</strong> = coordenação.</li>
+          <li>Vantagens do MVC: desenvolvimento paralelo (designers e programadores), reúso de código, manutenção facilitada.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Saraiva, M. O. <em>Desenvolvimento de Sistemas com PHP</em>. Porto Alegre: SAGAH, 2018. | Zend Framework Documentation. | Laravel Documentation (laravel.com).</p>
+
+      <div class="section-nav">
+        <a href="#" data-sec="ua14" class="prev">PHP — CRUD com MySQL</a>
+        <a href="#" data-sec="ua16" class="next">PHP — Padrões de Projeto</a>
+      </div>
+    </section>
+
+    <!-- ===== UA16 ===== -->
+    <section id="ua16">
+      <h2>UA16 — PHP: Padrões de Projeto</h2>
+
+      <h3>O que são Design Patterns?</h3>
+      <p>Padrões de projeto (design patterns) são soluções reutilizáveis para problemas comuns de organização e arquitetura de software. Não existe um padrão ideal para todos os casos — cada um tem finalidade e características específicas. Os mais cobrados no curso são <strong>MVC</strong>, <strong>Singleton</strong> e <strong>Factory</strong>.</p>
+
+      <h3>Padrão MVC — Model-View-Controller</h3>
+      <p>Separa a aplicação em três camadas com responsabilidades distintas:</p>
+      <table>
+        <tr><th>Camada</th><th>Responsabilidade</th><th>Faz requisição para…</th></tr>
+        <tr><td><strong>Model</strong></td><td>Leitura, escrita, atualização e validação de dados. Regras de negócio e lógica.</td><td>Banco de dados / fontes de dados</td></tr>
+        <tr><td><strong>View</strong></td><td>Interação com o usuário. Exibe dados (HTML, XML, imagens…)</td><td>Model (via Controller)</td></tr>
+        <tr><td><strong>Controller</strong></td><td>Controla as requisições do usuário. Indica qual Model e qual View usar.</td><td>Model e View</td></tr>
+      </table>
+
+      <h3>Fluxo de login com MVC</h3>
+      <pre><code><span class="cm">// Estrutura de pastas básica</span>
+/exemplo_mvc/
+├── index.php         <span class="cm">← ponto de entrada, dispara o Controller</span>
+├── Controller/
+│   └── controller.php <span class="cm">← recebe dados, chama Model, envia para View</span>
+├── Model/
+│   └── model.php      <span class="cm">← valida usuário e senha, regras de negócio</span>
+└── View/
+    └── view.php       <span class="cm">← exibe formulário de login e resultado</span></code></pre>
+
+      <h3>Vantagens do MVC</h3>
+      <ul>
+        <li><strong>Desenvolvimento paralelo:</strong> programadores e designers podem trabalhar simultaneamente em camadas diferentes.</li>
+        <li><strong>Reúso de código:</strong> componentes de uma camada podem ser reutilizados em outras partes do sistema.</li>
+        <li><strong>Manutenção facilitada:</strong> código dividido em partes específicas — mais fácil localizar e corrigir problemas.</li>
+        <li><strong>Compreensão facilitada:</strong> cada arquivo tem uma responsabilidade clara.</li>
+      </ul>
+
+      <h3>Padrão Singleton</h3>
+      <p>Garante que uma classe seja instanciada <strong>uma única vez</strong> em toda a execução — o mesmo objeto é retornado sempre que requisitado. Usado principalmente em: conexão com banco de dados, classes de configuração, gerenciadores de log.</p>
+      <pre><code><span class="cm">// conexao.php — Singleton para conexão com banco</span>
+<span class="kw">class</span> Conexao {
+    <span class="kw">private static</span> $instancia = <span class="kw">null</span>;  <span class="cm">// armazena a única instância</span>
+
+    <span class="kw">private function</span> <span class="fn">__construct</span>() {}  <span class="cm">// private: impede new Conexao()</span>
+
+    <span class="kw">public static function</span> <span class="fn">getInstance</span>() {
+        <span class="kw">if</span> (self::$instancia === <span class="kw">null</span>) {
+            self::$instancia = <span class="kw">new</span> PDO(
+                <span class="str">"mysql:host=localhost;dbname=ua16"</span>,
+                <span class="str">"root"</span>, <span class="str">""</span>
+            );
+        }
+        <span class="kw">return</span> self::$instancia;
+    }
+}
+
+<span class="cm">// Uso: nunca new Conexao() — sempre via ::getInstance()</span>
+$pdo = Conexao::<span class="fn">getInstance</span>();
+$stmt = $pdo-><span class="fn">query</span>(<span class="str">"SELECT * FROM alunos"</span>);
+echo $stmt-><span class="fn">fetch</span>()[<span class="str">'nome'</span>];</code></pre>
+
+      <h3>Regras do Singleton</h3>
+      <ol>
+        <li>Construtor da classe deve ser <strong>private</strong> — impede instanciação direta com <code>new</code>.</li>
+        <li>Método <strong><code>getInstance()</code></strong> deve ser sempre utilizado para obter a instância.</li>
+        <li>Requisição deve usar <code>::</code> (acesso estático): <code>NomeClasse::getInstance()</code>.</li>
+      </ol>
+
+      <h3>Padrão Factory</h3>
+      <p>Cria objetos de forma dinâmica sem que o chamador precise conhecer a classe concreta — a classe "fábrica" decide qual classe instanciar com base em um parâmetro de entrada.</p>
+      <pre><code><span class="cm">// Interface define o contrato</span>
+<span class="kw">interface</span> Veiculo {
+    <span class="kw">public function</span> <span class="fn">modelo</span>(): string;
+}
+
+<span class="cm">// Classes concretas implementam a interface</span>
+<span class="kw">class</span> Renault <span class="kw">implements</span> Veiculo {
+    <span class="kw">public function</span> <span class="fn">modelo</span>(): string { <span class="kw">return</span> <span class="str">"Renault Sandero"</span>; }
+}
+<span class="kw">class</span> Ford <span class="kw">implements</span> Veiculo {
+    <span class="kw">public function</span> <span class="fn">modelo</span>(): string { <span class="kw">return</span> <span class="str">"Ford Ka"</span>; }
+}
+
+<span class="cm">// Classe Factory decide qual instanciar</span>
+<span class="kw">class</span> VeiculoFactory {
+    <span class="kw">public static function</span> <span class="fn">criar</span>(string $marca): Veiculo {
+        <span class="kw">return match</span>($marca) {
+            <span class="str">"Renault"</span>   => <span class="kw">new</span> Renault(),
+            <span class="str">"Ford"</span>      => <span class="kw">new</span> Ford(),
+            <span class="kw">default</span>    => <span class="kw">throw new</span> \InvalidArgumentException(<span class="str">"Marca desconhecida"</span>),
+        };
+    }
+}
+
+<span class="cm">// Uso: o chamador não sabe nem precisa saber qual classe é criada</span>
+$v = VeiculoFactory::<span class="fn">criar</span>(<span class="str">"Ford"</span>);
+echo $v-><span class="fn">modelo</span>(); <span class="cm">// Ford Ka</span></code></pre>
+
+      <h3>Benefícios do Factory</h3>
+      <ul>
+        <li>Se a classe <code>Veiculo</code> for renomeada ou alterada, muda-se apenas ela e a <code>VeiculoFactory</code>.</li>
+        <li>Se a criação do objeto for complexa, essa complexidade fica isolada na Factory.</li>
+        <li>O chamador depende da <strong>interface</strong>, não da implementação concreta.</li>
+      </ul>
+
+      <div class="callout warning">
+        <strong>Práticas Modernas — Design Patterns e Arquitetura PHP</strong>
+        <p><strong>Além do básico — outros padrões comuns:</strong><br>
+        <strong>Repository Pattern:</strong> abstrai o acesso a dados — Controllers e Services dependem de uma interface, não de queries SQL diretas. Facilita troca de banco e testes.<br>
+        <strong>Service Layer:</strong> lógica de negócio em classes de Serviço independentes de HTTP — reusáveis em CLI, filas e APIs.<br>
+        <strong>Dependency Injection (DI):</strong> dependências são "injetadas" no construtor em vez de instanciadas dentro da classe — reduz acoplamento e facilita testes.<br>
+        <strong>Container DI (PHP-DI, Laravel Container, Symfony DI):</strong> gerencia automaticamente as dependências — resolve classes com todas as suas injeções sem código manual.<br>
+        <strong>Event / Observer:</strong> desacopla partes do sistema via eventos — Laravel Events, Symfony EventDispatcher.<br>
+        <strong>SOLID:</strong> conjunto de 5 princípios de design OO (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion) — base para código manutenível e extensível.</p>
+      </div>
+
+      <div class="callout tip">
+        <strong>Dicas para a prova — UA16</strong>
+        <ul>
+          <li>MVC divide a aplicação nas camadas <strong>Model, View e Controller</strong> (não "Modelagem/Visualização/Classes").</li>
+          <li>Vantagens do MVC: <strong>compreensão e manutenção facilitada, reúso de código, desenvolvimento rápido e paralelo</strong>.</li>
+          <li>Singleton = instancia a classe <strong>uma única vez</strong>, compartilhando o mesmo objeto em toda a aplicação.</li>
+          <li>Regras do Singleton: construtor <strong>private</strong>, usar <code>getInstance()</code>, chamar com <code>::</code> (não com <code>-></code>).</li>
+          <li>Factory = classe "fábrica" que decide qual classe concreta instanciar com base nos <strong>parâmetros recebidos</strong>.</li>
+          <li><code>implements</code> = implementa uma interface em PHP; todos os métodos da interface devem ser implementados.</li>
+          <li>Método/propriedade <code>static</code> é acessado com <code>::</code> sem instanciar a classe.</li>
+        </ul>
+      </div>
+
+      <p class="ref">Barreto, J. S. <em>Desenvolvimento de Sistemas com PHP</em>. Porto Alegre: SAGAH, 2018.</p>
+
+      <div class="section-nav">
+        <a href="#" data-sec="ua15" class="prev">PHP — Frameworks</a>
         <span></span>
       </div>
     </section>
