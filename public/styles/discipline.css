@@ -692,14 +692,17 @@ html[data-theme="light"] pre {
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
 }
 html[data-theme="light"] p code,
-html[data-theme="light"] li code {
+html[data-theme="light"] li code,
+html[data-theme="light"] td code,
+html[data-theme="light"] th code {
   background: rgba(175,184,193,.2);
   border-color: rgba(0,14,77,.1);
   color: var(--text);
 }
 
 html[data-theme="light"] th { background: rgba(230,236,248,.9); }
-html[data-theme="light"] td { border-bottom-color: rgba(0,14,77,.07); }
+html[data-theme="light"] td { border-bottom-color: rgba(0,14,77,.07); color: var(--text); }
+html[data-theme="light"] td:first-child { color: var(--text); }
 html[data-theme="light"] tr:hover td { background: rgba(0,14,77,.02); }
 
 html[data-theme="light"] .diagram {
@@ -740,9 +743,12 @@ html[data-theme="light"] #nav-overlay.open { background: rgba(0,0,0,.4); }
   html:not([data-theme="dark"]) .card { background: rgba(255,255,255,.85); }
   html:not([data-theme="dark"]) pre { background: #161b22; border-color: rgba(0,14,77,.12); }
   html:not([data-theme="dark"]) p code,
-  html:not([data-theme="dark"]) li code { background: rgba(175,184,193,.2); border-color: rgba(0,14,77,.1); color: var(--text); }
+  html:not([data-theme="dark"]) li code,
+  html:not([data-theme="dark"]) td code,
+  html:not([data-theme="dark"]) th code { background: rgba(175,184,193,.2); border-color: rgba(0,14,77,.1); color: var(--text); }
   html:not([data-theme="dark"]) th { background: rgba(230,236,248,.9); }
-  html:not([data-theme="dark"]) td { border-bottom-color: rgba(0,14,77,.07); }
+  html:not([data-theme="dark"]) td { border-bottom-color: rgba(0,14,77,.07); color: var(--text); }
+  html:not([data-theme="dark"]) td:first-child { color: var(--text); }
   html:not([data-theme="dark"]) .slide-item { background: #ffffff; }
   html:not([data-theme="dark"]) .diagram { background: rgba(240,244,255,.6); border-color: rgba(0,14,77,.15); }
   html:not([data-theme="dark"]) .back::before {
