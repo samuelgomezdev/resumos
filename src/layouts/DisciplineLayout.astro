@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
+import SectionNav from '../components/SectionNav.astro';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -47,6 +48,7 @@ const siteBase = import.meta.env.BASE_URL.replace(/\/$/, '');
         <h2>{entry.data.title}</h2>
         <p class="subtitle">{entry.data.subtitle}</p>
         <slot />
+        <SectionNav entries={entries} currentSlug={slug} base={base} />
       </section>
     </main>
   </div>
