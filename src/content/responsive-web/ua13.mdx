@@ -5,6 +5,8 @@ ua: 13
 group: "PHP"
 ---
 import Callout from "../../components/Callout.astro";
+import SlidesGrid from "../../components/SlidesGrid.astro";
+import SlideItem from "../../components/SlideItem.astro";
 
 ### Formulários HTML + PHP — o ciclo
 
@@ -18,6 +20,10 @@ Formulários são a principal interface entre o usuário e o servidor web. O HTM
   <input type="submit" name="enviar" value="Enviar" />
 </form>
 ```
+
+<SlidesGrid>
+  <SlideItem src="/assets/img/slides/php_recebe_dados.webp" alt="Como PHP recebe dados do formulário" caption="Do formulário HTML ao PHP: o ciclo completo" portrait />
+</SlidesGrid>
 
 ### Atributos essenciais do `<form>`
 

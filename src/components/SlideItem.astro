@@ -3,12 +3,13 @@ interface Props {
   src: string;
   alt: string;
   caption?: string;
+  portrait?: boolean;
 }
-const { src, alt, caption } = Astro.props;
+const { src, alt, caption, portrait = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const imgSrc = src.startsWith('/') ? `${base}${src.slice(1)}` : src;
 ---
-<figure class="slide-item">
+<figure class:list={["slide-item", { "slide-item--portrait": portrait }]}>
   <img loading="lazy" src={imgSrc} alt={alt} />
   {caption && <figcaption>{caption}</figcaption>}
 </figure>

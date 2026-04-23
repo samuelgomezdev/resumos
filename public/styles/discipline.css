@@ -438,6 +438,11 @@ tr:hover td { background: rgba(255,255,255,.015); }
   box-shadow: 0 8px 20px rgba(0,0,0,.3);
 }
 .slide-item img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+
+/* Portrait (vertical) images */
+.slide-item--portrait { grid-column: span 1; max-width: 320px; justify-self: center; }
+.slide-item--portrait img { aspect-ratio: 9/16; object-fit: contain; background: rgba(5,5,15,.6); }
+html[data-theme="light"] .slide-item--portrait img { background: rgba(230,236,248,.5); }
 .slide-item figcaption {
   font-size: .7rem;
   color: var(--muted);
