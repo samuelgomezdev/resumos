@@ -655,3 +655,92 @@ footer a:hover { text-decoration: underline; }
   .section-nav { flex-direction: column; }
   .section-nav a { justify-content: center; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   LIGHT MODE — discipline layout overrides
+   ═══════════════════════════════════════════════════════ */
+
+html[data-theme="light"] header {
+  background: rgba(240,244,255,.92);
+}
+html[data-theme="light"] .menu-btn:hover { background: rgba(0,14,77,.06); }
+html[data-theme="light"] .menu-btn span { background: var(--muted); }
+
+html[data-theme="light"] aside {
+  background: rgba(248,250,255,.9);
+  border-right-color: var(--border);
+  scrollbar-color: rgba(0,14,77,.1) transparent;
+}
+html[data-theme="light"] aside::-webkit-scrollbar-thumb { background: rgba(0,14,77,.1); }
+html[data-theme="light"] aside a:hover { background: rgba(0,14,77,.04); }
+html[data-theme="light"] aside a.active { background: rgba(9,105,218,.07); }
+
+html[data-theme="light"] .card {
+  background: rgba(255,255,255,.85);
+}
+html[data-theme="light"] .card:hover { border-color: rgba(9,105,218,.3); }
+
+/* Código mantém fundo escuro intencionalmente (legibilidade) */
+html[data-theme="light"] pre {
+  background: #161b22;
+  border-color: rgba(0,14,77,.12);
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+html[data-theme="light"] p code,
+html[data-theme="light"] li code {
+  background: rgba(175,184,193,.2);
+  border-color: rgba(0,14,77,.1);
+  color: var(--text);
+}
+
+html[data-theme="light"] th { background: rgba(230,236,248,.9); }
+html[data-theme="light"] td { border-bottom-color: rgba(0,14,77,.07); }
+html[data-theme="light"] tr:hover td { background: rgba(0,14,77,.02); }
+
+html[data-theme="light"] .diagram {
+  background: rgba(240,244,255,.6);
+  border-color: rgba(0,14,77,.15);
+}
+
+html[data-theme="light"] .slide-item { background: #ffffff; }
+html[data-theme="light"] .slide-item:hover { box-shadow: 0 8px 20px rgba(0,0,0,.1); }
+html[data-theme="light"] .slide-item figcaption { border-top-color: var(--border); }
+
+html[data-theme="light"] footer { border-top-color: var(--border); }
+
+/* Lightbox permanece escuro independente do tema */
+html[data-theme="light"] .lightbox-close,
+html[data-theme="light"] .lightbox-prev,
+html[data-theme="light"] .lightbox-next {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.18);
+  color: rgba(255,255,255,.8);
+}
+html[data-theme="light"] .lightbox-caption {
+  background: rgba(0,0,0,.7);
+  border-color: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.8);
+}
+
+/* Back arrow icon — versão light */
+html[data-theme="light"] .back::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2357606a' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 12H5M12 5l-7 7 7 7'/%3E%3C/svg%3E");
+}
+
+html[data-theme="light"] #nav-overlay.open { background: rgba(0,0,0,.4); }
+
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) header { background: rgba(240,244,255,.92); }
+  html:not([data-theme="dark"]) aside { background: rgba(248,250,255,.9); scrollbar-color: rgba(0,14,77,.1) transparent; }
+  html:not([data-theme="dark"]) .card { background: rgba(255,255,255,.85); }
+  html:not([data-theme="dark"]) pre { background: #161b22; border-color: rgba(0,14,77,.12); }
+  html:not([data-theme="dark"]) p code,
+  html:not([data-theme="dark"]) li code { background: rgba(175,184,193,.2); border-color: rgba(0,14,77,.1); color: var(--text); }
+  html:not([data-theme="dark"]) th { background: rgba(230,236,248,.9); }
+  html:not([data-theme="dark"]) td { border-bottom-color: rgba(0,14,77,.07); }
+  html:not([data-theme="dark"]) .slide-item { background: #ffffff; }
+  html:not([data-theme="dark"]) .diagram { background: rgba(240,244,255,.6); border-color: rgba(0,14,77,.15); }
+  html:not([data-theme="dark"]) .back::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2357606a' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 12H5M12 5l-7 7 7 7'/%3E%3C/svg%3E");
+  }
+}
