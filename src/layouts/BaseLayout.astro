@@ -5,7 +5,7 @@ interface Props {
   cssFiles?: string[];
 }
 
-const { title, description = 'Resumos ADS — UNIVALI', cssFiles = [] } = Astro.props;
+const { title, description = 'Resumos ADS', cssFiles = [] } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <!doctype html>
